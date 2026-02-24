@@ -4,7 +4,6 @@
   --theme-easing: cubic-bezier(0.25, 0.1, 0.25, 1);
   --theme-transition: background-color var(--theme-duration) var(--theme-easing),
     color var(--theme-duration) var(--theme-easing),
-    border-color var(--theme-duration) var(--theme-easing),
     box-shadow var(--theme-duration) var(--theme-easing);
   --heading-color: rgb(19, 19, 19);
   --font-family: var(--font-body), "Helvetica Neue", Arial, sans-serif;

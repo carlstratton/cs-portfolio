@@ -188,7 +188,7 @@
   flex-direction: column;
   gap: 24px;
   border-radius: 28px;
-  border: 1px solid #f3f2fb;
+  border: 1px solid var(--border);
   background: var(--surface);
   padding: 22px 22px;
 }
@@ -208,7 +208,7 @@
 }
 
 .panel p.panelIntro {
-  color: black;
+  color: var(--text);
 }
 
 .panel p {
@@ -258,7 +258,7 @@
   min-width: 193px;
   padding: 16px 77px;
   border-radius: 999px;
-  border: 1px solid #f3f2fb;
+  border: 1px solid var(--border);
   color: var(--text);
   text-decoration: none;
   font-size: 18px;
@@ -312,8 +312,8 @@
   flex-direction: column;
   border-radius: 16px;
   overflow: visible;
-  border: 1px solid #e8e8e8;
-  background: #fff;
+  border: 1px solid var(--border);
+  background: var(--surface);
   text-decoration: none;
   color: inherit;
   transition: var(--theme-transition),
@@ -379,7 +379,7 @@
   flex-direction: column;
   gap: 8px;
   border-radius: 0 0 16px 16px;
-  background: #fff;
+  background: var(--surface);
 }
 
 .cardEyebrow {
@@ -410,9 +410,9 @@
   border-radius: 16px;
   aspect-ratio: 4 / 6;
   min-height: 0;
-  border: 1px solid #e8e8e8;
+  border: 1px solid var(--border);
   overflow: hidden;
-  background: #f5f5f5;
+  background: var(--surface-muted);
 }
 
 .shimmer {

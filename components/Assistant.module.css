@@ -202,7 +202,7 @@
 }
 
 .assistant[data-docked="true"] .suggestion {
-  background: #f3f2fb;
+  background: var(--surface);
   border: 1px solid var(--border);
   box-shadow: none;
   backdrop-filter: none;
