@@ -269,7 +269,7 @@ export function HomeLanding({ studies }: { studies: CaseStudy[] }) {
       (acc, t) => acc + (t.intent === data.intent ? 1 : 0),
       0
     );
-    if (currentCount >= 2) return;
+    if (currentCount >= 1) return;
 
     const id = nextTurnId();
     const newTurn: Turn = { id, intent: data.intent, label: data.label, status: "thinking" };
@@ -366,7 +366,7 @@ export function HomeLanding({ studies }: { studies: CaseStudy[] }) {
 
   const disabledIntents = useMemo(() => {
     return (Object.entries(intentCounts) as Array<[AssistantIntent, number]>)
-      .filter(([, n]) => n >= 2)
+      .filter(([, n]) => n >= 1)
       .map(([intent]) => intent);
   }, [intentCounts]);
 
@@ -534,7 +534,27 @@ export function HomeLanding({ studies }: { studies: CaseStudy[] }) {
                           </>
                         ) : (
                           <>
-                            <p>The best way to reach me is email. I’m also on LinkedIn.</p>
+                            <p>
+                              Email is best but I&apos;m also on LinkedIn. Or if you believe good
+                              conversation happens over a chessboard or between padel points,
+                              you can find me on{" "}
+                              <a
+                                href="https://www.chess.com/member/strattonsphere"
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                Chess.com
+                              </a>{" "}
+                              and{" "}
+                              <a
+                                href="https://app.playtomic.io/profile/user/5987380?utm_source=app_ios&utm_medium=share"
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                Playtomic
+                              </a>
+                              .
+                            </p>
                             <div className={styles.panelLinks}>
                               <a href={MAILTO}>Email</a>
                               <a
@@ -543,6 +563,20 @@ export function HomeLanding({ studies }: { studies: CaseStudy[] }) {
                                 rel="noreferrer"
                               >
                                 LinkedIn
+                              </a>
+                              <a
+                                href="https://www.chess.com/member/strattonsphere"
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                Chess.com
+                              </a>
+                              <a
+                                href="https://app.playtomic.io/profile/user/5987380?utm_source=app_ios&utm_medium=share"
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                Playtomic
                               </a>
                             </div>
                           </>
@@ -713,7 +747,27 @@ export function HomeLanding({ studies }: { studies: CaseStudy[] }) {
                           </>
                         ) : (
                           <>
-                            <p>The best way to reach me is email. I’m also on LinkedIn.</p>
+                            <p>
+                              Email is best but I&apos;m also on LinkedIn. Or if you believe good
+                              conversation happens over a chessboard or between padel points,
+                              you&apos;ll find me on{" "}
+                              <a
+                                href="https://www.chess.com/member/strattonsphere"
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                Chess.com
+                              </a>{" "}
+                              and{" "}
+                              <a
+                                href="https://app.playtomic.io/profile/user/5987380?utm_source=app_ios&utm_medium=share"
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                Playtomic
+                              </a>
+                              .
+                            </p>
                             <div className={styles.panelLinks}>
                               <a href={MAILTO}>Email</a>
                               <a
@@ -722,6 +776,20 @@ export function HomeLanding({ studies }: { studies: CaseStudy[] }) {
                                 rel="noreferrer"
                               >
                                 LinkedIn
+                              </a>
+                              <a
+                                href="https://www.chess.com/member/strattonsphere"
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                Chess.com
+                              </a>
+                              <a
+                                href="https://app.playtomic.io/profile/user/5987380?utm_source=app_ios&utm_medium=share"
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                Playtomic
                               </a>
                             </div>
                           </>
