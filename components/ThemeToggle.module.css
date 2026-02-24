@@ -1,0 +1,66 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px;
+  border-radius: 0px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-width: 0;
+  border-style: none;
+  border-color: transparent;
+  border-image: none;
+  background: unset;
+  background-color: rgba(255, 255, 255, 0);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  border: 1px solid var(--border);
+  background: var(--surface-muted);
+  position: relative;
+  display: inline-block;
+}
+
+.dot::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: 999px;
+  background: var(--accent);
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.dot[data-state="dark"]::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+:global(header[data-theme-override="dark"]) .dot::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.label {
+  font-size: 12px;
+  letter-spacing: 0.01em;
+}

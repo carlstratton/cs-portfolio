@@ -1,0 +1,119 @@
+{
+  "slug": "sme-health-insurance",
+  "title": "Bringing health insurance to small businesses",
+  "client": "Enterprise insurer",
+  "summary": "Product discovery and launch of a new healthcare insurance product for UK SMEs.",
+  "role": [
+    "Product design lead",
+    "Facilitation",
+    "Service design"
+  ],
+  "timeframe": "2022 \u2022 10 weeks",
+  "outcomes": [
+    "Validated appetite and pricing signals with target SMEs",
+    "Defined MVP enrolment and renewal journeys",
+    "Aligned underwriting, sales, and ops on a single service blueprint"
+  ],
+  "tags": [
+    "Service design",
+    "B2B",
+    "Discovery"
+  ],
+  "hero": "/case-studies/hero-courier.png",
+  "sections": [
+    {
+      "id": "context",
+      "title": "Design Challenge",
+      "body": [
+        "Imagine this: You're a self-employed courier. It's raining, traffic is heavy, and orders are stacking up in your app. You're navigating buses and taxis to make the next drop.",
+        "If you don't ride, you don't earn.",
+        "Your bike insurance and liability cover are sorted. But health insurance? It feels corporate, complex, and built for HR departments, not a one-person business powered by an app and a backpack."
+      ],
+      "leadIn": "Simply Business saw health insurance as a growth opportunity. But before building anything, our product discovery unit had to answer one question:",
+      "identifiedItems": [
+        "Would small businesses like this actually want it, and trust us to provide it?"
+      ],
+      "bodyEnd": [
+        "Before committing, we needed evidence."
+      ],
+      "bulletStyle": "challenge"
+    },
+    {
+      "id": "action-taken",
+      "title": "Action Taken",
+      "body": [
+        "Recognising our team's limited experience in the health sector, our first step was to gather extensive insights through a combination of qualitative and quantitative research. This involved:",
+        "We combined:"
+      ],
+      "media": [
+        {
+          "type": "component",
+          "componentId": "diagnosing-root-causes"
+        },
+        {
+          "type": "prose",
+          "paragraphs": [
+            "This gave us clarity on: willingness to pay, most valued benefits, language preferences, and trust in Simply Business as a provider.",
+            "We then identified and prioritised the riskiest assumptions: Could we offer the right product? Would customers trust us to sell it?",
+            "2. Ran rapid, evidence-based experiments",
+            "Instead of debating internally, we tested.",
+            "Brand vs Value Testing: Users consistently chose better benefits over bigger brand names.",
+            "Language Testing: Plain, issue-focused language outperformed medical jargon.",
+            "These insights shaped our positioning and product framing early \u2014 before any engineering investment.",
+            "3. Proved demand progressively",
+            "We increased fidelity and exposure in stages: clickable prototype testing, live demand test in the quote journey (~2,000 weekly visits), and dedicated marketing page + PPC campaign (10,000+ weekly visits).",
+            "Each phase validated real customer interest.",
+            "By the end of testing, we had strong evidence that health insurance was a viable vertical."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "assumptions-experiments",
+      "title": "Turned assumptions into experiments",
+      "leadIn": "We identified the two riskiest assumptions:",
+      "identifiedItems": [
+        "We can offer the right product for small business needs",
+        "Customers would trust and buy health insurance through Simply Business"
+      ],
+      "body": [],
+      "bodyEnd": [
+        "We ran rapid, low-fidelity experiments before committing engineering effort.",
+        "Brand vs Price Test",
+        "Participants chose better value over stronger brand recognition.",
+        "Medical Language Test",
+        "Issue-focused, plain English messaging consistently outperformed medical jargon.",
+        "These experiments reframed our design principles:",
+        "Prioritise tangible value over brand signalling",
+        "Use clear, issue-led language",
+        "Reduce cognitive load in a complex category"
+      ],
+      "bulletStyle": "identified"
+    },
+    {
+      "id": "discovery",
+      "title": "Discovery",
+      "body": [
+        "Interviewed founders and HR leads to map expectations around coverage, price, and setup time.",
+        "Mapped service blueprint spanning quote, onboarding, benefits communication, and renewals."
+      ]
+    },
+    {
+      "id": "design",
+      "title": "Design & validation",
+      "body": [
+        "Designed a guided quote flow with clarity on coverage and a no-surprises checkout.",
+        "Created lightweight admin for brokers to manage cohorts and renewals.",
+        "Ran moderated tests to compare appetite between bundled and modular benefits."
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Delivery",
+      "body": [
+        "Documented decision playbooks for underwriting and service teams.",
+        "Established a content system for policy clarity and zero-jargon summaries."
+      ]
+    }
+  ]
+}

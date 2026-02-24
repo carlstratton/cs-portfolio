@@ -1,0 +1,103 @@
+{
+  "slug": "seedrs-investor-focus",
+  "title": "Helping investors navigate decision fatigue on mobile",
+  "client": "Seedrs",
+  "summary": "Redesigned campaign discovery to reduce decision fatigue, introducing simple filtering, shortlisting and return mechanisms that helped investors evaluate opportunities confidently across shorter, mobile-first sessions.",
+  "role": [
+    "Lead UX product designer",
+    "Research synthesis",
+    "Interaction design",
+    "Experiment planning"
+  ],
+  "timeframe": "Undisclosed • Mobile product design",
+  "outcomes": [
+    "Defined a clear browse → shortlist → decide loop for campaign discovery",
+    "Introduced lightweight controls to save, hide, and filter campaigns on mobile",
+    "Created a scalable pattern set to support iterative testing and rollouts"
+  ],
+  "tags": [
+    "Mobile",
+    "Fintech",
+    "Decision support",
+    "UX strategy"
+  ],
+  "hero": "/case-studies/seedrs-investor-focus-cafe.png",
+  "badge": "/case-studies/badges/seedrs.png",
+  "cardImage": "/case-studies/thumbnail-seedrs.png",
+  "sections": [
+    {
+      "id": "context",
+      "title": "Design Challenge",
+      "body": [
+        "Imagine this: You’re an investor checking the Seedrs app between meetings. Dozens of campaigns are live. You want to make smart decisions and not miss the next big opportunity.",
+        "But the volume is overwhelming. Some look interesting but you’re not ready to commit. Others you’re not interested in, yet they keep appearing. You scroll, skim, and tell yourself you’ll come back later.",
+        "Over time, it becomes mentally draining.",
+        "The problem wasn’t a lack of information. It was helping investors focus, filter, and decide with confidence on mobile."
+      ],
+      "leadIn": "The experience needed to make it easy to:",
+      "identifiedItems": [
+        "Scan quickly and understand what’s new (or worth revisiting)",
+        "Shortlist promising campaigns without forcing a decision",
+        "Reduce noise by removing irrelevant campaigns from view",
+        "Return later and pick up where you left off"
+      ],
+      "bodyEnd": [
+        "In short: less browsing as a chore, more discovery as a confident, repeatable habit."
+      ],
+      "bulletStyle": "identified"
+    },
+    {
+      "id": "action-taken",
+      "title": "Action Taken",
+      "body": [
+        "I framed the work around a mobile reality: discovery happens in short bursts, often with low attention and high context switching. The job of the UI is to compress complexity into clear next actions.",
+        "We audited the existing feed patterns and mapped the decision moments: what makes someone pause, what makes them save, and what makes them abandon."
+      ],
+      "leadIn": "I focused the design strategy on three behaviours:",
+      "identifiedItems": [
+        "Browse: fast scanning, low commitment",
+        "Shortlist: lightweight intent signals (save/follow) that preserve momentum",
+        "Decide: a confident path into deeper detail and the next step"
+      ],
+      "bodyEnd": [
+        "This framing helped the team align on what “success” looked like: fewer dead-end scrolls, more purposeful saves, and clearer re-entry when users returned."
+      ],
+      "bulletStyle": "action"
+    },
+    {
+      "id": "further-action-taken",
+      "title": "Further Action Taken",
+      "body": [
+        "From there, I designed a set of controls and information cues that reduce cognitive load without adding UI weight.",
+        "The core principle was simple: give investors a way to say “yes”, “no”, and “not yet”—directly from the feed."
+      ],
+      "leadIn": "Key interventions:",
+      "identifiedItems": [
+        "Save / shortlist: a low-friction way to capture intent and return later",
+        "Not interested: hide a campaign to reduce repeat noise and decision fatigue",
+        "Lightweight filters: tighten the feed to what’s relevant in the moment (sector, stage, popularity, etc.)",
+        "Recency cues: make it obvious what’s new, what’s already viewed, and what changed since last time",
+        "Re-entry surfaces: make the shortlist a first-class destination so investors can resume quickly"
+      ],
+      "bodyEnd": [
+        "I prototyped these patterns in a mobile-first card system and planned iterative validation around comprehension (can users explain what changed?), control (can users reduce noise?), and continuity (can users return and continue without re-scanning everything?)."
+      ],
+      "bulletStyle": "identified"
+    },
+    {
+      "id": "impact",
+      "title": "Results",
+      "body": [
+        "The outcome was a clearer, calmer discovery experience: the feed becomes a place to make progress, not just consume volume.",
+        "Investors can now externalise memory (save), reduce noise (hide), and narrow attention (filter) without breaking flow—supporting confident decisions over time instead of forcing them in a single session."
+      ],
+      "leadIn": "What shipped (and what it enabled):",
+      "identifiedItems": [
+        "A repeatable browse → shortlist → decide loop designed for short sessions",
+        "A lightweight control set that reduces decision fatigue without adding complexity",
+        "A scalable pattern library suitable for staged rollout and testing"
+      ],
+      "bulletStyle": "outcome"
+    }
+  ]
+}

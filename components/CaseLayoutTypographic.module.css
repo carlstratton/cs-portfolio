@@ -1,0 +1,167 @@
+.wrap {
+  color-scheme: light;
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.92);
+  padding: var(--space-12) 0 var(--space-16);
+}
+
+.header {
+  position: relative;
+  padding-bottom: var(--space-10);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+  overflow: hidden;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -15%;
+  width: 70%;
+  max-width: 600px;
+  aspect-ratio: 1;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 0, 0, 0.03) 0%,
+    rgba(0, 0, 0, 0.02) 20%,
+    rgba(0, 0, 0, 0.01) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+}
+
+.backLink {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.backLink:hover {
+  color: rgba(0, 0, 0, 0.92);
+}
+
+.titleGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  max-width: 980px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(40px, 8vw, 64px);
+  line-height: 67px;
+  letter-spacing: -0.04em;
+  font-weight: 400;
+  font-style: normal;
+  color: rgb(19, 19, 19);
+}
+
+.summary {
+  margin: 0;
+  width: 100%;
+  max-width: none;
+  font-size: 24px;
+  line-height: 140%;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6) var(--space-10);
+  margin-top: var(--space-8);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.40);
+}
+
+.metaItem {
+  display: flex;
+  gap: 6px;
+}
+
+.metaItem strong {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.40);
+}
+
+.outcomes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+}
+
+.main {
+  padding-top: var(--space-10);
+}
+
+.hero {
+  margin: 0 0 var(--space-12);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.heroImageWrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  display: block;
+}
+
+@media (hover: hover) {
+  .heroImageWrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.02);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .heroImageWrap::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    background: url("/icons/zoom.svg") no-repeat center;
+    background-size: contain;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .heroImageWrap:hover::before,
+  .heroImageWrap:hover::after {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    padding: var(--space-10) 0 var(--space-12);
+  }
+
+  .nav {
+    margin-bottom: var(--space-8);
+  }
+}
+

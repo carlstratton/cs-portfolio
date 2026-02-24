@@ -1,0 +1,457 @@
+.chipsWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 260ms ease;
+  will-change: opacity;
+}
+
+.chipsWrap[data-hero-phase="exiting"] {
+  opacity: 0;
+  pointer-events: none;
+  transition-delay: 120ms;
+}
+
+.chipsWrap[data-docked="true"] {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  translate: -50% 0;
+  width: min(var(--grid-width), calc(100% - (var(--grid-margin) * 2)));
+  z-index: 30;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+  will-change: opacity;
+}
+
+.chipsDock {
+  pointer-events: auto;
+  width: fit-content;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 999px;
+  padding: 10px 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border);
+  box-shadow: none;
+  /* Frosted-glass effect: blur + saturation on backdrop. */
+  backdrop-filter: blur(60px) saturate(160%);
+  -webkit-backdrop-filter: blur(60px) saturate(160%);
+}
+
+.chipsWrap[data-visible="false"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.conversation {
+  width: 100%;
+  margin-top: var(--space-10);
+  display: grid;
+  gap: 14px;
+}
+
+.turns {
+  padding: var(--space-12) 0 calc(var(--space-16) + 90px);
+}
+
+.turn {
+  padding: var(--space-12) 0;
+}
+
+.turnHeader {
+  padding-bottom: 80px;
+}
+
+.turnThinking {
+  padding-bottom: 80px;
+}
+
+.turn + .turn {
+  border-top: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+}
+
+.turnHeader {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--space-6);
+}
+
+.turn[data-new="true"] .turnHeader {
+  animation: turn-pill-in 280ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.turn[data-new="true"][data-first-intro="true"] .turnHeader {
+  animation-delay: 160ms;
+}
+
+.turn[data-revealed="true"] .turnContent {
+  animation: turn-content-fade-in 300ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.turnContent {
+  width: 100%;
+}
+
+.workWrap[data-revealed="true"] {
+  animation: turn-content-fade-in 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.turn[data-empty="true"] .turnHeader {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.turn[data-empty="true"] .turnBody {
+  display: none;
+}
+
+.turn[data-empty="true"] {
+  padding: var(--space-8) 0;
+}
+
+.turn[data-empty="true"] + .turn {
+  border-top: none;
+}
+
+.turnTitle {
+  margin: 0;
+  margin-bottom: 40px;
+  font-size: 32px;
+  line-height: 37px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+@keyframes turn-pill-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes turn-content-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.turnPillFloating {
+  position: fixed;
+  z-index: 9999;
+  margin: 0;
+  pointer-events: none;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.turnPillStatic {
+  /* Keep pill identical to the original chip styling. */
+  opacity: 1 !important;
+  transform: none !important;
+  cursor: default !important;
+  pointer-events: none;
+  /* Prevent flexbox from shrinking/wrapping the pill label. */
+  flex: 0 0 auto;
+  white-space: nowrap;
+  max-width: none;
+}
+
+.turnPillStatic[data-phase="moving"] {
+  opacity: 0 !important;
+}
+
+.turnBody {
+  width: 100%;
+}
+
+.turnThinking {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.thinkingDot {
+  display: inline-block;
+}
+
+.panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: 28px;
+  border: 1px solid #f3f2fb;
+  background: var(--surface);
+  padding: 22px 22px;
+}
+
+.aboutImageWrap {
+  margin: 0 0 18px;
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.aboutImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.panel p.panelIntro {
+  color: black;
+}
+
+.panel p {
+  margin: 0 0 0;
+  padding-bottom: 0;
+  color: var(--text-muted);
+  max-width: 80ch;
+  font-size: 30px;
+  letter-spacing: 0.2px;
+  line-height: 130%;
+}
+
+.panelSubheading {
+  margin: 18px 0 8px;
+  padding-top: 40px;
+  padding-bottom: 0px;
+  font-size: 40px;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.panelSubheading:first-child {
+  margin-top: 0;
+}
+
+.panel ul {
+  margin: 0 0 14px;
+  padding-left: 18px;
+  list-style: disc;
+  color: var(--text-muted);
+  display: grid;
+  gap: 6px;
+}
+
+.panelLinks {
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.panelLinks a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 193px;
+  padding: 16px 77px;
+  border-radius: 999px;
+  border: 1px solid #f3f2fb;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.panelLinks a:hover {
+  color: var(--text);
+}
+
+.grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: visible;
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 240ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 240ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tile:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+}
+
+.cardImageWrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  line-height: 0;
+  border-radius: 16px 16px 0 0;
+  overflow: visible;
+}
+
+.cardImageWrap > :global(span:first-of-type) {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.cardImageWrap :global(img),
+.cardImage {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(100%);
+  display: block;
+  vertical-align: bottom;
+  border-radius: 16px 16px 0 0;
+}
+
+.badgeWrap {
+  position: absolute;
+  right: 24px;
+  bottom: -20px;
+  width: 56px;
+  height: 56px;
+  z-index: 10;
+}
+
+.badgeWrap :global(img),
+.badge {
+  object-fit: contain;
+  filter: none;
+  border-radius: 0;
+}
+
+.cardMeta {
+  padding: 32px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 0 0 16px 16px;
+  background: #fff;
+}
+
+.cardEyebrow {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.cardTitle {
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--text);
+  margin: 0;
+}
+
+.cardSummary {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+.skeleton {
+  position: relative;
+  border-radius: 16px;
+  aspect-ratio: 4 / 6;
+  min-height: 0;
+  border: 1px solid #e8e8e8;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.shimmer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, #ffffff 0%, transparent),
+    color-mix(in srgb, #ffffff 10%, transparent),
+    color-mix(in srgb, #ffffff 0%, transparent)
+  );
+  opacity: 0.7;
+  transform: translateX(-60%);
+  animation: shimmer 1100ms ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-60%);
+  }
+  100% {
+    transform: translateX(160%);
+  }
+}
+
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .projectsHeader {
+    margin-bottom: var(--space-5);
+  }
+}
+
+@media (max-width: 640px) {
+  .projectsFullBleed {
+    padding: 64px 62px;
+  }
+
+  .projectsCard {
+    padding: 20px;
+    border-radius: 28px;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .tile {
+    transition: none;
+  }
+
+  .tile:hover {
+    transform: none;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .shimmer {
+    animation: none;
+    display: none;
+  }
+
+  .turn[data-new="true"] .turnHeader {
+    animation: none;
+  }
+
+  .turn[data-revealed="true"] .turnContent,
+  .workWrap[data-revealed="true"] {
+    animation: none;
+  }
+}
+

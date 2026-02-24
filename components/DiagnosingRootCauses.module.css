@@ -1,0 +1,80 @@
+.root {
+  margin: 0;
+  padding: 0 120px;
+}
+
+.topRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-10);
+  height: fit-content;
+  padding-top: 0px;
+}
+
+.card {
+  padding: var(--space-6);
+  border: none;
+  border-radius: 12px;
+  background: #fdedec;
+}
+
+.cardIcon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--space-4);
+}
+
+.cardTitle {
+  margin: 0 0 var(--space-3);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(19, 19, 19);
+}
+
+.cardDescription {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.bottomRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.linkCard {
+  padding: var(--space-5);
+  border: none;
+  border-radius: 10px;
+  background: #f2f2f7;
+}
+
+.linkTitle {
+  margin: 0 0 var(--space-2);
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(19, 19, 19);
+}
+
+.linkDescription {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+@media (max-width: 768px) {
+  .topRow {
+    grid-template-columns: 1fr;
+    margin-bottom: var(--space-8);
+  }
+
+  .bottomRow {
+    grid-template-columns: 1fr;
+  }
+}

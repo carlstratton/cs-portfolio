@@ -1,0 +1,130 @@
+{
+  "slug": "health-insurance-discovery-launch",
+  "title": "Giving small business owners access to health insurance",
+  "client": "Simply Business",
+  "summary": "Led discovery to launch for an SME health insurance proposition, combining research, rapid experimentation and staged demand validation to de-risk the opportunity before full integration.",
+  "role": [
+    "Lead UX product designer",
+    "Experiment design",
+    "Service design",
+    "Workshop facilitation"
+  ],
+  "timeframe": "2019–2021 • Discovery → launch",
+  "outcomes": [
+    "Mapped needs and willingness-to-pay signals via 12 interviews and a 600-customer survey",
+    "De-risked positioning through rapid tests (brand vs price, and plain-English vs medical language)",
+    "Proved demand progressively: prototype testing → live journey (~2,000 weekly visits) → marketing + PPC (10,000+ weekly visits)",
+    "Shipped an integrated SME health insurance offering with Equipsme as the partner"
+  ],
+  "tags": [
+    "Healthcare",
+    "B2B",
+    "Discovery",
+    "Experimentation"
+  ],
+  "hero": "/case-studies/health-discovery-launch-hero.png",
+  "badge": "/case-studies/badges/simply-business.png",
+  "cardImage": "/case-studies/thumbnail-health-discovery.png",
+  "sections": [
+    {
+      "id": "context",
+      "title": "Design Challenge",
+      "body": [
+        "Health insurance is notoriously hard to navigate. For small business owners, it’s often framed as a corporate HR benefit—high effort, unclear value, and full of jargon.",
+        "Simply Business identified SME health insurance as a growth opportunity, but the bar was high: we needed to prove it was desirable, understandable, and a natural fit within an existing insurance journey—before committing engineering time.",
+        "I led the customer experience strategy within a Product Discovery Unit (PM, researcher, analyst, insurance specialist, and myself) to answer one question: should we build this, and if so, what should it be?"
+      ],
+      "leadIn": "We needed confident evidence on:",
+      "identifiedItems": [
+        "Whether SMEs actually wanted health insurance, and what “good” looked like for them",
+        "Which benefits and price points mattered most (and how they talked about them)",
+        "Whether customers would trust Simply Business to sell it"
+      ],
+      "bodyEnd": [
+        "If we couldn’t validate those fundamentals quickly, we’d stop and move on to the next opportunity."
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/case-studies/health-discovery-launch/overview-1.jpg",
+          "alt": "Health insurance discovery case study overview visual"
+        }
+      ]
+    },
+    {
+      "id": "action-taken",
+      "title": "Action Taken",
+      "body": [
+        "We started by building a shared understanding of the category and the customer. The goal wasn’t “more research”—it was decision-grade clarity: what to offer, how to communicate it, and which assumptions would sink the proposition if wrong."
+      ],
+      "leadIn": "We combined:",
+      "identifiedItems": [
+        "User interviews (12 SME owners already using private health insurance)",
+        "A customer survey (600 Simply Business customers) to gauge interest and willingness to pay",
+        "Competitive benchmarking across SME offerings to identify gaps and opportunities"
+      ],
+      "bodyEnd": [
+        "This gave us a grounded view of value drivers (benefits, coverage expectations, and price sensitivity) and a clear signal on language: customers wanted the concept in plain English, anchored in real issues—not insurance terminology."
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/case-studies/health-discovery-launch/overview-2.jpg",
+          "alt": "Research and competitive benchmarking artefacts"
+        }
+      ]
+    },
+    {
+      "id": "further-action-taken",
+      "title": "Further Action Taken",
+      "leadIn": "We pressure-tested the two riskiest assumptions:",
+      "identifiedItems": [
+        "We can offer the right product for small business needs",
+        "Customers would trust and buy health insurance through Simply Business"
+      ],
+      "body": [],
+      "bodyEnd": [
+        "Rather than debate in the abstract, we turned assumptions into measurable experiments and ran low-fidelity tests before committing engineering effort.",
+        "Experiment 1.1 — Brand versus price: when presented with a stronger brand offering fewer benefits versus a lesser-known provider offering better value, participants consistently prioritised tangible value over brand recognition.",
+        "Experiment 1.2 — Response to medical language: issue-focused, plain-English options were easier to understand and more compelling than service-led, jargon-heavy descriptions.",
+        "Those results sharpened our design principles: prioritise value over brand signalling; use clear, issue-led language; and reduce cognitive load in a complex category.",
+        "Experiment 2 — Demand test: we increased fidelity and exposure in stages—clickable prototype testing (15 participants), a live demand test within the quote journey (~2,000 weekly visits), and then a dedicated marketing page supported by PPC (10,000+ weekly visits).",
+        "In parallel, we explored how to integrate the product: eligibility checks, where health questions naturally fit, and how to present it as an intuitive add-on without disrupting core purchase flows.",
+        "After selecting Equipsme as the partner, we ran ads offering free health insurance for a limited time—building shared confidence while engineering work ramped up."
+      ],
+      "bulletStyle": "identified",
+      "media": [
+        {
+          "type": "image",
+          "src": "/case-studies/health-discovery-launch/experiment-1.jpg",
+          "alt": "Experiment artefact: brand versus price comparison"
+        },
+        {
+          "type": "image",
+          "src": "/case-studies/health-discovery-launch/experiment-2.jpg",
+          "alt": "Experiment artefact: response to medical language"
+        },
+        {
+          "type": "image",
+          "src": "/case-studies/health-discovery-launch/experiment-3.jpg",
+          "alt": "Experiment artefact: demand test and messaging exploration"
+        },
+        {
+          "type": "image",
+          "src": "/case-studies/health-discovery-launch/integration.jpg",
+          "alt": "Integration concept: introducing healthcare into an existing insurance journey"
+        }
+      ]
+    },
+    {
+      "id": "impact",
+      "title": "Results",
+      "body": [
+        "By the time we reached build decisions, the conversation had shifted from “should we?” to “what’s the most focused version we can ship with confidence?”",
+        "We had clear evidence on what customers valued, how to communicate it, and how demand scaled as we moved from prototypes to real traffic.",
+        "That allowed the team to integrate health insurance into the existing journey with a crisp proposition, minimal cognitive load, and a measured rollout plan."
+      ],
+      "bulletStyle": "outcome"
+    }
+  ]
+}

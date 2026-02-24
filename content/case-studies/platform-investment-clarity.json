@@ -1,0 +1,104 @@
+{
+  "slug": "platform-investment-clarity",
+  "title": "Giving retail investors more confidence after they invest",
+  "company": "republic.com",
+  "summary": "Redesigned the post-investment experience to improve visibility and reduce confusion, simplifying key journeys through research and testing, reducing support tickets while increasing investor confidence.",
+  "role": ["Staff product designer"],
+  "timeframe": "2024",
+  "sector": "fintech",
+  "outcomes": [
+    "30% reduction in support tickets for funding summaries (MoM)",
+    "3/3 participants intuitively identified where their investment was located in usability testing",
+    "Transparent journey improved user flow and delight"
+  ],
+  "tags": ["Mobile", "Fintech", "UX strategy"],
+  "hero": "/case-studies/platform-investment-hero.png",
+  "badge": "/case-studies/badges/republic.png",
+  "cardImage": "/case-studies/thumbnail-platform.png",
+  "sections": [
+    {
+      "id": "context",
+      "title": "Design challenge",
+      "body": [
+        "Imagine this: you’ve just invested in a crowdfunding opportunity you believe in, completed checkout, payment confirmed, but when you go to check your portfolio, your investment is nowhere to be found. It feels like your shares, equity, investment have vanished.",
+        "Uncertain whether the transaction went through, many investors turned to customer support for answers, creating frustration on both sides. Naturally, they expected their new investment to appear in their portfolio.",
+        "In Republic’s model, the campaigns stay open for further investment, and only once they close, followed by several months of legal and due diligence, does the asset formally move into the portfolio.",
+        "This delay, combined with unclear terminology like “open Investments”, weak empty states, and vague progress indicators, left investors feeling lost at the very moment they needed reassurance most."
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/case-studies/design-challenge.png",
+          "alt": "Investor feedback quotes and mobile chat showing user asking about missing investment in portfolio"
+        }
+      ]
+    },
+    {
+      "id": "approach",
+      "title": "Action taken",
+      "body": [
+        "After speaking with users, reviewing support tickets, and watching session replays, it was clear the confusion was real, investors simply couldn't find their investments after paying.",
+        "The native app had strong business backing, giving us the space to prioritise this opportunity. Our first solution adjusted the flow, taking users from checkout straight into an 'Open Investments' screen, which tested well and reassured them their purchase had gone through.",
+        "Once released, a new issue appeared. Investors knew they had made an investment, but couldn't find their way back. Our intent was right, and we were close, but the experience still felt fuzzy.",
+        "We identified:"
+      ],
+      "identifiedItems": [
+        "Success toasts obscured the back button, interrupting navigation.",
+        "The transition from checkout to \"open investments\" lacked continuity, causing users to lose context.",
+        "The term \"open investments\" did not align with users' expectations or mental models and was frequently overlooked.",
+        "The absence of a clear empty state left users without guidance on what to do next."
+      ],
+      "bulletStyle": "challenge",
+      "media": [
+        {
+          "type": "image",
+          "src": "/case-studies/action-taken.png",
+          "alt": "User journey map showing checkout flow, portfolio screens, and identified friction points"
+        }
+      ]
+    },
+    {
+      "id": "solution",
+      "title": "Further actions taken",
+      "body": [
+        "Punctuated by clear visual cues to minimise visual noise, user journey confusion and creating a more delightful and trustful experience.",
+        "Layered during onboarding was deployed, making progress visible to nurture and increase transparency.",
+        "Improved investor feedback was on time closing."
+      ],
+      "bulletStyle": "outcome",
+      "media": [
+        {
+          "type": "image",
+          "src": "/case-studies/further-action-taken.png",
+          "alt": "Investment detail screens with deeper actions and further information modals"
+        }
+      ]
+    },
+    {
+      "id": "impact",
+      "title": "Benefits",
+      "body": [
+        "As a result of this release, support tickets dropped, investors felt more confident after checkout. The new framework now powers multiple investment journeys across the product, and scheduled to be rolled out across our web product.",
+        "More specifically:"
+      ],
+      "bulletStyle": "outcome",
+      "media": [
+        {
+          "type": "image",
+          "src": "/case-studies/results.png",
+          "alt": "Portfolio screens showing empty state, in-progress investments, and closed campaigns"
+        },
+        {
+          "type": "quote",
+          "text": "Before: 20 hours of lost work because nothing was set up. Repeat questions repeatedly begging.",
+          "variant": "benefit"
+        },
+        {
+          "type": "quote",
+          "text": "Afterward: Reduced calls 10X, fewer emails 20X. Investors were happy.",
+          "variant": "benefit"
+        }
+      ]
+    }
+  ]
+}

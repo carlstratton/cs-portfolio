@@ -1,0 +1,68 @@
+.wrap {
+  width: 100%;
+  max-width: 1120px;
+}
+
+.loader {
+  display: grid;
+  gap: 10px;
+  padding: var(--space-6) 0;
+  max-width: 560px;
+}
+
+.loaderLabel {
+  font-size: 13px;
+  color: var(--text-subtle);
+  letter-spacing: 0.02em;
+}
+
+.skeletonLine {
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--surface-muted) 85%, transparent),
+    color-mix(in srgb, var(--surface) 90%, transparent),
+    color-mix(in srgb, var(--surface-muted) 85%, transparent)
+  );
+  background-size: 240% 100%;
+  animation: shimmer 1200ms ease-in-out infinite;
+}
+
+.skeletonLine:nth-child(2) {
+  width: 72%;
+}
+
+.skeletonLine:nth-child(3) {
+  width: 92%;
+}
+
+.skeletonLine:nth-child(4) {
+  width: 64%;
+}
+
+.list {
+  display: grid;
+  gap: 0;
+}
+
+.hint {
+  margin-top: var(--space-4);
+  font-size: 13px;
+  color: var(--text-subtle);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@media (min-width: 960px) {
+  .wrap {
+    max-width: 1200px;
+  }
+}

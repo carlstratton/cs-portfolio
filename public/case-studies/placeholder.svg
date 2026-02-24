@@ -1,0 +1,10 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" fill="#0F0F10"/>
+  <rect x="60" y="60" width="1080" height="600" rx="32" fill="#141416" stroke="#2A2A2E" stroke-width="4" stroke-dasharray="12 12"/>
+  <path d="M180 520C240 440 320 380 420 360C540 334 640 404 760 392C860 383 930 330 1020 260" stroke="#6A8BFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="340" cy="390" r="10" fill="#6A8BFF"/>
+  <circle cx="620" cy="410" r="10" fill="#6A8BFF"/>
+  <circle cx="900" cy="330" r="10" fill="#6A8BFF"/>
+  <text x="120" y="170" fill="#6A8BFF" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="600">Case study image placeholder</text>
+  <text x="120" y="220" fill="#B6B6BD" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="400">Swap with real captures to show flows, data, and narrative visuals</text>
+</svg>

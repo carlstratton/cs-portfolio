@@ -1,0 +1,182 @@
+{
+  "slug": "wondr-medical-zero-to-one",
+  "title": "How medical professionals helped unlock £12M in funding",
+  "company": "Wondr Medical",
+  "summary": "Led cross-functional discovery to transform Wondr into a collaborative platform, grounding decisions in user insight and validating direction that secured a £12M seed investment.",
+  "role": ["Founding/Lead UX Designer"],
+  "timeframe": "2024",
+  "sector": "Healthcare",
+  "outcomes": [
+    "Identified and validated the concept for Wondr Medical Rooms, leading to a £12M seed investment",
+    "Increased internal UX maturity, moving from assumption-based to research-led decision-making",
+    "Embedded a continuous discovery culture with weekly experiments and user touch points",
+    "Reframed Wondr's identity around community, trust, and collaboration, not just content"
+  ],
+  "tags": ["Mobile", "Healthcare", "Product strategy", "UX research"],
+  "hero": "/case-studies/wondr-medical-hero.png",
+  "badge": "/case-studies/badges/wondr-medical.png",
+  "cardImage": "/case-studies/thumbnail-wondr-medical.png",
+  "sections": [
+    {
+      "id": "context",
+      "title": "Design challenge",
+      "body": [
+        "Imagine this: you're a cardiologist between patients. Your phone's buzzing, a colleague wants a second opinion on WhatsApp, a debate's unfolding on Twitter, and your inbox is full of new academic papers.",
+        "You're already juggling too many conversations across too many tools, but none of them are truly built for how you work. Wondr Medical set out to change that, creating a video platform where cardiologists could connect and share knowledge. The idea was ambitious, but built in isolation, the product never fit into their world, and engagement never followed.",
+        "When I joined Wondr, thirty-day retention was under 2%, highlighting a clear gap between what we were building and what doctors actually needed.",
+        "This led to:"
+      ],
+      "identifiedItems": [
+        "Features being built without evidence or context.",
+        "A fragmented experience that felt confusing and unhelpful.",
+        "A loss of clarity around the product's purpose."
+      ],
+      "bodyEnd": [
+        "The path forward was unclear, but working alongside the product director, my role was focused on engaging more deeply with customers and defining a path forward.",
+        "Diagnosing the root causes:"
+      ],
+      "media": [
+        {
+          "type": "component",
+          "componentId": "diagnosing-root-causes"
+        }
+      ]
+    },
+    {
+      "id": "defining-goals",
+      "title": "Defining goals and leading a discovery team",
+      "body": [
+        "With backing from senior leadership, I led a cross-functional discovery team of four, including our product director, VP of engineering, and a senior designer, to define a clear direction for Wondr Medical.",
+        "Our mission was focused but ambitious:"
+      ],
+      "identifiedItems": [
+        "To transform Wondr Medical into an active, trusted space for medical collaboration."
+      ],
+      "bodyEnd": [
+        "To get there, we needed to uncover why doctors weren't returning to the platform, and how Wondr could meaningfully fit into their daily workflows and professional lives.", 
+        "Our route to success by identifying outcomes:"
+      ],
+      "media": [
+        {
+          "type": "component",
+          "componentId": "route-to-success"
+        }
+      ]
+    },
+    {
+      "id": "building-community",
+      "title": "Building and learning from our community",
+      "body": [
+        "We reached out to our 10,000-physician mailing list and created the Wondr Advisory Board, a space where doctors could share honest feedback.",
+        "Through that, we conducted 50 interviews with healthcare professionals and 20 interviews with key opinion leaders (KOLs), often squeezed in between surgeries, taxi rides, and hospital corridors, from Hertfordshire to New York City.",
+        "These conversations revealed clear themes:"
+      ],
+      "identifiedItems": [
+        "Doctors felt time-poor and overwhelmed by noise in professional group chats.",
+        "They wanted smaller, focused spaces for trusted collaboration.",
+        "90% used WhatsApp for second opinions, clear in the knowledge it wasn't secure or fit for purpose."
+      ],
+      "bodyEnd": [
+        "To get there, we needed to understand why doctors weren't coming back, and how Wondr could better fit into their daily lives."
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/case-studies/wondr-building-community.png",
+          "alt": "Interview snapshots and user insights"
+        }
+      ]
+    },
+    {
+      "id": "designing-workflow",
+      "title": "Designing our workflow",
+      "body": [
+        "Physicians are notoriously hard to recruit for research, their schedules are full, and every conversation has to count. With a small team and limited time, we needed to work efficiently.",
+        "To maintain clarity and momentum, I restructured our discovery process. Drawing on Teresa Torres' Continuous Discovery Habits, I introduced the opportunity solution tree, a visual tool that helped shift the team from feature-led conversations to outcome-driven, experiment-led learning.",
+        "By mapping user needs to opportunities and linking each experiment to our goals, we could prioritise confidently and see progress in context. I complemented this with:"
+      ],
+      "identifiedItems": [
+        "Story mapping to visualise the end-to-end experience",
+        "Assumption mapping to surface risks and quick wins early"
+      ],
+      "bodyEnd": [
+        "Though not a long-term cadence, this approach gave us structure, speed, and a shared mental model, transforming how we made decisions, visually synthesised and always grounded in user insight."
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/case-studies/wondr-designing-workflow.png",
+          "alt": "Opportunity solution tree and discovery process"
+        }
+      ]
+    },
+    {
+      "id": "validating-experiments",
+      "title": "Validating with real-world experiments",
+      "body": [
+        "We designed our experiments to build on one another, with each layer of insight informing the next. Our interviews shaped the questionnaire, and our questionnaire shaped the fake-door test. This sequencing gave us confidence that what we were testing was grounded in real user needs, with high integrity assumptions.",
+        "Experiment 1: Maze questionnaire — Doctors ranked potential features based on usefulness. This gave us a prioritised, evidence-led feature set.",
+        "Experiment 2: Fake door test — We ran targeted Facebook ads promoting a \"Wondr Medical app\" that didn't yet exist. Those who identified as Doctors clicked through to a landing page where they could \"download\" the app. 150 people attempted to download the non-existent app, a strong validation of both the concept and market demand.",
+        "Users took this fake door journey: Research informs content decisions → Facebook ad → Unbounce page → App download → Let down.",
+        "Each test reduced uncertainty, helping us move from qualitative understanding to quantitative confidence that we were solving a real, valuable problem.",
+        "It's very much worth noting that in finding this opportunity there were many that did not make it past the experimentation phase, this is of course all part of the process."
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/case-studies/wondr-validating-experiments.png",
+          "alt": "Maze questionnaire and fake door test experiments"
+        }
+      ]
+    },
+    {
+      "id": "iteration-prototyping",
+      "title": "Iteration and prototyping",
+      "body": [
+        "As our insights deepened, our focus shifted toward 'groups and communities' — smaller, trusted spaces where physicians could share patient cases, seek second opinions, and collaborate securely. Through iterative rounds of low-fidelity prototyping, we translated research insights into tangible design hypotheses, using each test to validate comprehension, usability, and value.",
+        "This iterative loop helped us evolve from abstract discovery to a clear, evidence-backed product direction designed for real-world collaboration.",
+        "Key activities included:"
+      ],
+      "leadIn": "Key activities included:",
+      "identifiedItems": [
+        "Low-fidelity prototypes to explore interaction patterns quickly and gather directional feedback.",
+        "Concept testing to assess how clearly physicians understood new features and terminology.",
+        "Focused feedback sessions to identify usability friction and emotional response.",
+        "Rapid iteration informed by user insights and technical feasibility."
+      ],
+      "bodyEnd": [
+        "Each round brought us closer to a product physicians could trust — a simple, secure way to connect, communicate, and advance medical discovery together."
+      ],
+      "bulletStyle": "outcome",
+      "media": [
+        {
+          "type": "image",
+          "src": "/case-studies/wondr-iteration-prototyping.png",
+          "alt": "Prototype screens and user confidence insights"
+        }
+      ]
+    },
+    {
+      "id": "results",
+      "title": "Results: From insight to investment",
+      "body": [
+        "What began as a small discovery project evolved into a strategic shift for the company.",
+        "By grounding every decision in user insight, we helped Wondr transform from a fragmented video library into a connected collaboration platform."
+      ],
+      "identifiedItems": [
+        "Identified and validated the concept for Wondr Medical Rooms, leading to a £12M seed investment.",
+        "Increased internal UX maturity, moving from assumption-based to research-led decision-making.",
+        "Embedded a continuous discovery culture with weekly experiments and user touch points.",
+        "Reframed Wondr's identity around community, trust, and collaboration, not just content."
+      ],
+      "bulletStyle": "outcome",
+      "media": [
+        {
+          "type": "image",
+          "src": "/case-studies/wondr-results.png",
+          "alt": "Press release and Wondr Medical Rooms chat experience"
+        }
+      ]
+    }
+  ]
+}
