@@ -8,7 +8,7 @@
   text-decoration: none;
   color: var(--text);
   box-shadow: none;
-  transition: color 160ms ease, border-color 160ms ease;
+  transition: var(--theme-transition);
 }
 
 .card:hover {

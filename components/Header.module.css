@@ -3,9 +3,6 @@
   z-index: 10;
   background: transparent;
   border-bottom: 0;
-  transition: background-color 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    border-color 420ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    color 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .header [data-header-shell="true"] {
@@ -35,8 +32,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
   height: 64px;
   gap: 16px;
+  text-align: left;
 }
 
 .brand {
@@ -45,34 +44,14 @@
   gap: 8px;
   font-weight: 300;
   letter-spacing: 0;
+  color: rgba(187, 187, 191, 1);
+  text-align: left;
+  cursor: pointer;
 }
 
-.nav {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 13px;
+.tagline {
+  font-weight: 300;
+  letter-spacing: 0;
+  color: rgba(187, 187, 191, 1);
 }
 
-.nav a {
-  padding: 6px 8px;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  transition: color 360ms cubic-bezier(0.2, 0.8, 0.2, 1),
-    border-color 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.nav a:hover {
-  color: var(--text);
-  border-color: var(--border);
-}
-
-@media (max-width: 720px) {
-  .nav {
-    gap: 10px;
-  }
-
-  .nav a {
-    padding: 6px 8px;
-  }
-}

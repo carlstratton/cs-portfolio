@@ -560,7 +560,7 @@ export function HomeLanding({ studies }: { studies: CaseStudy[] }) {
 
                             <p>
                               Over the past few years, Carl has increasingly integrated AI into his
-                              product workflow — using agentic tools to design, prototype, and validate
+                              product workflow, using agentic tools to design, prototype, and validate
                               product experiences. This ranges from micro-interactions to fully
                               functioning end-to-end flows, including production-ready web and native
                               applications.
@@ -568,15 +568,15 @@ export function HomeLanding({ studies }: { studies: CaseStudy[] }) {
 
                             <p>
                               Beyond tooling, he ships. Carl has built and released multiple
-                              production iOS products. Most recently he launched <a
+                              production iOS products. Most recently working with a small group of friends, he launched <a
                               href="https://apps.apple.com/us/app/totl-top-of-the-league/id6754661450"
                               target="_blank"
                               rel="noreferrer"
                             >
-                              <strong>TOTL</strong>
+                              TOTL
                             </a>
                             ,
-                              a social football predictions platform across Web and Expo React Native.
+                              top of the league - a social football predictions platform across Web and Expo React Native.
                               It includes core platform features such as user accounts, game mechanics,
                               competitive rankings, social groups, notification triggers, and
                               third-party data integrations.

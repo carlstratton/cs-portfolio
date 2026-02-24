@@ -129,7 +129,7 @@
     inset: 0;
     background: rgba(0, 0, 0, 0.02);
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: var(--theme-transition), opacity 0.2s ease;
     pointer-events: none;
     z-index: 1;
   }
@@ -144,7 +144,7 @@
     background: url("/icons/zoom.svg") no-repeat center;
     background-size: contain;
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: var(--theme-transition), opacity 0.2s ease;
     pointer-events: none;
     z-index: 2;
   }

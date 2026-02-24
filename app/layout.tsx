@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { PageTransition } from "@/components/PageTransition";
+import { ThemeProvider } from "@/lib/theme";
 
 const googleSans = localFont({
   src: [
@@ -93,7 +94,9 @@ export default function RootLayout({
       className={`${googleSans.variable} ${merriweather.variable}`}
     >
       <body suppressHydrationWarning>
-        <PageTransition>{children}</PageTransition>
+        <ThemeProvider>
+          <PageTransition>{children}</PageTransition>
+        </ThemeProvider>
       </body>
     </html>
   );

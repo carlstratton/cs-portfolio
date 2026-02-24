@@ -81,8 +81,7 @@
   border: 1px solid var(--border);
   font-weight: 500;
   font-size: 13px;
-  transition: transform 140ms ease, border-color 140ms ease,
-    background-color 140ms ease;
+  transition: var(--theme-transition), transform 140ms ease;
 }
 
 .primary {

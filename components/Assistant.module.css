@@ -154,7 +154,7 @@
     0 0 0 1px color-mix(in srgb, var(--accent-strong) 3%, transparent);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  transition: color 160ms ease, box-shadow 200ms ease;
+  transition: var(--theme-transition);
   animation: chip-in 1100ms ease forwards,
     chip-border-shift 16000ms linear infinite;
   animation-delay: var(--chip-delay, 0ms),
