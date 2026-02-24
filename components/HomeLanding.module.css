@@ -33,7 +33,7 @@
   margin-right: auto;
   border-radius: 999px;
   padding: 10px 10px;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: color-mix(in srgb, var(--surface) 90%, transparent);
   border: 1px solid var(--border);
   box-shadow: none;
   /* Frosted-glass effect: blur + saturation on backdrop. */
@@ -262,10 +262,12 @@
   color: var(--text);
   text-decoration: none;
   font-size: 18px;
+  transition: border-color 200ms ease;
 }
 
 .panelLinks a:hover {
   color: var(--text);
+  border-color: color-mix(in srgb, var(--text) 50%, var(--border));
 }
 
 .turn[data-intent="about"] .panel p a {
@@ -280,7 +282,7 @@
 }
 
 .turn[data-intent="about"] .panel .panelLinks a {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .turn[data-intent="contact"] .panel p a {
@@ -295,8 +297,7 @@
 }
 
 .turn[data-intent="contact"] .panel .panelLinks a {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
+  text-decoration: none;
 }
 
 .grid {

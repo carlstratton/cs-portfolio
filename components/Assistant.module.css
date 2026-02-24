@@ -90,10 +90,11 @@
   color: var(--text);
   text-decoration: none;
   font-size: 13px;
+  transition: border-color 200ms ease;
 }
 
 .link:hover {
-  border-color: color-mix(in srgb, var(--text) 35%, var(--border));
+  border-color: color-mix(in srgb, var(--text) 50%, var(--border));
 }
 
 @media (max-width: 720px) {
@@ -132,8 +133,8 @@
   border: 1px solid transparent;
   background: linear-gradient(
         to bottom,
-        color-mix(in srgb, var(--surface) 86%, transparent),
-        color-mix(in srgb, var(--surface) 86%, transparent)
+        transparent,
+        transparent
       )
       padding-box,
     linear-gradient(
@@ -159,6 +160,18 @@
     chip-border-shift 16000ms linear infinite;
   animation-delay: var(--chip-delay, 0ms),
     calc(var(--chip-delay, 0ms) + 1100ms);
+}
+
+/* Fill layer that transitions with theme – gradients can't interpolate */
+.suggestion::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 999px;
+  background-color: color-mix(in srgb, var(--surface) 86%, transparent);
+  z-index: -1;
+  pointer-events: none;
+  transition: var(--theme-transition);
 }
 
 .suggestion:hover {
