@@ -811,10 +811,9 @@ export function HomeLanding({ studies }: { studies: CaseStudy[] }) {
                                 target="_blank"
                                 rel="noreferrer"
                               >
-                                Ignite
+                                IGNITE
                               </a>
-                              , such as IGNITE,
-                              with Emblzn winning UK Innovate&apos;s digital innovation contest for
+                              , with Emblzn winning UK Innovate&apos;s digital innovation contest for
                               mass customisation.
                             </p>
 
