@@ -348,7 +348,7 @@ function renderSectionContent(
 ) {
   const proseWithInline = (
     paragraphs: string[],
-    inlineMedia?: Array<{ afterParagraph: number; src: string; alt?: string }>,
+    inlineMedia?: InlineMedia[],
   ) =>
     inlineMedia?.length && imageContext ? (
       <CaseTypoProseWithInlineMedia
