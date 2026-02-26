@@ -1,18 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
-import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import "yet-another-react-lightbox/styles.css";
-import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "./CaseTypographicBlocks.lightbox.css";
-import type { CaseMedia, CaseSection, CaseStudy } from "@/types/caseStudy";
+import type {
+  CaseMedia,
+  CaseSection,
+  CaseStudy,
+  InlineMedia,
+} from "@/types/caseStudy";
 import {
   CaseStudyGalleryImage,
   extractAllCaseStudyImages,
 } from "./CaseStudyGallery";
 import { DiagnosingRootCauses } from "./DiagnosingRootCauses";
 import { RouteToSuccess } from "./RouteToSuccess";
+import { StackedImagesWithHeaders } from "./StackedImagesWithHeaders";
+import { UserFeedbackQuote } from "./UserFeedbackQuote";
+import { WondrMixedMediaGrid } from "./WondrMixedMediaGrid";
 import styles from "./CaseTypographicBlocks.module.css";
 
 function getFirstMediaOfType(
@@ -59,6 +65,76 @@ export function CaseTypoProse(props: { paragraphs: string[] }) {
     <div className={styles.prose}>
       {props.paragraphs.map((p, idx) => (
         <p key={idx}>{p}</p>
+      ))}
+    </div>
+  );
+}
+
+function CaseTypoProseWithInlineMedia(props: {
+  paragraphs: string[];
+  inlineMedia?: InlineMedia[];
+  imageStartIndex?: number;
+  allImages?: Array<{ src: string; alt?: string; caption?: string }>;
+  onImageClick?: (index: number) => void;
+}) {
+  const { paragraphs, inlineMedia, imageStartIndex, allImages, onImageClick } =
+    props;
+  const canOpenGallery =
+    allImages &&
+    allImages.length > 0 &&
+    onImageClick != null &&
+    imageStartIndex != null;
+
+  if (!inlineMedia?.length) {
+    return <CaseTypoProse paragraphs={paragraphs} />;
+  }
+
+  const mediaByIndex = new Map<number, InlineMedia[]>();
+  for (const im of inlineMedia) {
+    const list = mediaByIndex.get(im.afterParagraph) ?? [];
+    list.push(im);
+    mediaByIndex.set(im.afterParagraph, list);
+  }
+  let runningImageIndex = imageStartIndex ?? 0;
+
+  return (
+    <div className={styles.prose}>
+      {paragraphs.map((p, idx) => (
+        <Fragment key={idx}>
+          <p>{p}</p>
+          {mediaByIndex.get(idx)?.map((im, i) => {
+            if (im.type === "quote") {
+              return (
+                <UserFeedbackQuote
+                  key={`inline-quote-${idx}-${i}`}
+                  quote={im.text}
+                  attribution={im.attribution}
+                />
+              );
+            }
+            const currentIndex = runningImageIndex;
+            runningImageIndex += 1;
+            return (
+              <figure
+                key={`inline-img-${idx}-${i}`}
+                className={styles.figure}
+              >
+                {canOpenGallery ? (
+                  <CaseStudyGalleryImage
+                    image={{ src: im.src, alt: im.alt }}
+                    index={currentIndex}
+                    onOpen={onImageClick!}
+                  />
+                ) : (
+                  <>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={im.src} alt={im.alt ?? ""} />
+                  </>
+                )}
+              </figure>
+            );
+          })}
+        </Fragment>
       ))}
     </div>
   );
@@ -117,6 +193,17 @@ export function CaseTypoQuote(props: {
   );
 }
 
+function splitLeadUserFeedbackQuote(
+  media: CaseMedia[] | undefined,
+): { leadMedia: CaseMedia | null; remainingMedia: CaseMedia[] } {
+  if (!media?.length) return { leadMedia: null, remainingMedia: media ?? [] };
+  const first = media[0];
+  if (first?.type === "userFeedbackQuote" && first.text) {
+    return { leadMedia: first, remainingMedia: media.slice(1) };
+  }
+  return { leadMedia: null, remainingMedia: media };
+}
+
 function renderSectionMedia(
   media: CaseMedia[] | undefined,
   defaultQuoteVariant?: "problem" | "benefit",
@@ -127,60 +214,77 @@ function renderSectionMedia(
 ) {
   if (!media || media.length === 0) return null;
 
-  const images = media.filter(
-    (m): m is CaseMedia & { type: "image"; src: string } =>
-      m.type === "image" && !!m.src,
-  );
-  const components = media.filter(
-    (m): m is CaseMedia & { type: "component"; componentId: string } =>
-      m.type === "component" && !!m.componentId,
-  );
-  const imageItems = images.map((m) => ({
-    src: m.src,
-    alt: m.alt,
-    caption: m.caption,
-  }));
-
   const canOpenGallery =
     allImages &&
     allImages.length > 0 &&
     onImageClick != null &&
     imageStartIndex != null;
 
+  let runningImageIndex = imageStartIndex ?? 0;
+
   return (
     <>
-      {components.map((m, idx) => {
-        if (m.componentId === "diagnosing-root-causes") {
-          const variant =
-            studySlug === "wondr-medical-zero-to-one" ? "wondr" : "health";
+      {media.map((m, idx) => {
+        if (m.type === "component" && m.componentId) {
+          if (m.componentId === "diagnosing-root-causes") {
+            const variant =
+              studySlug === "wondr-medical-zero-to-one" ? "wondr" : "health";
+            return (
+              <DiagnosingRootCauses
+                key={`component-${idx}`}
+                variant={variant}
+              />
+            );
+          }
+          if (m.componentId === "route-to-success") {
+            return <RouteToSuccess key={`component-${idx}`} />;
+          }
+          if (m.componentId === "wondr-mixed-media-grid") {
+            return <WondrMixedMediaGrid key={`component-${idx}`} />;
+          }
+          return null;
+        }
+        if (m.type === "image" && m.src) {
+          const currentIndex = runningImageIndex;
+          runningImageIndex += 1;
           return (
-            <DiagnosingRootCauses
-              key={`component-${idx}`}
-              variant={variant}
+            <CaseStudyGalleryImage
+              key={`img-${idx}`}
+              image={{ src: m.src, alt: m.alt, caption: m.caption }}
+              index={canOpenGallery ? currentIndex : 0}
+              onOpen={canOpenGallery ? onImageClick! : () => {}}
+              disableGallery={m.disableGallery}
             />
           );
         }
-        if (m.componentId === "route-to-success") {
-          return <RouteToSuccess key={`component-${idx}`} />;
+        if (m.type === "stackedImages" && m.items?.length) {
+          const startIndex = runningImageIndex;
+          runningImageIndex += m.items.length;
+          const allowGallery = canOpenGallery && !m.disableGallery;
+          return (
+            <StackedImagesWithHeaders
+              key={`stacked-${idx}`}
+              items={m.items}
+              startIndex={startIndex}
+              onImageClick={allowGallery ? onImageClick : undefined}
+            />
+          );
         }
-        return null;
-      })}
-      {imageItems.length > 0 &&
-        imageItems.map((img, i) => (
-          <CaseStudyGalleryImage
-            key={`img-${canOpenGallery ? imageStartIndex! + i : i}`}
-            image={img}
-            index={canOpenGallery ? imageStartIndex! + i : 0}
-            onOpen={canOpenGallery ? onImageClick : () => {}}
-          />
-        ))}
-      {media.map((m, idx) => {
         if (m.type === "quote" && m.text) {
           return (
             <CaseTypoQuote
               key={`quote-${idx}`}
               quote={m.text}
               variant={m.variant ?? defaultQuoteVariant}
+            />
+          );
+        }
+        if (m.type === "userFeedbackQuote" && m.text) {
+          return (
+            <UserFeedbackQuote
+              key={`user-feedback-${idx}`}
+              quote={m.text}
+              attribution={m.attribution}
             />
           );
         }
@@ -197,14 +301,26 @@ function renderSectionMedia(
   );
 }
 
-function countSectionImages(media: CaseMedia[] | undefined): number {
-  if (!media) return 0;
-  return media.filter((m) => m.type === "image" && m.src).length;
+function countSectionImages(
+  media: CaseMedia[] | undefined,
+  inlineMedia?: InlineMedia[],
+): number {
+  let count = 0;
+  if (media) {
+    for (const m of media) {
+      if (m.type === "image" && m.src) count += 1;
+      if (m.type === "stackedImages" && m.items?.length && !m.disableGallery)
+        count += m.items.length;
+    }
+  }
+  const inlineImageCount =
+    inlineMedia?.filter((im) => im.type === "image").length ?? 0;
+  return count + inlineImageCount;
 }
 
 function getLeadInText(section: CaseSection): string | undefined {
   if (section.leadIn) return section.leadIn;
-  const known = ["We identified:", "This led to:", "Our mission was focused but ambitious:", "These conversations revealed clear themes:", "I complemented this with:"];
+  const known = ["We identified:", "This led to:", "This included:", "Issues we identified:", "Our mission was focused but ambitious:", "These conversations revealed clear themes:", "I complemented this with:"];
   return section.body.find((b) => known.includes(b));
 }
 
@@ -213,18 +329,52 @@ function getProseParagraphs(section: CaseSection): string[] {
   const leadIn = getLeadInText(section);
   if (leadIn) return section.body.filter((b) => b !== leadIn);
   const last = section.body[section.body.length - 1];
-  if (last && ["We identified:", "This led to:"].includes(last)) {
+  if (last && ["We identified:", "This led to:", "This included:", "Issues we identified:"].includes(last)) {
     return section.body.slice(0, -1);
   }
   return section.body;
 }
 
-function renderSectionContent(section: CaseSection, study: CaseStudy) {
+function renderSectionContent(
+  section: CaseSection,
+  study: CaseStudy,
+  imageContext?: {
+    sectionImgStart: number;
+    sectionMediaCount: number;
+    allImages: Array<{ src: string; alt?: string; caption?: string }>;
+    onImageClick: (index: number) => void;
+  },
+  leadUserFeedbackQuote?: React.ReactNode,
+) {
+  const proseWithInline = (
+    paragraphs: string[],
+    inlineMedia?: Array<{ afterParagraph: number; src: string; alt?: string }>,
+  ) =>
+    inlineMedia?.length && imageContext ? (
+      <CaseTypoProseWithInlineMedia
+        paragraphs={paragraphs}
+        inlineMedia={inlineMedia}
+        imageStartIndex={
+          imageContext.sectionImgStart + imageContext.sectionMediaCount
+        }
+        allImages={imageContext.allImages}
+        onImageClick={imageContext.onImageClick}
+      />
+    ) : (
+      <CaseTypoProse paragraphs={paragraphs} />
+    );
+
   if (section.id === "impact" && study.outcomes?.length && !section.identifiedItems?.length) {
+    const impactLeadIn = "More specifically:";
+    const impactProse = section.body[section.body.length - 1] === impactLeadIn
+      ? section.body.slice(0, -1)
+      : section.body;
     return (
       <>
-        <CaseTypoProse paragraphs={section.body} />
+        <CaseTypoProse paragraphs={impactProse} />
+        <p className={styles.identifiedLeadIn}>{impactLeadIn}</p>
         <CaseTypoBullets items={study.outcomes} variant={section.bulletStyle ?? "outcome"} />
+        {leadUserFeedbackQuote}
       </>
     );
   }
@@ -239,7 +389,8 @@ function renderSectionContent(section: CaseSection, study: CaseStudy) {
           : "identified";
     return (
       <div className={styles.proseBlock}>
-        <CaseTypoProse paragraphs={proseParas} />
+        {proseWithInline(proseParas, section.inlineMedia)}
+        {leadUserFeedbackQuote}
         {leadIn && <p className={styles.identifiedLeadIn}>{leadIn}</p>}
         <CaseTypoBullets items={section.identifiedItems} variant={variant} />
         {section.bodyEnd?.length ? (
@@ -253,7 +404,7 @@ function renderSectionContent(section: CaseSection, study: CaseStudy) {
       <CaseTypoBullets items={section.body} variant={section.bulletStyle} />
     );
   }
-  return <CaseTypoProse paragraphs={section.body} />;
+  return proseWithInline(section.body, section.inlineMedia);
 }
 
 export function CaseTypographicStory({ study }: { study: CaseStudy }) {
@@ -271,7 +422,8 @@ export function CaseTypographicStory({ study }: { study: CaseStudy }) {
   const sectionImageStarts = study.sections.reduce(
     (acc, section) => {
       const start = acc.running;
-      const nextRunning = acc.running + countSectionImages(section.media);
+      const nextRunning =
+        acc.running + countSectionImages(section.media, section.inlineMedia);
       return { starts: [...acc.starts, start], running: nextRunning };
     },
     { starts: [] as number[], running: 0 },
@@ -284,12 +436,20 @@ export function CaseTypographicStory({ study }: { study: CaseStudy }) {
         const sectionImgStart = sectionImageStarts[idx] ?? 0;
         const defaultQuoteVariant =
           idx === 0 ? "problem" : idx === study.sections.length - 1 ? "benefit" : undefined;
+        const { leadMedia: leadMediaItem, remainingMedia } = splitLeadUserFeedbackQuote(section.media);
+        const leadUserFeedbackQuote =
+          leadMediaItem?.type === "userFeedbackQuote" && leadMediaItem.text ? (
+            <UserFeedbackQuote
+              quote={leadMediaItem.text}
+              attribution={leadMediaItem.attribution}
+            />
+          ) : null;
         return (
           <CaseTypoSection
             key={section.id}
             title={section.title}
             media={renderSectionMedia(
-              section.media,
+              remainingMedia,
               defaultQuoteVariant,
               sectionImgStart,
               allImages,
@@ -299,7 +459,17 @@ export function CaseTypographicStory({ study }: { study: CaseStudy }) {
             twoColumn={useTwoColumn && (section.media?.length ?? 0) > 0}
             twoColumnLayout={section.id === "iteration-prototyping" || section.id === "validating-experiments"}
           >
-            {renderSectionContent(section, study)}
+            {renderSectionContent(
+              section,
+              study,
+              {
+                sectionImgStart,
+                sectionMediaCount: countSectionImages(section.media),
+                allImages,
+                onImageClick: openLightbox,
+              },
+              leadUserFeedbackQuote,
+            )}
           </CaseTypoSection>
         );
       })}
@@ -320,7 +490,6 @@ export function CaseTypographicStory({ study }: { study: CaseStudy }) {
           close={() => setLightboxIndex(null)}
           index={lightboxIndex ?? 0}
           slides={allImages.map((img) => ({ src: img.src }))}
-          plugins={[Thumbnails]}
         />
       )}
     </div>

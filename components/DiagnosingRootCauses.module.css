@@ -13,7 +13,7 @@
 }
 
 .card {
-  padding: var(--space-6);
+  padding: var(--card-padding);
   border: none;
   border-radius: 12px;
   background: #fdedec;
@@ -28,7 +28,7 @@
 .cardTitle {
   margin: 0 0 var(--space-3);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgb(19, 19, 19);
@@ -36,7 +36,7 @@
 
 .cardDescription {
   margin: 0;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.55;
   color: rgba(0, 0, 0, 0.72);
 }
@@ -48,7 +48,7 @@
 }
 
 .linkCard {
-  padding: var(--space-5);
+  padding: var(--card-padding);
   border: none;
   border-radius: 10px;
   background: #f2f2f7;
@@ -57,7 +57,7 @@
 .linkTitle {
   margin: 0 0 var(--space-2);
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 900;
   color: rgb(19, 19, 19);
 }
 

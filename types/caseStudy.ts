@@ -1,4 +1,16 @@
-export type MediaKind = "image" | "quote" | "note" | "component";
+export type MediaKind =
+  | "image"
+  | "quote"
+  | "note"
+  | "component"
+  | "stackedImages"
+  | "userFeedbackQuote";
+
+export interface StackedImageItem {
+  src: string;
+  alt?: string;
+  header?: string;
+}
 
 export interface CaseMedia {
   type: MediaKind;
@@ -10,13 +22,30 @@ export interface CaseMedia {
   variant?: "problem" | "benefit";
   /** For type "component": id of the custom component to render (e.g. "diagnosing-root-causes") */
   componentId?: string;
+  /** For type "stackedImages": array of images with optional headers */
+  items?: StackedImageItem[];
+  /** For type "stackedImages" or "image": when true, images are not clickable (no lightbox) */
+  disableGallery?: boolean;
+  /** For type "userFeedbackQuote": attribution text (e.g. "User Feedback") */
+  attribution?: string;
 }
+
+export type InlineMedia =
+  | { afterParagraph: number; type: "image"; src: string; alt?: string }
+  | {
+      afterParagraph: number;
+      type: "quote";
+      text: string;
+      attribution?: string;
+    };
 
 export interface CaseSection {
   id: string;
   title: string;
   body: string[];
   media?: CaseMedia[];
+  /** Images to render between body paragraphs (0-based index) */
+  inlineMedia?: InlineMedia[];
   emphasis?: boolean;
   /** Bullets styling for sections and lists */
   bulletStyle?: "challenge" | "outcome" | "identified" | "action";

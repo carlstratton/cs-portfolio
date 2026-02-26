@@ -32,7 +32,8 @@
   --space-10: 40px;
   --space-12: 48px;
   --space-16: 64px;
-  --leading: 1.5;
+  --card-padding: 28px;
+  --leading: 140%;
 }
 
 @media (prefers-color-scheme: dark) {

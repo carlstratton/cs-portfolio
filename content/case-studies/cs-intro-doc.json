@@ -1,8 +1,8 @@
 {
   "slug": "wondr-medical-zero-to-one",
-  "title": "How medical professionals helped unlock £12M in funding",
+  "title": "How listening to medical professionals helped unlock £12M in funding",
   "company": "Wondr Medical",
-  "summary": "Led cross-functional discovery to transform Wondr into a collaborative platform, grounding decisions in user insight and validating direction that secured a £12M seed investment.",
+  "summary": "This case study illustrates how I led a team that successfully translated deep user insights into a strategic pivot, that helped transform a fragmented medical video platform into a compliant companion app for medical professionals and helping unlock a £12M seed round.",
   "role": ["Founding/Lead UX Designer"],
   "timeframe": "2024",
   "sector": "Healthcare",
@@ -81,9 +81,8 @@
       ],
       "media": [
         {
-          "type": "image",
-          "src": "/case-studies/wondr-building-community.png",
-          "alt": "Interview snapshots and user insights"
+          "type": "component",
+          "componentId": "wondr-mixed-media-grid"
         }
       ]
     },
@@ -104,9 +103,20 @@
       ],
       "media": [
         {
-          "type": "image",
-          "src": "/case-studies/wondr-designing-workflow.png",
-          "alt": "Opportunity solution tree and discovery process"
+          "type": "stackedImages",
+          "disableGallery": true,
+          "items": [
+            {
+              "src": "/case-studies/wondr-opportunity-tree.png",
+              "alt": "Opportunity solution tree mapping user needs to opportunities",
+              "header": "Example of opportunity tree"
+            },
+            {
+              "src": "/case-studies/wondr-our-process.png",
+              "alt": "Discovery and validation process workflow",
+              "header": "Example of our process"
+            }
+          ]
         }
       ]
     },

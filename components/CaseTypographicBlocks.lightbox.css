@@ -5,8 +5,10 @@
   --yarl__color_button_active: rgba(0, 0, 0, 0.85);
   --yarl__color_button_disabled: rgba(0, 0, 0, 0.2);
   --yarl__button_filter: none;
-  --yarl__thumbnails_container_background_color: rgba(255, 255, 255, 0.95);
-  --yarl__thumbnails_thumbnail_border_color: rgba(0, 0, 0, 0.12);
-  --yarl__thumbnails_thumbnail_active_border_color: rgba(0, 0, 0, 0.5);
-  --yarl__thumbnails_thumbnail_background: #fff;
+  color-scheme: only light;
+}
+
+/* White background for transparent PNGs in lightbox */
+.yarl__slide_image {
+  background-color: #ffffff !important;
 }

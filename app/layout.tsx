@@ -94,6 +94,11 @@ export default function RootLayout({
       className={`${googleSans.variable} ${merriweather.variable}`}
     >
       <body suppressHydrationWarning>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){if(!localStorage.getItem("carl-theme"))document.documentElement.setAttribute("data-theme","dark")})();`,
+          }}
+        />
         <ThemeProvider>
           <PageTransition>{children}</PageTransition>
         </ThemeProvider>
