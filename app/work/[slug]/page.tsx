@@ -1,4 +1,4 @@
-import { CaseLayoutTypographic } from "@/components/CaseLayoutTypographic";
+import { CaseStudyWithHomeTrigger } from "@/components/CaseStudyWithHomeTrigger";
 import { getCaseStudies, getCaseStudy } from "@/lib/case-studies";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -37,5 +37,7 @@ export default async function CaseStudyPage({ params }: Props) {
   const study = getCaseStudy(slug);
   if (!study) return notFound();
 
-  return <CaseLayoutTypographic study={study} />;
+  const studies = getCaseStudies();
+
+  return <CaseStudyWithHomeTrigger key={study.slug} study={study} studies={studies} />;
 }

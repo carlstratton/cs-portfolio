@@ -38,6 +38,8 @@ export function CaseTypoSection(props: {
   media?: React.ReactNode;
   twoColumn?: boolean;
   twoColumnLayout?: boolean;
+  /** When provided, renders inside sectionHeader (e.g. quote + title for impact section) */
+  contentHeader?: React.ReactNode;
 }) {
   const hasMedia = props.media != null && props.twoColumn;
   const bodyClass = hasMedia
@@ -45,13 +47,16 @@ export function CaseTypoSection(props: {
       ? `${styles.sectionBody} ${styles.sectionBodyTwoColumn}`
       : styles.sectionBody
     : styles.sectionBodySingle;
+  const useContentHeader = props.contentHeader != null;
   return (
     <section className={styles.section}>
       <header className={styles.sectionHeader}>
-        <h2 className={styles.sectionTitle}>{props.title}</h2>
+        {useContentHeader ? props.contentHeader : <h2 className={styles.sectionTitle}>{props.title}</h2>}
       </header>
       <div className={bodyClass}>
-        <div className={styles.sectionContent}>{props.children}</div>
+        <div className={styles.sectionContent}>
+          {props.children}
+        </div>
         {hasMedia && (
           <div className={styles.sectionMedia}>{props.media}</div>
         )}
@@ -320,7 +325,7 @@ function countSectionImages(
 
 function getLeadInText(section: CaseSection): string | undefined {
   if (section.leadIn) return section.leadIn;
-  const known = ["We identified:", "This led to:", "This included:", "Issues we identified:", "Our mission was focused but ambitious:", "These conversations revealed clear themes:", "I complemented this with:"];
+  const known = ["We identified:", "This led to:", "This included:", "Issues we identified:", "More specifically:", "Our mission was focused but ambitious:", "These conversations revealed clear themes:", "I complemented this with:"];
   return section.body.find((b) => known.includes(b));
 }
 
@@ -370,12 +375,16 @@ function renderSectionContent(
       ? section.body.slice(0, -1)
       : section.body;
     return (
-      <>
-        <CaseTypoProse paragraphs={impactProse} />
+      <div className={styles.proseBlock}>
+        <div className={styles.prose}>
+          {leadUserFeedbackQuote}
+          {impactProse.map((p, idx) => (
+            <p key={idx}>{p}</p>
+          ))}
+        </div>
         <p className={styles.identifiedLeadIn}>{impactLeadIn}</p>
         <CaseTypoBullets items={study.outcomes} variant={section.bulletStyle ?? "outcome"} />
-        {leadUserFeedbackQuote}
-      </>
+      </div>
     );
   }
   if (section.identifiedItems && section.identifiedItems.length > 0) {
@@ -389,10 +398,17 @@ function renderSectionContent(
           : "identified";
     return (
       <div className={styles.proseBlock}>
-        {proseWithInline(proseParas, section.inlineMedia)}
-        {leadUserFeedbackQuote}
+        {section.id === "impact" && leadUserFeedbackQuote ? (
+          <div className={styles.prose}>
+            {leadUserFeedbackQuote}
+            <CaseTypoProse paragraphs={proseParas} />
+          </div>
+        ) : (
+          proseWithInline(proseParas, section.inlineMedia)
+        )}
         {leadIn && <p className={styles.identifiedLeadIn}>{leadIn}</p>}
         <CaseTypoBullets items={section.identifiedItems} variant={variant} />
+        {section.id !== "impact" && leadUserFeedbackQuote}
         {section.bodyEnd?.length ? (
           <CaseTypoProse paragraphs={section.bodyEnd} />
         ) : null}
@@ -448,6 +464,11 @@ export function CaseTypographicStory({ study }: { study: CaseStudy }) {
           <CaseTypoSection
             key={section.id}
             title={section.title}
+            contentHeader={
+              section.id === "impact" && leadUserFeedbackQuote ? (
+                <h2 className={styles.sectionTitle}>{section.title}</h2>
+              ) : undefined
+            }
             media={renderSectionMedia(
               remainingMedia,
               defaultQuoteVariant,

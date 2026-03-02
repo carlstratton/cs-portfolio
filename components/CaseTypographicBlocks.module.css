@@ -66,15 +66,16 @@
   height: fit-content;
 }
 
-.section:has(.sectionBodyTwoColumn) .sectionTitle {
-  padding-left: 0;
-}
-
 .sectionBodyTwoColumn .sectionContent {
   padding-left: 0;
   padding-right: 0;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(1, 1fr);
+}
+
+.section:has(.sectionBodyTwoColumn) .sectionTitle {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .sectionMedia {

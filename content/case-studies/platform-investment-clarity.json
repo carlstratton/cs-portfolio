@@ -10,7 +10,7 @@
   "sector": "fintech",
   "outcomes": [
     "30% reduction in support tickets for funding summaries (MoM)",
-    "3/3 participants intuitively identified where their investment was located in usability testing",
+    "5/5 participants intuitively identified where their investment was located in usability testing",
     "Transparent journey improved user flow and delight"
   ],
   "tags": [
@@ -67,10 +67,8 @@
       "id": "approach-identified",
       "title": "Key findings",
       "body": [
-        "Testing was positive. The new flow reassured investors that their purchase had gone through.",
-        "But once it went live, behaviour told a different story.",
-        "Investors saw the confirmation, yet when they tried to find their investment again, the experience felt brittle. A success toast briefly covered the back button. The jump to \u201cOpen investments\u201d made sense to us, but not to them. They expected to see their money in their portfolio. Instead, they saw something unfamiliar, and sometimes missed it entirely.",
-        "We were close. The solution worked on paper. But it still lacked clarity.",
+        "Testing was positive. The new flow reassured investors that their purchase had gone through, but once it went live, behaviour told a different story.",
+        "Investors saw the confirmation, yet when they tried to find their investment again, the experience felt hollow. Moving the user to \u201cOpen investments\u201d made sense to anyone familiar with the product, but not to the majority that expected to see their money in their portfolio. Instead, they saw something unfamiliar, and sometimes missed it entirely.",
         "Issues we identified:"
       ],
       "identifiedItems": [
@@ -93,12 +91,11 @@
       "id": "solution",
       "title": "Further actions taken",
       "body": [
-        "We simplified the journey by showing the portfolio only once an investment has closed.",
-        "By rethinking the information architecture, simplifying language, and introducing scalable components, we aligned the experience with user expectations and thus reducing cognitive load.",
-        "This approach removed a major source of confusion, replaced it with clarity, and established a scalable framework that strengthens trust in the platform.",
-        "This included:"
+        "The breakthrough came when we stopped showing the portfolio until an investment had actually closed.",
+        "By reworking the information architecture, clarifying language, and introducing scalable components, we aligned the experience with investor expectations and removed key points of friction.",
+        "This approach removed a major source of confusion and established a more trustworthy foundation for the platform."
       ],
-      "leadIn": "This included:",
+      "leadIn": "In practice, this meant:",
       "identifiedItems": [
         "Portfolio only displayed once an investment has closed, removing confusion and creating a more meaningful first experience.",
         "Live and closing campaigns are displayed clearly, making progress easier to follow and increasing transparency.",
@@ -122,8 +119,7 @@
       "id": "impact",
       "title": "Benefits",
       "body": [
-        "As a result of this release, support tickets dropped, investors felt more confident after checkout. The new framework now powers multiple investment journeys across the product, and scheduled to be rolled out across our web product.",
-        "More specifically:"
+        "As a result of the release, support tickets dropped and follow-up conversations with investors revealed greater confidence after checkout. The release now underpins all mobile investment journeys and is being rolled out across the web product."
       ],
       "bulletStyle": "outcome",
       "media": [
@@ -137,6 +133,12 @@
           "src": "/case-studies/results.png",
           "alt": "Portfolio screens showing empty state, in-progress investments, and closed campaigns"
         }
+      ],
+      "leadIn": "More specifically:",
+      "identifiedItems": [
+        "30% reduction in support tickets for funding summaries (MoM)",
+        "5/5 participants intuitively identified where their investment was located in usability testing",
+        "Transparent journey improved user flow and delight"
       ]
     }
   ]

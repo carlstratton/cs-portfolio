@@ -1,0 +1,27 @@
+.wrap {
+  position: relative;
+  padding-top: var(--space-12);
+  padding-bottom: var(--space-16);
+  border-top: 1px solid rgba(0, 0, 0, 0.14);
+  background: var(--bg);
+}
+
+.sentinel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.placeholder {
+  min-height: 250vh;
+}
+
+@media (prefers-color-scheme: dark) {
+  .wrap {
+    border-top-color: rgba(255, 255, 255, 0.12);
+  }
+}

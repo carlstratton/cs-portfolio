@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "node git-push.mjs"
   },
   "dependencies": {
     "lottie-react": "^2.4.1",
@@ -16,6 +17,7 @@
     "yet-another-react-lightbox": "^3.29.1"
   },
   "devDependencies": {
+    "isomorphic-git": "^1.37.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

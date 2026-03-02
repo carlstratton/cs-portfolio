@@ -95,7 +95,22 @@ type Turn = {
   status: "thinking" | "done";
 };
 
-export function HomeLanding({ studies }: { studies: CaseStudy[] }) {
+const ALLOWED_INTENTS: AssistantIntent[] = ["projects", "about", "contact"];
+
+function parseFlowString(flow: string): AssistantIntent[] {
+  const parts = flow.split(",").map((s) => s.trim()).filter(Boolean);
+  return parts.filter((p): p is AssistantIntent => ALLOWED_INTENTS.includes(p as AssistantIntent));
+}
+
+export function HomeLanding({
+  studies,
+  embeddedInCaseStudy = false,
+  initialFlowOverride,
+}: {
+  studies: CaseStudy[];
+  embeddedInCaseStudy?: boolean;
+  initialFlowOverride?: string;
+}) {
   const searchParams = useSearchParams();
   const items = useMemo(() => studies.slice(0, 4), [studies]);
   const [turns, setTurns] = useState<Turn[]>([]);
@@ -178,6 +193,7 @@ export function HomeLanding({ studies }: { studies: CaseStudy[] }) {
   }, [searchParams]);
 
   const writeFlowToUrl = (nextFlow: AssistantIntent[], suppressHydration: boolean) => {
+    if (embeddedInCaseStudy) return;
     try {
       if (suppressHydration) suppressFlowHydrationRef.current = true;
       const url = new URL(window.location.href);
@@ -205,11 +221,13 @@ export function HomeLanding({ studies }: { studies: CaseStudy[] }) {
   };
 
   // Next's recommended pattern is to react to querystring changes via `useSearchParams`.
-  // We intentionally update local UI state from the URL here (e.g. when navigating back
-  // from a case study). This is safe and keeps the home experience deterministic.
+  // When embedded in case study, use initialFlowOverride instead of URL.
   /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
-    const nextFlow = parseFlowFromUrl;
+    const nextFlow =
+      embeddedInCaseStudy && initialFlowOverride
+        ? parseFlowString(initialFlowOverride)
+        : parseFlowFromUrl;
     if (suppressFlowHydrationRef.current) {
       // We wrote `flow=` ourselves to persist browser-back state; don't let that
       // skip the thinking/loader sequences for click-triggered intents.
@@ -251,7 +269,7 @@ export function HomeLanding({ studies }: { studies: CaseStudy[] }) {
     setHeroPhase("gone");
     setHeroActiveIntent(null);
     setFirstIntroTurnId(null);
-  }, [parseFlowFromUrl, studies]);
+  }, [parseFlowFromUrl, embeddedInCaseStudy, initialFlowOverride, studies]);
   /* eslint-enable react-hooks/set-state-in-effect */
 
   useLayoutEffect(() => {
