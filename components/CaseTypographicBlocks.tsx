@@ -16,6 +16,10 @@ import {
 } from "./CaseStudyGallery";
 import { DiagnosingRootCauses } from "./DiagnosingRootCauses";
 import { RouteToSuccess } from "./RouteToSuccess";
+import { SeedrsCoreAreas } from "./SeedrsCoreAreas";
+import { SeedrsFurtherActionExploration } from "./SeedrsFurtherActionExploration";
+import { SeedrsPrioritisation } from "./SeedrsPrioritisation";
+import { SeedrsResearchInsights } from "./SeedrsResearchInsights";
 import { StackedImagesWithHeaders } from "./StackedImagesWithHeaders";
 import { UserFeedbackQuote } from "./UserFeedbackQuote";
 import { WondrMixedMediaGrid } from "./WondrMixedMediaGrid";
@@ -244,6 +248,12 @@ function renderSectionMedia(
           if (m.componentId === "route-to-success") {
             return <RouteToSuccess key={`component-${idx}`} />;
           }
+          if (m.componentId === "seedrs-core-areas") {
+            return <SeedrsCoreAreas key={`component-${idx}`} />;
+          }
+          if (m.componentId === "seedrs-prioritisation") {
+            return <SeedrsPrioritisation key={`component-${idx}`} />;
+          }
           if (m.componentId === "wondr-mixed-media-grid") {
             return <WondrMixedMediaGrid key={`component-${idx}`} />;
           }
@@ -351,6 +361,10 @@ function renderSectionContent(
   },
   leadUserFeedbackQuote?: React.ReactNode,
 ) {
+  if (section.id === "further-action-taken-exploration") {
+    return <SeedrsFurtherActionExploration />;
+  }
+
   const proseWithInline = (
     paragraphs: string[],
     inlineMedia?: InlineMedia[],
@@ -382,8 +396,10 @@ function renderSectionContent(
             <p key={idx}>{p}</p>
           ))}
         </div>
-        <p className={styles.identifiedLeadIn}>{impactLeadIn}</p>
-        <CaseTypoBullets items={study.outcomes} variant={section.bulletStyle ?? "outcome"} />
+        <div className={styles.identifiedBlock}>
+          <p className={styles.identifiedLeadIn}>{impactLeadIn}</p>
+          <CaseTypoBullets items={study.outcomes} variant={section.bulletStyle ?? "outcome"} />
+        </div>
       </div>
     );
   }
@@ -400,17 +416,37 @@ function renderSectionContent(
       <div className={styles.proseBlock}>
         {section.id === "impact" && leadUserFeedbackQuote ? (
           <div className={styles.prose}>
-            {leadUserFeedbackQuote}
             <CaseTypoProse paragraphs={proseParas} />
+            {leadUserFeedbackQuote}
           </div>
         ) : (
           proseWithInline(proseParas, section.inlineMedia)
         )}
-        {leadIn && <p className={styles.identifiedLeadIn}>{leadIn}</p>}
-        <CaseTypoBullets items={section.identifiedItems} variant={variant} />
+        <div className={styles.identifiedBlock}>
+          {leadIn && <p className={styles.identifiedLeadIn}>{leadIn}</p>}
+          <CaseTypoBullets items={section.identifiedItems} variant={variant} />
+        </div>
+        {section.id === "research" &&
+        section.media?.some(
+          (m) => m.type === "component" && m.componentId === "seedrs-prioritisation",
+        ) ? (
+          <SeedrsPrioritisation />
+        ) : null}
+        {section.id === "research" &&
+        section.media?.some(
+          (m) => m.type === "component" && m.componentId === "seedrs-research-insights",
+        ) ? (
+          <SeedrsResearchInsights />
+        ) : null}
         {section.id !== "impact" && leadUserFeedbackQuote}
         {section.bodyEnd?.length ? (
           <CaseTypoProse paragraphs={section.bodyEnd} />
+        ) : null}
+        {section.id === "context" &&
+        section.media?.some(
+          (m) => m.type === "component" && m.componentId === "seedrs-core-areas",
+        ) ? (
+          <SeedrsCoreAreas />
         ) : null}
       </div>
     );
@@ -428,11 +464,6 @@ export function CaseTypographicStory({ study }: { study: CaseStudy }) {
   const allImages = extractAllCaseStudyImages(study);
 
   const quote = getFirstMediaOfType(study, "quote");
-
-  const whyItMatters = [
-    "Money moves culture. When financial products create uncertainty, that uncertainty lands on real people.",
-    study.summary,
-  ];
 
   const useTwoColumn = study.sections.some((s) => (s.media?.length ?? 0) > 0);
   const sectionImageStarts = study.sections.reduce(
@@ -460,6 +491,24 @@ export function CaseTypographicStory({ study }: { study: CaseStudy }) {
               attribution={leadMediaItem.attribution}
             />
           ) : null;
+        const mediaToRender =
+          section.id === "context"
+            ? remainingMedia?.filter(
+                (m) =>
+                  !(m.type === "component" && m.componentId === "seedrs-core-areas"),
+              )
+            : section.id === "research"
+              ? remainingMedia?.filter(
+                  (m) =>
+                    !(m.type === "component" && m.componentId === "seedrs-prioritisation") &&
+                    !(m.type === "component" && m.componentId === "seedrs-research-insights"),
+                )
+              : section.id === "further-action-taken-exploration"
+                ? remainingMedia?.filter(
+                    (m) =>
+                      !(m.type === "component" && m.componentId === "seedrs-further-action-exploration"),
+                  )
+                : remainingMedia;
         return (
           <CaseTypoSection
             key={section.id}
@@ -470,14 +519,14 @@ export function CaseTypographicStory({ study }: { study: CaseStudy }) {
               ) : undefined
             }
             media={renderSectionMedia(
-              remainingMedia,
+              mediaToRender,
               defaultQuoteVariant,
               sectionImgStart,
               allImages,
               openLightbox,
               study.slug,
             )}
-            twoColumn={useTwoColumn && (section.media?.length ?? 0) > 0}
+            twoColumn={useTwoColumn && (section.media?.length ?? 0) > 0 && section.id !== "further-action-taken-exploration"}
             twoColumnLayout={section.id === "iteration-prototyping" || section.id === "validating-experiments"}
           >
             {renderSectionContent(
@@ -500,10 +549,6 @@ export function CaseTypographicStory({ study }: { study: CaseStudy }) {
           <CaseTypoQuote quote={quote.text} />
         </div>
       )}
-
-      <CaseTypoSection title="Why it matters">
-        <CaseTypoProse paragraphs={whyItMatters} />
-      </CaseTypoSection>
 
       {allImages.length > 0 && (
         <Lightbox

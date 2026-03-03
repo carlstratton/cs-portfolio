@@ -1,0 +1,77 @@
+.root {
+  margin: var(--space-10) 0 0;
+  padding: 0;
+}
+
+.caption {
+  margin: 0 0 var(--space-8);
+}
+
+.chart {
+  width: 100%;
+  margin: 0 0 var(--space-6);
+  display: flex;
+  justify-content: center;
+}
+
+.chart img {
+  display: block;
+  width: 428px;
+  max-width: 100%;
+  height: auto;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.columnLabel {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(130, 130, 130, 1);
+}
+
+.blockGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.block {
+  padding: var(--space-4);
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* Sentiment colours */
+.negative {
+  background: #fbdddd;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.uncertain {
+  background: #fef2d5;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.positive {
+  background: #ccf0d6;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

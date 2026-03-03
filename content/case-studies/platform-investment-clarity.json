@@ -59,7 +59,8 @@
         {
           "type": "image",
           "src": "/case-studies/platform-solution-1.png",
-          "alt": "Mobile app investment dashboard showing Open Investments and portfolio"
+          "alt": "Mobile app investment dashboard showing Open Investments and portfolio",
+          "disableGallery": true
         }
       ]
     },
@@ -106,12 +107,14 @@
         {
           "type": "image",
           "src": "/case-studies/further-action-taken.png",
-          "alt": "Investment detail screens with deeper actions and further information modals"
+          "alt": "Investment detail screens with deeper actions and further information modals",
+          "disableGallery": true
         },
         {
           "type": "image",
           "src": "/case-studies/further-action-taken-2.png",
-          "alt": "Portfolio screens showing in-progress investments and discover businesses modal"
+          "alt": "Portfolio screens showing in-progress investments and discover businesses modal",
+          "disableGallery": true
         }
       ]
     },
@@ -131,7 +134,8 @@
         {
           "type": "image",
           "src": "/case-studies/results.png",
-          "alt": "Portfolio screens showing empty state, in-progress investments, and closed campaigns"
+          "alt": "Portfolio screens showing empty state, in-progress investments, and closed campaigns",
+          "disableGallery": true
         }
       ],
       "leadIn": "More specifically:",

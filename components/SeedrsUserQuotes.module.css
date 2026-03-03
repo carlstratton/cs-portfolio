@@ -1,0 +1,30 @@
+.root {
+  margin: 0;
+  padding: 0;
+}
+
+.caption {
+  margin: 0 0 var(--space-6);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+.block {
+  padding: var(--space-4);
+  border-radius: 12px;
+  background-color: #CBF0D7;
+  font-size: 14px;
+  line-height: 1.55;
+  color: rgba(0, 0, 0, 0.85);
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}

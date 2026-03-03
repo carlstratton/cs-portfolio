@@ -96,7 +96,7 @@
 
 .proseBlock {
   display: grid;
-  gap: var(--space-8);
+  gap: var(--space-12);
   max-width: 74ch;
 }
 
@@ -109,8 +109,14 @@
   max-width: none;
 }
 
+.identifiedBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
 .proseBlock .identifiedLeadIn + .bullets {
-  margin-top: var(--space-5);
+  margin-top: 0;
 }
 
 .prose p {
