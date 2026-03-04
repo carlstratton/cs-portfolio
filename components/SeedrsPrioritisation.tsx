@@ -26,13 +26,18 @@ export function SeedrsPrioritisation() {
           </div>
         ))}
       </div>
-      <div className={styles.tabletImage}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/case-studies/seedrs-prioritisation-tablet.png"
-          alt="Seedrs platform on tablet showing campaign cards with funding momentum, tax eligibility, and other prioritised information"
-        />
-      </div>
     </figure>
+  );
+}
+
+export function SeedrsPrioritisationTabletImage() {
+  return (
+    <div className={styles.tabletImageBreakout}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/case-studies/seedrs-prioritisation-tablet.png"
+        alt="Seedrs platform on tablet showing campaign cards with funding momentum, tax eligibility, and other prioritised information"
+      />
+    </div>
   );
 }

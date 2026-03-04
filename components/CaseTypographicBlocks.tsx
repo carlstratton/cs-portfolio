@@ -18,7 +18,7 @@ import { DiagnosingRootCauses } from "./DiagnosingRootCauses";
 import { RouteToSuccess } from "./RouteToSuccess";
 import { SeedrsCoreAreas } from "./SeedrsCoreAreas";
 import { SeedrsFurtherActionExploration } from "./SeedrsFurtherActionExploration";
-import { SeedrsPrioritisation } from "./SeedrsPrioritisation";
+import { SeedrsPrioritisation, SeedrsPrioritisationTabletImage } from "./SeedrsPrioritisation";
 import { SeedrsResearchInsights } from "./SeedrsResearchInsights";
 import { StackedImagesWithHeaders } from "./StackedImagesWithHeaders";
 import { UserFeedbackQuote } from "./UserFeedbackQuote";
@@ -412,6 +412,46 @@ function renderSectionContent(
         : section.bulletStyle === "outcome"
           ? "outcome"
           : "identified";
+    const hasSeedrsPrioritisation =
+      section.id === "research" &&
+      section.media?.some(
+        (m) => m.type === "component" && m.componentId === "seedrs-prioritisation",
+      );
+    const hasSeedrsResearchInsights =
+      section.id === "research" &&
+      section.media?.some(
+        (m) => m.type === "component" && m.componentId === "seedrs-research-insights",
+      );
+
+    if (hasSeedrsPrioritisation && hasSeedrsResearchInsights) {
+      return (
+        <>
+          <div className={styles.proseBlock}>
+            {section.id === "impact" && leadUserFeedbackQuote ? (
+              <div className={styles.prose}>
+                <CaseTypoProse paragraphs={proseParas} />
+                {leadUserFeedbackQuote}
+              </div>
+            ) : (
+              proseWithInline(proseParas, section.inlineMedia)
+            )}
+            <div className={styles.identifiedBlock}>
+              {leadIn && <p className={styles.identifiedLeadIn}>{leadIn}</p>}
+              <CaseTypoBullets items={section.identifiedItems} variant={variant} />
+            </div>
+            <SeedrsPrioritisation />
+          </div>
+          <SeedrsPrioritisationTabletImage />
+          <div className={styles.proseBlock}>
+            <SeedrsResearchInsights />
+            {section.bodyEnd?.length ? (
+              <CaseTypoProse paragraphs={section.bodyEnd} />
+            ) : null}
+          </div>
+        </>
+      );
+    }
+
     return (
       <div className={styles.proseBlock}>
         {section.id === "impact" && leadUserFeedbackQuote ? (
@@ -426,18 +466,8 @@ function renderSectionContent(
           {leadIn && <p className={styles.identifiedLeadIn}>{leadIn}</p>}
           <CaseTypoBullets items={section.identifiedItems} variant={variant} />
         </div>
-        {section.id === "research" &&
-        section.media?.some(
-          (m) => m.type === "component" && m.componentId === "seedrs-prioritisation",
-        ) ? (
-          <SeedrsPrioritisation />
-        ) : null}
-        {section.id === "research" &&
-        section.media?.some(
-          (m) => m.type === "component" && m.componentId === "seedrs-research-insights",
-        ) ? (
-          <SeedrsResearchInsights />
-        ) : null}
+        {hasSeedrsPrioritisation ? <SeedrsPrioritisation /> : null}
+        {hasSeedrsResearchInsights ? <SeedrsResearchInsights /> : null}
         {section.id !== "impact" && leadUserFeedbackQuote}
         {section.bodyEnd?.length ? (
           <CaseTypoProse paragraphs={section.bodyEnd} />

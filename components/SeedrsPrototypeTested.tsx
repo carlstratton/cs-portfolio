@@ -11,7 +11,7 @@ const reasons = [
     iconSrc: lightbulbIcon,
     title: "Zeigarnik effect",
     description:
-      "By utilising the zeigarnik effect, our swipe prototype enhanced engagement by presenting each swipe—indicating interest or dismissal—as a new, uncompleted decision, maintaining user focus. The user is always considering their next option.",
+      "A UX psychology principle that shows people remember and feel drawn to incomplete tasks more than finished ones. We applied it by framing each swipe as a fresh, unresolved decision: interest or dismissal. That cognitive tension kept users focused and motivated to continue through the feed.",
   },
   {
     id: "simplicity",

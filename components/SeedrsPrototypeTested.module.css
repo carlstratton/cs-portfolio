@@ -30,6 +30,7 @@
   margin: 0 0 var(--space-3);
   font-size: 12px;
   font-weight: 900;
+  line-height: 130%;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: rgb(19, 19, 19);

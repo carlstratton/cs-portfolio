@@ -9,6 +9,7 @@ import { SeedrsPrototypeTested } from "./SeedrsPrototypeTested";
 
 export function SeedrsFurtherActionExploration() {
   return (
+    <>
     <div className={styles.proseBlock}>
       <div className={styles.prose}>
         <p>
@@ -92,17 +93,31 @@ export function SeedrsFurtherActionExploration() {
         </ul>
       </div>
 
-      <div className={styles.prose}>
-        <p>The goal was simple: transform browsing into structured progression.</p>
-      </div>
-
-      <figure className={styles.figure}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/case-studies/seedrs-structured-progression.png"
-          alt="Investment feed comparison: standard scroll vs Seedrs swipe prototype"
-        />
-      </figure>
     </div>
+
+    <figure className={styles.figureBreakout}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/case-studies/seedrs-invest-screen-original.png"
+        alt="Seedrs Invest app: Feed and Following tabs"
+      />
+    </figure>
+
+    <figure className={styles.figureBreakout}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/case-studies/seedrs-structured-progression.png"
+        alt="Investment feed comparison: standard scroll vs Seedrs swipe prototype"
+      />
+    </figure>
+
+    <figure className={styles.figureBreakout}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/case-studies/ui-detail-seedrs.png"
+        alt="Seedrs Invest app: Feed and Following tabs with investment card"
+      />
+    </figure>
+    </>
   );
 }

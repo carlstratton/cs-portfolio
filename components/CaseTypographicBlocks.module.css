@@ -188,11 +188,11 @@
 .bulletsIdentified li::before {
   content: "";
   position: absolute;
-  width: 9px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
   top: 0.2em;
   left: 0;
-  background: url("/icons/exclamation-icon.svg") no-repeat;
+  background: url("/icons/checkmark-icon.svg") no-repeat;
   background-size: contain;
 }
 
@@ -352,6 +352,29 @@
   margin: 0 0 var(--space-8);
   padding-top: 0;
   color-scheme: only light;
+}
+
+.figureBreakout {
+  width: 100%;
+  max-width: 990px;
+  margin: var(--space-8) auto 0;
+  display: flex;
+  justify-content: center;
+  color-scheme: only light;
+}
+
+.figureBreakout img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 1000px) {
+  .figureBreakout {
+    width: 990px;
+    margin-left: calc(50% - 495px);
+    margin-right: calc(50% - 495px);
+  }
 }
 
 .sectionMedia .figure {

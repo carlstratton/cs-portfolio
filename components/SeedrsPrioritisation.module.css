@@ -13,16 +13,28 @@
   gap: var(--space-4);
 }
 
-.tabletImage {
+.tabletImageBreakout {
+  width: 100%;
+  max-width: 990px;
   margin-top: var(--space-8);
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   justify-content: center;
 }
 
-.tabletImage img {
+.tabletImageBreakout img {
   display: block;
-  max-width: 100%;
+  width: 100%;
   height: auto;
+}
+
+@media (min-width: 1000px) {
+  .tabletImageBreakout {
+    width: 990px;
+    margin-left: calc(50% - 495px);
+    margin-right: calc(50% - 495px);
+  }
 }
 
 .block {
