@@ -155,6 +155,15 @@
     padding: var(--space-12) 0 var(--space-10);
   }
 
+  .heroLeft {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .heroLeft h1 {
+    line-height: 103%;
+  }
+
   .actions {
     width: 100%;
     flex-direction: column;

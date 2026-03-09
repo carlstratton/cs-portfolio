@@ -97,6 +97,57 @@
   border-color: color-mix(in srgb, var(--text) 50%, var(--border));
 }
 
+@media (max-width: 640px) {
+  .assistant {
+    width: 100%;
+  }
+
+  .suggestions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .suggestions .suggestion {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Docked bottom nav: row layout, short labels */
+  .assistant[data-docked="true"] {
+    width: 100%;
+  }
+
+  .assistant[data-docked="true"] .suggestions {
+    flex-direction: row;
+    gap: 4px;
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .assistant[data-docked="true"] .suggestions .suggestion {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+    padding: 12px 8px;
+    font-size: 13px;
+    justify-content: center;
+    border-radius: 12px;
+  }
+
+  .assistant[data-docked="true"] .suggestion .suggestionLabelFull {
+    display: none;
+  }
+
+  .assistant[data-docked="true"] .suggestion .suggestionLabelShort {
+    display: inline;
+  }
+}
+
+.suggestion .suggestionLabelShort {
+  display: none;
+}
+
 @media (max-width: 720px) {
   .assistant {
     margin-top: var(--space-5);

@@ -5,10 +5,10 @@ import type { CSSProperties } from "react";
 
 export type AssistantIntent = "projects" | "about" | "contact";
 
-const SUGGESTIONS: Array<{ label: string; intent: AssistantIntent }> = [
-  { label: "See selected projects", intent: "projects" },
-  { label: "Tell me about Carl", intent: "about" },
-  { label: "Make contact", intent: "contact" },
+const SUGGESTIONS: Array<{ label: string; shortLabel: string; intent: AssistantIntent }> = [
+  { label: "See selected projects", shortLabel: "Selected projects", intent: "projects" },
+  { label: "Tell me about Carl", shortLabel: "About Carl", intent: "about" },
+  { label: "Make contact", shortLabel: "Contact", intent: "contact" },
 ];
 
 interface Props {
@@ -74,7 +74,8 @@ export function Assistant({
               })
             }
           >
-            {s.label}
+            <span className={styles.suggestionLabelFull}>{s.label}</span>
+            <span className={styles.suggestionLabelShort}>{s.shortLabel}</span>
           </button>
             );
           })()
