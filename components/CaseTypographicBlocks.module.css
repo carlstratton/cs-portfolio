@@ -240,7 +240,7 @@
 }
 
 .identifiedLeadIn {
-  margin: 0;
+  margin: 0 0 var(--space-4) 0;
   font-size: 18px;
   font-weight: 500;
   line-height: 1.7;
