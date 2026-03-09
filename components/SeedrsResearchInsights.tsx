@@ -37,7 +37,7 @@ export function SeedrsResearchInsights() {
   return (
     <figure className={styles.root}>
       <figcaption className={`${caseTypoStyles.identifiedLeadIn} ${styles.caption}`}>
-        Research insights
+        Key investor insights
       </figcaption>
       <div className={styles.chart}>
         {/* eslint-disable-next-line @next/next/no-img-element */}

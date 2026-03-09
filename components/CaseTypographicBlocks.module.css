@@ -83,7 +83,11 @@
   gap: var(--space-8);
   align-content: start;
   max-width: 100%;
-  padding-top: var(--space-8);
+  padding-top: 0;
+}
+
+.sectionMediaFullWidth {
+  grid-column: 1 / -1;
 }
 
 .prose {
@@ -218,6 +222,23 @@
   background-size: contain;
 }
 
+.bulletsQuestions li {
+  padding-left: 23px;
+  font-size: 21px;
+  line-height: 140%;
+}
+
+.bulletsQuestions li::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 0.2em;
+  left: 0;
+  background: url("/icons/sparkle-icon.svg") no-repeat;
+  background-size: contain;
+}
+
 .identifiedLeadIn {
   margin: 0;
   font-size: 18px;
@@ -328,6 +349,14 @@
   color: rgba(0, 0, 0, 0.88);
 }
 
+.experimentBlock {
+  margin-bottom: var(--space-8);
+}
+
+.experimentBlock:last-child {
+  margin-bottom: 0;
+}
+
 @media (prefers-color-scheme: dark) {
   .stackedImageHeader {
     color: var(--text);
@@ -364,6 +393,39 @@
 }
 
 .figureBreakout img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Full-width figure matching sectionMedia - spans full section width */
+.figureBreakoutFull {
+  grid-column: 1 / -1;
+  margin: var(--space-8) -120px 0;
+  width: calc(100% + 240px);
+  max-width: none;
+  display: block;
+  color-scheme: only light;
+}
+
+.figureBreakoutFull img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Matches prose width (74ch) - for inline images grouped with paragraph text */
+.proseBlock .figureProseWidth {
+  margin-top: calc(var(--space-4) - var(--space-12));
+}
+.figureProseWidth {
+  margin: var(--space-4) 0 0;
+  max-width: 74ch;
+  display: block;
+  color-scheme: only light;
+}
+
+.figureProseWidth img {
   display: block;
   width: 100%;
   height: auto;
@@ -424,6 +486,84 @@
 }
 
 .figure figcaption {
+  margin-top: var(--space-3);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.caseStudyEmbed {
+  margin: var(--space-8) 0 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  border: none;
+  width: 100%;
+}
+
+.caseStudyEmbed iframe,
+.caseStudyEmbedIframe {
+  display: block;
+  width: 100%;
+  border: none;
+  height: var(--embed-height, 600px);
+}
+
+@media (max-width: 768px) {
+  .caseStudyEmbed iframe,
+  .caseStudyEmbedIframe {
+    height: var(--embed-height-mobile, 500px);
+  }
+}
+
+.caseStudyEmbed figcaption {
+  margin-top: var(--space-3);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+.caseStudyVideo {
+  margin: var(--space-8) 0 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  max-height: 730px;
+  border: none;
+  margin-left: calc(-1 * var(--grid-margin));
+  margin-right: calc(-1 * var(--grid-margin));
+  width: calc(100% + 2 * var(--grid-margin));
+  max-width: none;
+}
+
+.caseStudyVideoElement {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 730px;
+  object-fit: contain;
+  border: none;
+  outline: none;
+  cursor: default;
+}
+
+.caseStudyVideoElement:hover {
+  cursor: default;
+}
+
+/* Soft fade behind controls only - constrained height so it doesn't cover video */
+.caseStudyVideoElement::-webkit-media-controls-panel {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0)
+  ) !important;
+  background-size: 100% 150px !important;
+  background-position: bottom !important;
+  background-repeat: no-repeat !important;
+}
+
+.caseStudyVideo figcaption {
   margin-top: var(--space-3);
   font-size: 13px;
   letter-spacing: 0.02em;

@@ -42,6 +42,8 @@ export function CaseTypoSection(props: {
   media?: React.ReactNode;
   twoColumn?: boolean;
   twoColumnLayout?: boolean;
+  /** When true, media spans full section width (e.g. when section has no body content) */
+  mediaFullWidth?: boolean;
   /** When provided, renders inside sectionHeader (e.g. quote + title for impact section) */
   contentHeader?: React.ReactNode;
 }) {
@@ -52,6 +54,9 @@ export function CaseTypoSection(props: {
       : styles.sectionBody
     : styles.sectionBodySingle;
   const useContentHeader = props.contentHeader != null;
+  const mediaClass = props.mediaFullWidth
+    ? `${styles.sectionMedia} ${styles.sectionMediaFullWidth}`
+    : styles.sectionMedia;
   return (
     <section className={styles.section}>
       <header className={styles.sectionHeader}>
@@ -62,7 +67,7 @@ export function CaseTypoSection(props: {
           {props.children}
         </div>
         {hasMedia && (
-          <div className={styles.sectionMedia}>{props.media}</div>
+          <div className={mediaClass}>{props.media}</div>
         )}
       </div>
     </section>
@@ -76,6 +81,21 @@ export function CaseTypoProse(props: { paragraphs: string[] }) {
         <p key={idx}>{p}</p>
       ))}
     </div>
+  );
+}
+
+function renderBodyEnd(bodyEnd: string[]) {
+  if (!bodyEnd.length) return null;
+  const last = bodyEnd[bodyEnd.length - 1];
+  const isLeadIn = last.endsWith(":");
+  const proseParas = isLeadIn && bodyEnd.length > 1 ? bodyEnd.slice(0, -1) : bodyEnd;
+  return (
+    <>
+      {proseParas.length ? <CaseTypoProse paragraphs={proseParas} /> : null}
+      {isLeadIn ? (
+        <p className={styles.identifiedLeadIn}>{last}</p>
+      ) : null}
+    </>
   );
 }
 
@@ -128,18 +148,12 @@ function CaseTypoProseWithInlineMedia(props: {
                 key={`inline-img-${idx}-${i}`}
                 className={styles.figure}
               >
-                {canOpenGallery ? (
-                  <CaseStudyGalleryImage
-                    image={{ src: im.src, alt: im.alt }}
-                    index={currentIndex}
-                    onOpen={onImageClick!}
-                  />
-                ) : (
-                  <>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={im.src} alt={im.alt ?? ""} />
-                  </>
-                )}
+                <CaseStudyGalleryImage
+                  image={{ src: im.src, alt: im.alt }}
+                  index={currentIndex}
+                  onOpen={onImageClick!}
+                  disableGallery={true}
+                />
               </figure>
             );
           })}
@@ -151,7 +165,7 @@ function CaseTypoProseWithInlineMedia(props: {
 
 export function CaseTypoBullets(props: {
   items: string[];
-  variant?: "challenge" | "outcome" | "identified" | "action";
+  variant?: "challenge" | "outcome" | "identified" | "questions" | "action";
 }) {
   return (
     <ul
@@ -160,9 +174,11 @@ export function CaseTypoBullets(props: {
           ? `${styles.bullets} ${styles.bulletsOutcome}`
           : props.variant === "identified"
             ? `${styles.bullets} ${styles.bulletsIdentified}`
-            : props.variant === "action"
-              ? `${styles.bullets} ${styles.bulletsAction}`
-              : styles.bullets
+            : props.variant === "questions"
+              ? `${styles.bullets} ${styles.bulletsQuestions}`
+              : props.variant === "action"
+                ? `${styles.bullets} ${styles.bulletsAction}`
+                : styles.bullets
       }
     >
       {props.items.map((item, idx) => (
@@ -237,7 +253,11 @@ function renderSectionMedia(
         if (m.type === "component" && m.componentId) {
           if (m.componentId === "diagnosing-root-causes") {
             const variant =
-              studySlug === "wondr-medical-zero-to-one" ? "wondr" : "health";
+              studySlug === "wondr-medical-zero-to-one"
+                ? "wondr"
+                : studySlug === "seedrs-secondary-market"
+                  ? "secondary-market"
+                  : "health";
             return (
               <DiagnosingRootCauses
                 key={`component-${idx}`}
@@ -259,6 +279,50 @@ function renderSectionMedia(
           }
           return null;
         }
+        if (m.type === "embed" && m.src) {
+          const height = m.embedHeight ?? 600;
+          const heightMobile = m.embedHeightMobile ?? 500;
+          return (
+            <figure
+              key={`embed-${idx}`}
+              className={styles.caseStudyEmbed}
+              style={
+                {
+                  "--embed-height": `${height}px`,
+                  "--embed-height-mobile": `${heightMobile}px`,
+                } as React.CSSProperties
+              }
+            >
+              <iframe
+                src={m.src}
+                className={styles.caseStudyEmbedIframe}
+                title={m.caption ?? "Embedded content"}
+              />
+              {m.caption && (
+                <figcaption className={styles.figureCaption}>{m.caption}</figcaption>
+              )}
+            </figure>
+          );
+        }
+        if (m.type === "video" && m.src) {
+          return (
+            <figure key={`video-${idx}`} className={styles.caseStudyVideo}>
+              {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+              <video
+                src={m.src}
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls
+                className={styles.caseStudyVideoElement}
+              />
+              {m.caption && (
+                <figcaption className={styles.figureCaption}>{m.caption}</figcaption>
+              )}
+            </figure>
+          );
+        }
         if (m.type === "image" && m.src) {
           const currentIndex = runningImageIndex;
           runningImageIndex += 1;
@@ -268,20 +332,19 @@ function renderSectionMedia(
               image={{ src: m.src, alt: m.alt, caption: m.caption }}
               index={canOpenGallery ? currentIndex : 0}
               onOpen={canOpenGallery ? onImageClick! : () => {}}
-              disableGallery={m.disableGallery}
+              disableGallery={true}
             />
           );
         }
         if (m.type === "stackedImages" && m.items?.length) {
           const startIndex = runningImageIndex;
           runningImageIndex += m.items.length;
-          const allowGallery = canOpenGallery && !m.disableGallery;
           return (
             <StackedImagesWithHeaders
               key={`stacked-${idx}`}
               items={m.items}
               startIndex={startIndex}
-              onImageClick={allowGallery ? onImageClick : undefined}
+              onImageClick={undefined}
             />
           );
         }
@@ -335,7 +398,7 @@ function countSectionImages(
 
 function getLeadInText(section: CaseSection): string | undefined {
   if (section.leadIn) return section.leadIn;
-  const known = ["We identified:", "This led to:", "This included:", "Issues we identified:", "More specifically:", "Our mission was focused but ambitious:", "These conversations revealed clear themes:", "I complemented this with:"];
+  const known = ["We identified:", "As a result", "This included:", "Issues we identified:", "More specifically:", "Our mission was focused but ambitious:", "These conversations revealed clear themes:", "I complemented this with:"];
   return section.body.find((b) => known.includes(b));
 }
 
@@ -383,6 +446,24 @@ function renderSectionContent(
       <CaseTypoProse paragraphs={paragraphs} />
     );
 
+  if (
+    section.leadIn &&
+    (!section.identifiedItems || section.identifiedItems.length === 0)
+  ) {
+    const proseParas = section.body.filter((b) => b !== section.leadIn);
+    return (
+      <div className={styles.proseBlock}>
+        <div className={styles.prose}>
+          {proseParas.map((p, idx) => (
+            <p key={idx}>{p}</p>
+          ))}
+        </div>
+        <div className={styles.identifiedBlock}>
+          <p className={styles.identifiedLeadIn}>{section.leadIn}</p>
+        </div>
+      </div>
+    );
+  }
   if (section.id === "impact" && study.outcomes?.length && !section.identifiedItems?.length) {
     const impactLeadIn = "More specifically:";
     const impactProse = section.body[section.body.length - 1] === impactLeadIn
@@ -411,7 +492,9 @@ function renderSectionContent(
         ? "action"
         : section.bulletStyle === "outcome"
           ? "outcome"
-          : "identified";
+          : section.bulletStyle === "questions"
+            ? "questions"
+            : "identified";
     const hasSeedrsPrioritisation =
       section.id === "research" &&
       section.media?.some(
@@ -444,9 +527,7 @@ function renderSectionContent(
           <SeedrsPrioritisationTabletImage />
           <div className={styles.proseBlock}>
             <SeedrsResearchInsights />
-            {section.bodyEnd?.length ? (
-              <CaseTypoProse paragraphs={section.bodyEnd} />
-            ) : null}
+            {section.bodyEnd?.length ? renderBodyEnd(section.bodyEnd) : null}
           </div>
         </>
       );
@@ -469,9 +550,7 @@ function renderSectionContent(
         {hasSeedrsPrioritisation ? <SeedrsPrioritisation /> : null}
         {hasSeedrsResearchInsights ? <SeedrsResearchInsights /> : null}
         {section.id !== "impact" && leadUserFeedbackQuote}
-        {section.bodyEnd?.length ? (
-          <CaseTypoProse paragraphs={section.bodyEnd} />
-        ) : null}
+        {section.bodyEnd?.length ? renderBodyEnd(section.bodyEnd) : null}
         {section.id === "context" &&
         section.media?.some(
           (m) => m.type === "component" && m.componentId === "seedrs-core-areas",
@@ -484,6 +563,89 @@ function renderSectionContent(
   if (section.bulletStyle && section.body.every((b) => b.length < 200)) {
     return (
       <CaseTypoBullets items={section.body} variant={section.bulletStyle} />
+    );
+  }
+  if (section.id === "validating-experiments") {
+    const mediaByIndex = new Map<number, InlineMedia[]>();
+    for (const im of section.inlineMedia ?? []) {
+      const list = mediaByIndex.get(im.afterParagraph) ?? [];
+      list.push(im);
+      mediaByIndex.set(im.afterParagraph, list);
+    }
+    let runningImageIndex = (imageContext?.sectionImgStart ?? 0) + (imageContext?.sectionMediaCount ?? 0);
+    const canOpenGallery =
+      imageContext?.allImages?.length &&
+      imageContext?.onImageClick != null;
+
+    return (
+      <>
+        {section.body.map((paragraph, idx) => {
+          const dashIndex = paragraph.indexOf(" — ");
+          const isExperiment = /^Experiment \d+:/i.test(paragraph) && dashIndex > 0;
+          const blockContent = isExperiment ? (
+            <div className={`${styles.stackedImageItem} ${styles.experimentBlock}`}>
+              <div className={styles.stackedImageHeader}>{paragraph.slice(0, dashIndex)}</div>
+              <p>{paragraph.slice(dashIndex + 3)}</p>
+            </div>
+          ) : (
+            <p>{paragraph}</p>
+          );
+          const inlineMediaItems = mediaByIndex.get(idx) ?? [];
+          const proseWidthImages = inlineMediaItems.filter(
+            (im): im is Extract<InlineMedia, { type: "image" }> => im.type === "image" && im.matchProseWidth === true,
+          );
+          const breakoutImages = inlineMediaItems.filter(
+            (im): im is Extract<InlineMedia, { type: "image" }> => im.type === "image" && im.matchProseWidth !== true,
+          );
+
+          return (
+            <Fragment key={idx}>
+              <div className={styles.proseBlock}>
+                <div className={styles.prose}>
+                  {blockContent}
+                </div>
+                {inlineMediaItems
+                  .filter((im): im is Extract<InlineMedia, { type: "quote" }> => im.type === "quote")
+                  .map((im, i) => (
+                    <UserFeedbackQuote
+                      key={`inline-quote-${idx}-${i}`}
+                      quote={im.text}
+                      attribution={im.attribution}
+                    />
+                  ))}
+                {proseWidthImages.map((im, i) => {
+                  const currentIndex = runningImageIndex;
+                  runningImageIndex += 1;
+                  return (
+                    <figure key={`inline-img-${idx}-${i}`} className={styles.figureProseWidth}>
+                      <CaseStudyGalleryImage
+                        image={{ src: im.src, alt: im.alt }}
+                        index={currentIndex}
+                        onOpen={imageContext!.onImageClick}
+                        disableGallery={true}
+                      />
+                    </figure>
+                  );
+                })}
+              </div>
+              {breakoutImages.map((im, i) => {
+                const currentIndex = runningImageIndex;
+                runningImageIndex += 1;
+                return (
+                  <figure key={`inline-img-${idx}-${i}`} className={styles.figureBreakoutFull}>
+                    <CaseStudyGalleryImage
+                      image={{ src: im.src, alt: im.alt }}
+                      index={currentIndex}
+                      onOpen={imageContext!.onImageClick}
+                      disableGallery={true}
+                    />
+                  </figure>
+                );
+              })}
+            </Fragment>
+          );
+        })}
+      </>
     );
   }
   return proseWithInline(section.body, section.inlineMedia);
@@ -557,7 +719,8 @@ export function CaseTypographicStory({ study }: { study: CaseStudy }) {
               study.slug,
             )}
             twoColumn={useTwoColumn && (section.media?.length ?? 0) > 0 && section.id !== "further-action-taken-exploration"}
-            twoColumnLayout={section.id === "iteration-prototyping" || section.id === "validating-experiments"}
+            twoColumnLayout={false}
+            mediaFullWidth={(section.body?.length ?? 0) === 0}
           >
             {renderSectionContent(
               section,

@@ -1,0 +1,118 @@
+{
+  "slug": "seedrs-secondary-market",
+  "title": "Releasing the Secondary Market as a mobile-native product",
+  "client": "Republic",
+  "company": "Republic",
+  "summary": "This case study explores how I led the end-to-end design of the first fully native Secondary Market experience, translating a legacy web interface into a mobile-first product while improving core trading workflows.",
+  "role": [
+    "Staff product designer"
+  ],
+  "sector": "fintech",
+  "timeframe": "2021",
+  "outcomes": [
+    "Full Secondary Market participation available within the mobile app",
+    "Elimination of cross-platform trading friction",
+    "Improved discovery of liquidity opportunities",
+    "Clearer sales progress tracking for sellers",
+    "Modernised interface replacing a legacy web experience"
+  ],
+  "tags": [
+    "Mobile",
+    "Fintech",
+    "Product design",
+    "Trading"
+  ],
+  "hero": "/case-studies/hero-secondary-market.png",
+  "badge": "/case-studies/badges/republic.png",
+  "cardImage": "/case-studies/thumbnail-secondary-market.png",
+  "sections": [
+    {
+      "id": "context",
+      "title": "Design Challenge",
+      "body": [
+        "The Republic Secondary Market (formerly Seedrs) operates one of the largest marketplaces for trading shares in private companies, with hundreds of startups and growth businesses available to retail investors. Despite being a flagship product and a major revenue driver for the business, the experience was previously limited to web.",
+        "The product had also seen little design investment over several years. Finding businesses to invest in relied on navigating a large table of companies with minimal filtering, making it difficult for investors to explore opportunities."
+      ],
+      "leadIn": "These limitations can be characterised by:",
+      "media": [
+        {
+          "type": "component",
+          "componentId": "diagnosing-root-causes"
+        }
+      ]
+    },
+    {
+      "id": "approach",
+      "title": "Action Taken",
+      "body": [
+        "I led the end-to-end design of the first fully native Secondary Market experience, translating a legacy web interface into a mobile-first product while improving core trading workflows.",
+        "Rather than replicating the web interface, the mobile release created an opportunity to rethink how investors discover opportunities, trade shares, and manage sales. Competitor analysis, user testing, and familiar interaction patterns from leading fintech products informed the interaction model and information hierarchy.",
+        "This work introduced new mobile-native flows and several new components to our design system, helping deliver a more intuitive and competitive marketplace experience."
+      ]
+    },
+    {
+      "id": "product-in-action",
+      "title": "Showcase",
+      "body": [
+        "A visual overview of the key screens and components that shape the mobile Secondary Market experience."
+      ],
+      "_bodyCommentedOut": [
+        "The mobile journey simplifies how investors discover companies by grouping opportunities into categories such as trending, most invested, and most available, giving investors multiple entry points into the market.",
+        "Each step surfaces only the most relevant information, guiding investors from discovery to evaluating available shares and completing a trade through a clear, streamlined flow.",
+        "Throughout the experience, subtle social cues reinforce that the Secondary Market is peer-to-peer, connecting buyers and sellers directly."
+      ],
+      "media": [
+        {
+          "type": "embed",
+          "src": "https://embed.figma.com/proto/kM3n5AB3XADNXgEq768iAL/CS-Deck?node-id=1767-235441&scaling=fit-width&content-scaling=responsive&show-proto-sidebar=0&embed-host=localhost&footer=0&hide-ui=1",
+          "embedHeight": 900,
+          "embedHeightMobile": 560
+        },
+        {
+          "type": "image",
+          "src": "/case-studies/sm-discovery-2.png",
+          "alt": "Two phones showing Market and Paysend screens from the Secondary Market app"
+        },
+        {
+          "type": "image",
+          "src": "/case-studies/sm-discovery-3.png",
+          "alt": "Buy and sell peer-to-peer modal explaining how the Secondary Market works"
+        },
+        {
+          "type": "image",
+          "src": "/case-studies/sm-discovery-4.png",
+          "alt": "Two phones showing Request to buy flow for Paysend shares"
+        },
+        {
+          "type": "image",
+          "src": "/case-studies/sm-discovery-6.png",
+          "alt": "Three phones showing Track sales, Active sell offers, and Completed screens from the Secondary Market app"
+        },
+        {
+          "type": "image",
+          "src": "/case-studies/sm-discovery-5.png",
+          "alt": "Secondary Market discovery with categories, Savvy navvy cards, and Most invested section"
+        }
+      ]
+    },
+    {
+      "id": "impact",
+      "title": "Results",
+      "body": [
+        "The release transformed the Secondary Market from a web-only feature into a fully mobile-native trading experience, removing a major source of platform friction and significantly expanding how investors could participate in private share trading."
+      ],
+      "leadIn": "Key outcomes included:",
+      "identifiedItems": [
+        "Elimination of cross-platform trading friction",
+        "Improved discovery through new browsing patterns and mobile-native filtering",
+        "Streamlined buy and sell journeys enabling faster, more intuitive trading",
+        "Improved visibility into sales progress for sellers"
+      ],
+      "bulletStyle": "outcome",
+      "bodyEnd": [
+        "Together, these improvements replaced a legacy interface with a more modern marketplace experience and established the foundation for future lifecycle features, including improved trading notifications and deeper engagement across the investment journey.",
+        "The mobile release was well received by investors, achieving a 4.6★ App Store rating and contributing to 30K+ downloads following launch."
+      ]
+    }
+  ]
+}

@@ -16,7 +16,7 @@ export function SeedrsPrioritisation() {
   return (
     <figure className={styles.root}>
       <figcaption className={`${caseTypoStyles.identifiedLeadIn} ${styles.caption}`}>
-        How users prioritised card information
+      Signals investors prioritise when evaluating campaigns
       </figcaption>
       <div className={styles.row}>
         {priorities.map((item) => (

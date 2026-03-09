@@ -13,12 +13,12 @@ export function SeedrsFurtherActionExploration() {
     <div className={styles.proseBlock}>
       <div className={styles.prose}>
         <p>
-          Based on these insights, I explored interaction patterns that could
-          reduce cognitive load while increasing momentum.
+          Based on these insights, I explored interaction patterns around
+          reducing cognitive load, organisation and maintaining momentum.
         </p>
         <p>
-          Traditional bookmarking and save features felt static and sluggish.
-          They didn&apos;t match how investors were quickly scanning and
+          Traditional bookmarking and save features worked but felt static and disconnected.
+          They didn&apos;t align withhow investors were scanning and
           evaluating new opportunities.
         </p>
       </div>
@@ -41,19 +41,8 @@ export function SeedrsFurtherActionExploration() {
           swipe-based campaign interface.
         </p>
         <p>
-          While bookmarking and save features are user-friendly on other
-          platforms, they didn&apos;t meet our specific requirements. They felt
-          sluggish in comparison to how I imagined users exploring new investment
-          opportunities in the app environment, prompting a need for a more
-          efficient solution. This challenge sparked the idea of integrating a
-          swiping mechanism, inspired by the interaction design of dating apps.
-        </p>
-        <p>
-          Such an approach allows users to quickly navigate through investment
-          options, making the process not only faster but more engaging.
-          Although the basic user sentiment is similar, our objectives—enhancing
-          speed and user control in exploring new opportunities—significantly
-          differ.
+          The swipe to progress interaction pattern allowed users to quickly navigate through
+          options, making the process faster and more engaging. Enabeling investors to scan what’s new, shortlist promising campaigns and return later to pick up where they left off.
         </p>
       </div>
 
@@ -98,16 +87,16 @@ export function SeedrsFurtherActionExploration() {
     <figure className={styles.figureBreakout}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/case-studies/seedrs-invest-screen-original.png"
-        alt="Seedrs Invest app: Feed and Following tabs"
+        src="/case-studies/seedrs-structured-progression.png"
+        alt="Investment feed comparison: standard scroll vs Seedrs swipe prototype"
       />
     </figure>
 
     <figure className={styles.figureBreakout}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/case-studies/seedrs-structured-progression.png"
-        alt="Investment feed comparison: standard scroll vs Seedrs swipe prototype"
+        src="/case-studies/seedrs-invest-screen-original.png"
+        alt="Seedrs Invest app: Feed and Following tabs"
       />
     </figure>
 

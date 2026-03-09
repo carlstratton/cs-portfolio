@@ -90,15 +90,48 @@ const wondrBottomCards = [
   },
 ];
 
-export type DiagnosingRootCausesVariant = "health" | "wondr";
+/** Seedrs Secondary Market / three key problems variant */
+const secondaryMarketTopCards = [
+  {
+    id: "limited-access",
+    iconSrc: "/icons/seedrs/limited-access.svg",
+    title: "LIMITED ACCESS",
+    description:
+      "Secondary Market participation was restricted to the web, preventing investors from trading or managing listings on mobile.",
+  },
+  {
+    id: "poor-discovery",
+    iconSrc: "/icons/seedrs/poor-discovery.svg",
+    title: "ASSET DISCOVERY",
+    description:
+      "Opportunities were surfaced through a table-driven interface, making it difficult for investors to explore the market or identify where shares were available.",
+  },
+  {
+    id: "product-maturity-gap",
+    iconSrc: "/icons/seedrs/product-maturity-gap.svg",
+    title: "PRODUCT MATURITY GAP",
+    description:
+      "As the Secondary Market grew in complexity, the experience had not evolved alongside it, leaving key workflows feeling dated and harder to navigate.",
+  },
+];
+
+export type DiagnosingRootCausesVariant = "health" | "wondr" | "secondary-market";
 
 export function DiagnosingRootCauses({
   variant = "health",
 }: {
   variant?: DiagnosingRootCausesVariant;
 }) {
-  const topCards = variant === "wondr" ? wondrTopCards : healthTopCards;
-  const bottomCards = variant === "wondr" ? wondrBottomCards : healthBottomCards;
+  const topCards =
+    variant === "wondr"
+      ? wondrTopCards
+      : variant === "secondary-market"
+        ? secondaryMarketTopCards
+        : healthTopCards;
+  const bottomCards =
+    variant === "wondr" ? wondrBottomCards : healthBottomCards;
+  const showBottomRow = variant !== "secondary-market";
+
   return (
     <figure className={styles.root}>
       <div className={styles.topRow}>
@@ -113,14 +146,16 @@ export function DiagnosingRootCauses({
           </div>
         ))}
       </div>
-      <div className={styles.bottomRow}>
-        {bottomCards.map((card) => (
-          <div key={card.id} className={styles.linkCard}>
-            <h4 className={styles.linkTitle}>{card.title}</h4>
-            <p className={styles.linkDescription}>{card.description}</p>
-          </div>
-        ))}
-      </div>
+      {showBottomRow && (
+        <div className={styles.bottomRow}>
+          {bottomCards.map((card) => (
+            <div key={card.id} className={styles.linkCard}>
+              <h4 className={styles.linkTitle}>{card.title}</h4>
+              <p className={styles.linkDescription}>{card.description}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </figure>
   );
 }

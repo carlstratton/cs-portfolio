@@ -1,5 +1,7 @@
 export type MediaKind =
   | "image"
+  | "video"
+  | "embed"
   | "quote"
   | "note"
   | "component"
@@ -28,10 +30,14 @@ export interface CaseMedia {
   disableGallery?: boolean;
   /** For type "userFeedbackQuote": attribution text (e.g. "User Feedback") */
   attribution?: string;
+  /** For type "embed": height in pixels (default 600) */
+  embedHeight?: number;
+  /** For type "embed": height in pixels on mobile viewport (default 500 if not set) */
+  embedHeightMobile?: number;
 }
 
 export type InlineMedia =
-  | { afterParagraph: number; type: "image"; src: string; alt?: string }
+  | { afterParagraph: number; type: "image"; src: string; alt?: string; matchProseWidth?: boolean }
   | {
       afterParagraph: number;
       type: "quote";
@@ -48,7 +54,7 @@ export interface CaseSection {
   inlineMedia?: InlineMedia[];
   emphasis?: boolean;
   /** Bullets styling for sections and lists */
-  bulletStyle?: "challenge" | "outcome" | "identified" | "action";
+  bulletStyle?: "challenge" | "outcome" | "identified" | "questions" | "action";
   /** Sub-bullets under "We identified:", "This led to:", or custom lead-in with red !! icon */
   identifiedItems?: string[];
   /** Custom lead-in text before identifiedItems (e.g. "Our mission was focused but ambitious:") */

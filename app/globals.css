@@ -88,7 +88,7 @@ html {
 
 body {
   margin: 0;
-  padding-left: 16px;
+  padding-left: 0px;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-family, inherit);

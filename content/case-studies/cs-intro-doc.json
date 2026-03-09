@@ -2,7 +2,7 @@
   "slug": "wondr-medical-zero-to-one",
   "title": "How listening to medical professionals helped unlock £12M in funding",
   "company": "Wondr Medical",
-  "summary": "This case study illustrates how I led a team that successfully translated deep user insights into a strategic pivot, that helped transform a fragmented medical video platform into a compliant companion app for medical professionals and helping unlock a £12M seed round.",
+  "summary": "This case study documents how deep user insights helped my team pivot a struggling medical video platform into a compliant companion app for clinicians, leading to a £12M seed round.",
   "role": ["Founding/Lead UX Designer"],
   "timeframe": "2024",
   "sector": "Healthcare",
@@ -21,18 +21,19 @@
       "id": "context",
       "title": "Design challenge",
       "body": [
-        "Imagine this: you're a cardiologist between patients. Your phone's buzzing, a colleague wants a second opinion on WhatsApp, a debate's unfolding on Twitter, and your inbox is full of new academic papers.",
-        "You're already juggling too many conversations across too many tools, but none of them are truly built for how you work. Wondr Medical set out to change that, creating a video platform where cardiologists could connect and share knowledge. The idea was ambitious, but built in isolation, the product never fit into their world, and engagement never followed.",
+        "Imagine this: you're a cardiologist between patients. Your phone's buzzing, colleagues are messaging, debates are happening online, and new research keeps landing in your inbox.",
+        "Knowledge is everywhere, but scattered across tools never designed for clinical collaboration.",
+        "Wondr Medical tried to solve this with a library of expert videos explaining new cardiology technologies. The content was strong, but the product never fit into doctors' daily workflows. Most would watch something specific, then leave.",
         "When I joined Wondr, thirty-day retention was under 2%, highlighting a clear gap between what we were building and what doctors actually needed.",
-        "This led to:"
+        "As a result"
       ],
       "identifiedItems": [
-        "Features being built without evidence or context.",
+        "Features were being built without evidence or context.",
         "A fragmented experience that felt confusing and unhelpful.",
         "A loss of clarity around the product's purpose."
       ],
       "bodyEnd": [
-        "The path forward was unclear, but working alongside the product director, my role was focused on engaging more deeply with customers and defining a path forward.",
+        "The path forward wasn’t clear. Working closely with the product director, my focus shifted to engaging directly with users and the engineering team to develop a clearer understanding of the underlying problems.",
         "Diagnosing the root causes:"
       ],
       "media": [
@@ -46,15 +47,16 @@
       "id": "defining-goals",
       "title": "Defining goals and leading a discovery team",
       "body": [
-        "With backing from senior leadership, I led a cross-functional discovery team of four, including our product director, VP of engineering, and a senior designer, to define a clear direction for Wondr Medical.",
+        "With backing from senior leadership, I led a cross-functional discovery team of four, including our product director, VP of engineering, and a senior designer, to help define a clear direction for Wondr Medical.",
         "Our mission was focused but ambitious:"
       ],
+      "bulletStyle": "questions",
       "identifiedItems": [
         "To transform Wondr Medical into an active, trusted space for medical collaboration."
       ],
       "bodyEnd": [
         "To get there, we needed to uncover why doctors weren't returning to the platform, and how Wondr could meaningfully fit into their daily workflows and professional lives.", 
-        "Our route to success by identifying outcomes:"
+        "Defining the path forward:"
       ],
       "media": [
         {
@@ -67,8 +69,8 @@
       "id": "building-community",
       "title": "Building and learning from our community",
       "body": [
-        "We reached out to our 10,000-physician mailing list and created the Wondr Advisory Board, a space where doctors could share honest feedback.",
-        "Through that, we conducted 50 interviews with healthcare professionals and 20 interviews with key opinion leaders (KOLs), often squeezed in between surgeries, taxi rides, and hospital corridors, from Hertfordshire to New York City.",
+        "We reached out to our 10,000-physician mailing list and created the 'Wondr Advisory Board', a space where doctors could share honest feedback.",
+        "Following that, we conducted 50 interviews with healthcare professionals and 20 interviews with key opinion leaders (KOLs), often squeezed in between surgeries, taxi rides, and hospital corridors - from Hertfordshire to New York City.",
         "These conversations revealed clear themes:"
       ],
       "identifiedItems": [
@@ -130,6 +132,27 @@
         "Users took this fake door journey: Research informs content decisions → Facebook ad → Unbounce page → App download → Let down.",
         "Each test reduced uncertainty, helping us move from qualitative understanding to quantitative confidence that we were solving a real, valuable problem.",
         "It's very much worth noting that in finding this opportunity there were many that did not make it past the experimentation phase, this is of course all part of the process."
+      ],
+      "inlineMedia": [
+        {
+          "afterParagraph": 1,
+          "type": "image",
+          "src": "/case-studies/wondr-experiment-portfolio-states.png",
+          "alt": "Portfolio states: empty, in progress, and with investments"
+        },
+        {
+          "afterParagraph": 2,
+          "type": "image",
+          "src": "/case-studies/wondr-experiment-portfolio-states.png",
+          "alt": "Portfolio states: empty, in progress, and with investments"
+        },
+        {
+          "afterParagraph": 3,
+          "type": "image",
+          "src": "/case-studies/wondr-fake-door-placeholder.png",
+          "alt": "Placeholder for fake door journey flow",
+          "matchProseWidth": true
+        }
       ],
       "media": [
         {

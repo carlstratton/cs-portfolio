@@ -4,10 +4,10 @@ import caseTypoStyles from "./CaseTypographicBlocks.module.css";
 import styles from "./SeedrsUserQuotes.module.css";
 
 const quotes = [
-  "Getting rid of the investments I'm not interested in is important due to decision-making fatigue",
-  "I really like it, I like the idea of getting rid of the ones I know I'm not going to invest in, and focusing on the ones I might",
-  "Great! If it's not interesting to me, let me take it out",
-  "I like the idea of not having to sort through the chaff everytime to get to the ones i'm interested in…",
+  "Being able to get rid of the ones I’m not interested in is great, otherwise you’re just scrolling through loads every time.",
+  "I like that I can ditch the ones I know I’m not going to invest in and just focus on the few I might.",
+  "Great! If it's not interesting to me, let me take it out. I just reached inbox zero!",
+  "It’s nice not having to sort through loads of stuff every time just to find the ones I care about.",
 ];
 
 export function SeedrsUserQuotes() {

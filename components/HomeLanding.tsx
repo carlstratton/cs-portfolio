@@ -112,7 +112,7 @@ export function HomeLanding({
   initialFlowOverride?: string;
 }) {
   const searchParams = useSearchParams();
-  const items = useMemo(() => studies.slice(0, 4), [studies]);
+  const items = useMemo(() => studies.slice(0, 5), [studies]);
   const [turns, setTurns] = useState<Turn[]>([]);
   const [showProjects, setShowProjects] = useState(false);
   const [chipsDocked, setChipsDocked] = useState(false);

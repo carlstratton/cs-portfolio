@@ -3,7 +3,7 @@
   "title": "Helping retail investors navigate decision fatigue on mobile",
   "client": "Seedrs",
   "company": "Seedrs",
-  "summary": "This case study explores how I reframed in-app campaign discovery from passive feed browsing into an active, momentum-driven experience, helping investors prioritise and re-engage with an emphasis on retention.",
+  "summary": "This case study explores how I reframed in-app campaign discovery from unstructured feed browsing into an active, evaluation experience, helping investors prioritise and engage with an emphasis on retention.",
   "role": [
     "Staff product designer"
   ],
@@ -31,20 +31,20 @@
       "id": "context",
       "title": "Design Challenge",
       "body": [
-        "Imagine this: You're a retail investor opening your crowdfunding app a few times a week. Dozens of campaigns are live, with new ones launching regularly. You want to make thoughtful decisions — and not miss the next big opportunity.",
-        "Over time, the volume starts to blur. Some campaigns catch your eye, but you're not ready to commit. Others feel familiar, but you can't quite remember whether you've reviewed them, or why you moved on.",
-        "A few days pass. You open the app again, unsure what's genuinely new and what you've already assessed. Gradually, the experience becomes mentally taxing.",
-        "The issue wasn't a lack of information. It was designing for continuity — helping investors focus, filter, and build confidence across repeated mobile sessions."
+        "Imagine this: You're a retail investor opening your crowdfunding app a few times a week. Dozens of campaigns are live, with new ones launching regularly. You want to make thoughtful decisions, and not miss the next big opportunity.",
+        "Over time, the volume starts to blur. Some campaigns catch your eye, but you're not ready to commit. Others feel familiar, but you can't remember whether you've reviewed them, or why you moved on.",
+        "A few days pass. You open the app again, unsure what's new and what you've already assessed. Gradually, the experience becomes mentally taxing.",
+        "The issue wasn’t a lack of information. It was the absence of continuity, an experience that helped investors stay oriented, filter noise, and build confidence as they returned to the app over time."
       ],
-      "leadIn": "The experience needed to make it easy to:",
+      "leadIn": "The ideal browsing experience should help investors:",
       "identifiedItems": [
-        "Scan quickly and understand what's new (or worth revisiting)",
+        "Scan quickly and understand what's new, or worth revisiting",
         "Shortlist promising campaigns without forcing a decision",
-        "Reduce noise by removing irrelevant campaigns from view",
+        "Reduce noise and focus on the opportunities that matter",
         "Return later and pick up where you left off"
       ],
       "bodyEnd": [
-        "In short: less browsing as a chore, more discovery as a confident, repeatable habit. I led the work across three core areas"
+        "To focus the work, I structured it across three core areas:"
       ],
       "bulletStyle": "identified",
       "media": [
@@ -58,20 +58,20 @@
       "id": "research",
       "title": "Action Taken",
       "body": [
-        "To shape the right solution, I led a four-week discovery phase combining behavioural analysis with 8 in-depth investor interviews."
+        "I ran a four-week discovery phase with eight investors, combining behavioural analysis, user interviews, usability testing, and a card-sorting exercise on the live campaign page to understand which information investors prioritise when evaluating opportunities."
       ],
       "leadIn": "The work focused on three core questions:",
       "identifiedItems": [
-        "How do investors navigate live campaigns?",
-        "How do they build conviction?",
-        "How do they return across sessions?"
+        "How do investors decide which campaigns to explore?",
+        "What information is critical to making an investment decision?",
+        "How do they keep track of campaigns they want to return to?"
       ],
+      "bulletStyle": "questions",
       "bodyEnd": [
-        "One insight in particular — \"I don't want to see investments I'm not interested in\" — opened up a new avenue to explore.",
-        "Investors didn't want to keep seeing opportunities they'd already ruled out. They didn't want to dig through irrelevant information. And when returning to the app, they wanted clarity on what to look at next.",
-        "Discovery wasn't about bookmarking for later. It was about filtering in the moment and progressing with confidence."
+        "One insight in particular, \"I don't want to see investments I'm not interested in\", opened up a new avenue to explore.",
+        "Investors didn't want to keep seeing opportunities they'd already ruled out. They didn't want to dig through irrelevant information, and when returning to the app, they wanted clarity on what to look at next.",
+        "Discovery wasn't about bookmarking for later, it was about filtering in the moment and progressing with confidence."
       ],
-      "bulletStyle": "identified",
       "media": [
         {
           "type": "component",
@@ -99,7 +99,7 @@
       "title": "Results",
       "body": [
         "The outcome was a clearer, calmer discovery experience: the feed becomes a place to make progress, not just consume volume.",
-        "Investors can now externalise memory (save), reduce noise (hide), and narrow attention (filter) without breaking flow—supporting confident decisions over time instead of forcing them in a single session."
+        "Investors can now save promising campaigns, remove irrelevant ones, and focus their attention without breaking flow, allowing decisions to build naturally over time rather than forcing them in a single unstructured session."
       ],
       "bulletStyle": "outcome",
       "media": [
@@ -109,13 +109,11 @@
           "attribution": "Customer survey feedback"
         }
       ],
-      "leadIn": "What shipped (and what it enabled):",
       "identifiedItems": [
         "A repeatable browse → shortlist → decide loop designed for short sessions",
-        "A lightweight control set that reduces decision fatigue without adding complexity",
         "+155% increase in campaign follows since release",
-        "Launched native app to UK and Europe, growing user base to >25,000",
-        "4.1 out of 5 App Store rating reflecting improved user satisfaction"
+        "Released into native app to UK and Europe, growing user base to >25,000",
+        "Contributed to a +0.4 increase in the App Store rating over three months, reaching 4.1/5, reflecting improved user satisfaction."
       ]
     }
   ]

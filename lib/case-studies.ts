@@ -1,4 +1,5 @@
 import seedrsInvestorFocus from "@/content/case-studies/seedrs-investor-focus.json";
+import seedrsSecondaryMarket from "@/content/case-studies/seedrs-secondary-market.json";
 import health from "@/content/case-studies/health.json";
 import healthDiscoveryLaunch from "@/content/case-studies/health-discovery-launch.json";
 import platform from "@/content/case-studies/platform-investment-clarity.json";
@@ -8,6 +9,7 @@ import type { CaseStudy } from "@/types/caseStudy";
 const studies = [
   csIntroDoc,
   seedrsInvestorFocus,
+  seedrsSecondaryMarket,
   platform,
   healthDiscoveryLaunch,
   health,
