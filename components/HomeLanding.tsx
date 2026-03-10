@@ -714,7 +714,7 @@ export function HomeLanding({
                       </div>
                       <div className={styles.cardMeta}>
                         <div className={styles.cardEyebrow}>
-                          {((study.client ?? study.company ?? "").replace(/\.(com|co\.uk)$/i, "")).toUpperCase()} · 5 MINUTE READ
+                          {((study.client ?? study.company ?? "").replace(/\.(com|co\.uk)$/i, "")).toUpperCase()} · {study.readTime ?? 5} MINUTE READ
                         </div>
                         <h3 className={styles.cardTitle}>{study.title}</h3>
                         <p className={styles.cardSummary}>{study.summary}</p>

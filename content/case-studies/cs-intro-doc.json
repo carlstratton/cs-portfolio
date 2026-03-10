@@ -13,19 +13,20 @@
     "Reframed Wondr's identity around community, trust, and collaboration, not just content"
   ],
   "tags": ["Mobile", "Healthcare", "Product strategy", "UX research"],
-  "typeBadges": ["Zero → One", "Discovery", "Research", "Mobile"],
+  "typeBadges": ["Zero → One", "Discovery", "Research"],
   "hero": "/case-studies/wondr-medical-hero.png",
   "badge": "/case-studies/badges/wondr-medical.png",
   "cardImage": "/case-studies/thumbnail-wondr-medical.png",
+  "readTime": 5,
   "sections": [
     {
       "id": "context",
       "title": "Design challenge",
       "body": [
-        "Imagine this: you're a cardiologist between patients. Your phone's buzzing, colleagues are messaging, debates are happening online, and new research keeps landing in your inbox.",
+        "Dr. Anna Lindström is a cardiologist between patients. Her phone buzzes constantly, colleagues sharing techniques, debates unfolding in group chats, new research landing in her inbox.",
         "Knowledge is everywhere, but scattered across tools never designed for clinical collaboration.",
-        "Wondr Medical tried to solve this with a library of expert videos explaining new cardiology technologies. The content was strong, but the product never fit into doctors' daily workflows. Most would watch something specific, then leave.",
-        "When I joined Wondr, thirty-day retention was under 2%, highlighting a clear gap between what we were building and what doctors actually needed.",
+        "Wondr Medical tried to solve this with a library of expert videos explaining new cardiology technologies. The content was strong, but the product never fit into doctors' daily workflows. Most physicians watched something specific, then left.",
+        "When I joined Wondr, 30-day retention was under 2%, revealing a clear gap between what we were building and what doctors actually needed.",
         "As a result"
       ],
       "identifiedItems": [

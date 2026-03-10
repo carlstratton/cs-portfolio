@@ -18,19 +18,23 @@
     "Fintech",
     "UX strategy"
   ],
-  "typeBadges": ["Mobile", "Discovery", "Interface Design", "Optimisation"],
+  "typeBadges": ["Mobile", "Interface Design", "Optimisation"],
   "hero": "/case-studies/platform-investment-hero.png",
   "badge": "/case-studies/badges/republic.png",
   "cardImage": "/case-studies/thumbnail-platform.png",
+  "readTime": 3,
   "sections": [
     {
       "id": "context",
       "title": "Design challenge",
       "body": [
-        "Imagine this: you\u2019ve just invested in a crowdfunding opportunity you believe in, completed checkout, payment confirmed, but when you go to check your portfolio, your investment is nowhere to be found. It feels like your shares, equity, investment have vanished.",
-        "Uncertain whether the transaction went through, many investors turned to customer support, expecting their new investment to appear in their portfolio.",
-        "The nuance is that campaigns remain open for further investment, and the asset only moves into the portfolio once the round closes and due diligence is complete.",
-        "Esoteric terminology such as \u2018Open investments\u2019, ambiguous empty states, and vague progress indicators compounded the issue, leaving investors feeling disoriented at the very moment reassurance was most needed."
+        "David has just invested in a company he believes in. Checkout completed, payment confirmed.",
+        "Curious to see it in his portfolio, he opens the app again.",
+        "But the investment isn't there.",
+        "For a moment it feels like the shares, the equity, the money he just committed, have simply vanished.",
+        "Unsure whether the transaction actually went through, many investors turned to customer support expecting their new investment to appear immediately in their portfolio.",
+        "The reality was more nuanced. Campaigns remain open for further investment, and shares only move into the portfolio once the round closes and due diligence is complete.",
+        "Unfortunately, the product didn't communicate this clearly. Terms like \"Open investments\", ambiguous empty states, and vague progress indicators left investors disoriented at the exact moment reassurance was most needed."
       ],
       "media": [
         {

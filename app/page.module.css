@@ -27,7 +27,7 @@
   width: 100%;
   font-size: clamp(40px, 8vw, 64px);
   line-height: 108%;
-  font-weight: 400;
+  font-weight: 300;
   padding-right: 0;
   text-wrap: balance;
 }

@@ -84,6 +84,8 @@ export interface CaseStudyMeta {
   deliverables?: string;
   /** When true, hidden from home/Selected projects and noindex for search engines */
   private?: boolean;
+  /** Approximate read time in minutes for educated adult readers (~225 wpm) */
+  readTime?: number;
 }
 
 export interface CaseStudy extends CaseStudyMeta {
