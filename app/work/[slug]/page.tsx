@@ -1,5 +1,5 @@
 import { CaseStudyWithHomeTrigger } from "@/components/CaseStudyWithHomeTrigger";
-import { getCaseStudies, getCaseStudy } from "@/lib/case-studies";
+import { getCaseStudies, getCaseStudy, getPublicCaseStudies } from "@/lib/case-studies";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description: study.summary,
+    robots: study.private ? { index: false, follow: false } : undefined,
     openGraph: {
       title,
       description: study.summary,
@@ -37,7 +38,7 @@ export default async function CaseStudyPage({ params }: Props) {
   const study = getCaseStudy(slug);
   if (!study) return notFound();
 
-  const studies = getCaseStudies();
+  const studies = getPublicCaseStudies();
 
   return <CaseStudyWithHomeTrigger key={study.slug} study={study} studies={studies} />;
 }

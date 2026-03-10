@@ -1,6 +1,7 @@
 {
   "slug": "sme-health-insurance",
   "title": "Bringing health insurance to small businesses",
+  "private": true,
   "client": "Enterprise insurer",
   "summary": "Product discovery and launch of a new healthcare insurance product for UK SMEs.",
   "role": [
@@ -19,6 +20,7 @@
     "B2B",
     "Discovery"
   ],
+  "typeBadges": ["Zero → One", "Discovery", "Research"],
   "hero": "/case-studies/hero-courier.png",
   "sections": [
     {

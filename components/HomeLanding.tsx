@@ -409,9 +409,9 @@ export function HomeLanding({
           <div className={heroStyles.heroGrid}>
             <div className={heroStyles.heroLeft}>
               <h1>
-                A decade in product &amp; design.{" "}
+                A decade in product &amp; design,{" "}
                 <span className={heroStyles.heroHeadlineSecondary}>
-                Helping ambitious companies make better product bets.
+                leading ambitious teams to make better product bets.
                 </span>
               </h1>
 
@@ -692,6 +692,11 @@ export function HomeLanding({
                           sizes="(max-width: 720px) 86vw, (max-width: 1100px) 44vw, 566px"
                           priority={false}
                           quality={100}
+                          unoptimized={
+                            (study.cardImage ?? study.hero).includes(
+                              "thumbnail-secondary-market"
+                            )
+                          }
                           className={styles.cardImage}
                         />
                         {study.badge && (
@@ -713,6 +718,15 @@ export function HomeLanding({
                         </div>
                         <h3 className={styles.cardTitle}>{study.title}</h3>
                         <p className={styles.cardSummary}>{study.summary}</p>
+                        {study.typeBadges && study.typeBadges.length > 0 && (
+                          <div className={styles.typeBadges}>
+                            {study.typeBadges.map((badge) => (
+                              <span key={badge} className={styles.typeBadge}>
+                                {badge}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </Link>
                   ))}

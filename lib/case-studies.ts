@@ -19,6 +19,11 @@ export function getCaseStudies(): CaseStudy[] {
   return studies;
 }
 
+/** Returns studies excluding private ones (for home page, Selected projects). */
+export function getPublicCaseStudies(): CaseStudy[] {
+  return studies.filter((s) => !s.private);
+}
+
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return studies.find((study) => study.slug === slug);
 }

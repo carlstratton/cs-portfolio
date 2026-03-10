@@ -78,8 +78,12 @@ export interface CaseStudyMeta {
   badge?: string;
   /** Optional card image (thumbnail) for Selected Projects; falls back to hero */
   cardImage?: string;
+  /** Type badges shown at bottom of card (e.g. "ZERO → ONE", "DISCOVERY") */
+  typeBadges?: string[];
   sector?: string;
   deliverables?: string;
+  /** When true, hidden from home/Selected projects and noindex for search engines */
+  private?: boolean;
 }
 
 export interface CaseStudy extends CaseStudyMeta {

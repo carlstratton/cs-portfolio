@@ -23,6 +23,7 @@
     "Decision support",
     "UX strategy"
   ],
+  "typeBadges": ["Mobile", "Discovery", "Research", "Interface Design", "Optimisation"],
   "hero": "/case-studies/hero-SEEDRS.png",
   "badge": "/case-studies/badges/seedrs.png",
   "cardImage": "/case-studies/thumbnail-seedrs.png",

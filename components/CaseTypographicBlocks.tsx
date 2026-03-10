@@ -36,6 +36,8 @@ function getFirstMediaOfType(
   return undefined;
 }
 
+const IMAGE_CONSTRAINED_SECTIONS = ["validating-experiments", "iteration-prototyping", "results"] as const;
+
 export function CaseTypoSection(props: {
   title: string;
   children: React.ReactNode;
@@ -46,8 +48,14 @@ export function CaseTypoSection(props: {
   mediaFullWidth?: boolean;
   /** When provided, renders inside sectionHeader (e.g. quote + title for impact section) */
   contentHeader?: React.ReactNode;
+  sectionId?: string;
+  studySlug?: string;
 }) {
   const hasMedia = props.media != null && props.twoColumn;
+  const constrainImages =
+    props.studySlug === "wondr-medical-zero-to-one" &&
+    props.sectionId != null &&
+    IMAGE_CONSTRAINED_SECTIONS.includes(props.sectionId as (typeof IMAGE_CONSTRAINED_SECTIONS)[number]);
   const bodyClass = hasMedia
     ? props.twoColumnLayout
       ? `${styles.sectionBody} ${styles.sectionBodyTwoColumn}`
@@ -58,7 +66,7 @@ export function CaseTypoSection(props: {
     ? `${styles.sectionMedia} ${styles.sectionMediaFullWidth}`
     : styles.sectionMedia;
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} ${constrainImages ? styles.sectionImageConstrained : ""}`}>
       <header className={styles.sectionHeader}>
         {useContentHeader ? props.contentHeader : <h2 className={styles.sectionTitle}>{props.title}</h2>}
       </header>
@@ -84,11 +92,20 @@ export function CaseTypoProse(props: { paragraphs: string[] }) {
   );
 }
 
-function renderBodyEnd(bodyEnd: string[]) {
+function renderBodyEnd(bodyEnd: string[], lastAsHeader?: boolean) {
   if (!bodyEnd.length) return null;
   const last = bodyEnd[bodyEnd.length - 1];
   const isLeadIn = last.endsWith(":");
   const proseParas = isLeadIn && bodyEnd.length > 1 ? bodyEnd.slice(0, -1) : bodyEnd;
+  if (lastAsHeader && bodyEnd.length > 1) {
+    const proseOnly = bodyEnd.slice(0, -1);
+    return (
+      <>
+        {proseOnly.length ? <CaseTypoProse paragraphs={proseOnly} /> : null}
+        <div className={styles.stackedImageHeader}>{last}</div>
+      </>
+    );
+  }
   return (
     <>
       {proseParas.length ? <CaseTypoProse paragraphs={proseParas} /> : null}
@@ -267,6 +284,9 @@ function renderSectionMedia(
           }
           if (m.componentId === "route-to-success") {
             return <RouteToSuccess key={`component-${idx}`} />;
+          }
+          if (m.componentId === "route-to-success-insights") {
+            return <RouteToSuccess key={`component-${idx}`} variant="insights" />;
           }
           if (m.componentId === "seedrs-core-areas") {
             return <SeedrsCoreAreas key={`component-${idx}`} />;
@@ -527,7 +547,7 @@ function renderSectionContent(
           <SeedrsPrioritisationTabletImage />
           <div className={styles.proseBlock}>
             <SeedrsResearchInsights />
-            {section.bodyEnd?.length ? renderBodyEnd(section.bodyEnd) : null}
+            {section.bodyEnd?.length ? renderBodyEnd(section.bodyEnd, section.id === "iteration-prototyping") : null}
           </div>
         </>
       );
@@ -550,7 +570,7 @@ function renderSectionContent(
         {hasSeedrsPrioritisation ? <SeedrsPrioritisation /> : null}
         {hasSeedrsResearchInsights ? <SeedrsResearchInsights /> : null}
         {section.id !== "impact" && leadUserFeedbackQuote}
-        {section.bodyEnd?.length ? renderBodyEnd(section.bodyEnd) : null}
+        {section.bodyEnd?.length ? renderBodyEnd(section.bodyEnd, section.id === "iteration-prototyping") : null}
         {section.id === "context" &&
         section.media?.some(
           (m) => m.type === "component" && m.componentId === "seedrs-core-areas",
@@ -705,6 +725,8 @@ export function CaseTypographicStory({ study }: { study: CaseStudy }) {
           <CaseTypoSection
             key={section.id}
             title={section.title}
+            sectionId={section.id}
+            studySlug={study.slug}
             contentHeader={
               section.id === "impact" && leadUserFeedbackQuote ? (
                 <h2 className={styles.sectionTitle}>{section.title}</h2>

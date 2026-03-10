@@ -2,7 +2,7 @@
 
 import styles from "./RouteToSuccess.module.css";
 
-const cards = [
+const cardsDefault = [
   {
     id: "be-user-centric",
     iconSrc: "/icons/wondr/be-user-centric.svg",
@@ -26,7 +26,32 @@ const cards = [
   },
 ];
 
-export function RouteToSuccess() {
+const cardsInsights = [
+  {
+    id: "current-solution-unfit",
+    iconSrc: "/icons/wondr/current-solution-unfit.svg",
+    title: "Current solution unfit",
+    description:
+      "90% of physicians rely on WhatsApp for second opinions, despite recognising it as not being fit for purpose and non-compliant.",
+  },
+  {
+    id: "top-down-not-appealing",
+    iconSrc: "/icons/wondr/top-down-not-appealing.svg",
+    title: "Top down not appealing",
+    description:
+      "Adoption resistance is high when new tools are introduced top-down through hospital trusts, physicians prefer peer-driven solutions.",
+  },
+  {
+    id: "follow-on-conversation",
+    iconSrc: "/icons/wondr/conversation.svg",
+    title: "Follow-on conversation",
+    description:
+      "Doctors often initiate professional discussions on social platforms but want to continue them in secure, private spaces designed for clinical exchange.",
+  },
+];
+
+export function RouteToSuccess({ variant }: { variant?: "insights" }) {
+  const cards = variant === "insights" ? cardsInsights : cardsDefault;
   return (
     <figure className={styles.root}>
       <div className={styles.row}>

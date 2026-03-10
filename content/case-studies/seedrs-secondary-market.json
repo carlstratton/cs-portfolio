@@ -22,6 +22,7 @@
     "Product design",
     "Trading"
   ],
+  "typeBadges": ["Mobile", "Interface Design"],
   "hero": "/case-studies/hero-secondary-market.png",
   "badge": "/case-studies/badges/republic.png",
   "cardImage": "/case-studies/thumbnail-secondary-market.png",

@@ -83,7 +83,10 @@
   gap: var(--space-8);
   align-content: start;
   max-width: 100%;
-  padding-top: 0;
+}
+
+.sectionMedia:has(> figure:first-child) {
+  padding-top: var(--space-8);
 }
 
 .sectionMediaFullWidth {
@@ -408,6 +411,26 @@
   color-scheme: only light;
 }
 
+/* Constrain research-focused images to prose-like width (matches WondrMixedMediaGrid) */
+.sectionImageConstrained .figureBreakoutFull {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 862px;
+}
+
+.sectionImageConstrained .figureProseWidth {
+  max-width: 862px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sectionImageConstrained .sectionMedia .figure {
+  max-width: 862px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .figureBreakoutFull img {
   display: block;
   width: 100%;
@@ -419,7 +442,7 @@
   margin-top: calc(var(--space-4) - var(--space-12));
 }
 .figureProseWidth {
-  margin: var(--space-4) 0 0;
+  margin: var(--space-4) 0 var(--space-8);
   max-width: 74ch;
   display: block;
   color-scheme: only light;

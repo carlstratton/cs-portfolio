@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Ubuntu_Mono } from "next/font/google";
 import "./globals.css";
 import { PageTransition } from "@/components/PageTransition";
 import { ThemeProvider } from "@/lib/theme";
@@ -51,6 +52,13 @@ const googleSans = localFont({
   display: "swap",
 });
 
+const ubuntuMono = Ubuntu_Mono({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
 const merriweather = localFont({
   src: [
     {
@@ -91,7 +99,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${googleSans.variable} ${merriweather.variable}`}
+      className={`${googleSans.variable} ${merriweather.variable} ${ubuntuMono.variable}`}
     >
       <body suppressHydrationWarning>
         <script

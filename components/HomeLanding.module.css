@@ -377,7 +377,7 @@
   height: 100% !important;
   object-fit: cover;
   object-position: center;
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
   display: block;
   vertical-align: bottom;
   border-radius: 16px 16px 0 0;
@@ -429,6 +429,26 @@
   font-size: 15px;
   line-height: 1.4;
   color: var(--text-muted);
+}
+
+.typeBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.typeBadge {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
 }
 
 .skeleton {

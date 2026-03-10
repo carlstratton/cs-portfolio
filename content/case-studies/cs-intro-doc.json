@@ -13,6 +13,7 @@
     "Reframed Wondr's identity around community, trust, and collaboration, not just content"
   ],
   "tags": ["Mobile", "Healthcare", "Product strategy", "UX research"],
+  "typeBadges": ["Zero → One", "Discovery", "Research", "Mobile"],
   "hero": "/case-studies/wondr-medical-hero.png",
   "badge": "/case-studies/badges/wondr-medical.png",
   "cardImage": "/case-studies/thumbnail-wondr-medical.png",
@@ -138,27 +139,20 @@
           "afterParagraph": 1,
           "type": "image",
           "src": "/case-studies/wondr-experiment-portfolio-states.png",
-          "alt": "Portfolio states: empty, in progress, and with investments"
+          "alt": "Maze questionnaire results: user responses on medical specialty and most valuable features"
         },
         {
           "afterParagraph": 2,
           "type": "image",
-          "src": "/case-studies/wondr-experiment-portfolio-states.png",
-          "alt": "Portfolio states: empty, in progress, and with investments"
+          "src": "/case-studies/wondr-fake-door-test.png",
+          "alt": "Fake door test: Facebook ad, Unbounce landing page, and user journey flow"
         },
         {
           "afterParagraph": 3,
           "type": "image",
           "src": "/case-studies/wondr-fake-door-placeholder.png",
-          "alt": "Placeholder for fake door journey flow",
+          "alt": "Fake door journey flow: Research informs content decisions → Facebook ad → Unbounce page → App download → Let down",
           "matchProseWidth": true
-        }
-      ],
-      "media": [
-        {
-          "type": "image",
-          "src": "/case-studies/wondr-validating-experiments.png",
-          "alt": "Maze questionnaire and fake door test experiments"
         }
       ]
     },
@@ -178,14 +172,29 @@
         "Rapid iteration informed by user insights and technical feasibility."
       ],
       "bodyEnd": [
-        "Each round brought us closer to a product physicians could trust — a simple, secure way to connect, communicate, and advance medical discovery together."
+        "Each round brought us closer to a product physicians could trust — a simple, secure way to connect, communicate, and advance medical discovery together.",
+        "Increasing confidence in user and honing in on the product idea"
       ],
       "bulletStyle": "outcome",
       "media": [
         {
+          "type": "component",
+          "componentId": "route-to-success-insights"
+        },
+        {
           "type": "image",
-          "src": "/case-studies/wondr-iteration-prototyping.png",
-          "alt": "Prototype screens and user confidence insights"
+          "src": "/case-studies/wondr-wm-screens-1.png",
+          "alt": "Wondr Medical Rooms interface with chat list and profile"
+        },
+        {
+          "type": "image",
+          "src": "/case-studies/wondr-wm-screens-2.png",
+          "alt": "Wondr Medical Rooms add participants and invite flow"
+        },
+        {
+          "type": "image",
+          "src": "/case-studies/wondr-wm-screens-3.png",
+          "alt": "Wondr Medical Rooms unsolicited message handling and invite flow"
         }
       ]
     },

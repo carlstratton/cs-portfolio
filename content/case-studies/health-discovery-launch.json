@@ -1,6 +1,7 @@
 {
   "slug": "health-insurance-discovery-launch",
   "title": "Giving small business owners access to health insurance",
+  "private": true,
   "client": "Simply Business",
   "summary": "Led discovery to launch for an SME health insurance proposition, combining research, rapid experimentation and staged demand validation to de-risk the opportunity before full integration.",
   "role": [
@@ -22,6 +23,7 @@
     "Discovery",
     "Experimentation"
   ],
+  "typeBadges": ["Zero → One", "Discovery", "Research", "Strategy", "Optimisation"],
   "hero": "/case-studies/health-discovery-launch-hero.png",
   "badge": "/case-studies/badges/simply-business.png",
   "cardImage": "/case-studies/thumbnail-health-discovery.png",
