@@ -76,14 +76,14 @@ const merriweather = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Carl Stratton · Product Design & Strategy",
+  title: "Carl Stratton · Product, Design, Applied AI",
   description:
-    "Minimal, Swiss-inspired portfolio for Carl Stratton showcasing product design and strategy case studies.",
+    "Carl Stratton — Product, Design, Applied AI. Portfolio showcasing product design and strategy case studies.",
   metadataBase: new URL("https://www.ccaarrll.com"),
   openGraph: {
-    title: "Carl Stratton · Product Design & Strategy",
+    title: "Carl Stratton · Product, Design, Applied AI",
     description:
-      "Minimal, Swiss-inspired portfolio for Carl Stratton showcasing product design and strategy case studies.",
+      "Carl Stratton — Product, Design, Applied AI. Portfolio showcasing product design and strategy case studies.",
     url: "https://www.ccaarrll.com",
     siteName: "Carl Stratton",
     locale: "en_GB",
