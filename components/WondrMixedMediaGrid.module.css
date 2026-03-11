@@ -68,3 +68,10 @@
   }
 }
 
+@media (max-width: 640px) {
+  .grid {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+

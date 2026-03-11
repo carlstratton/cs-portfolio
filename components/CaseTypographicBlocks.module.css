@@ -632,6 +632,50 @@
     gap: var(--space-2);
   }
 
+  .sectionTitle {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .sectionContent {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .prose,
+  .proseBlock {
+    max-width: none;
+  }
+
+  .bullets {
+    max-width: none;
+  }
+
+  .stackedImages {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .figureBreakoutFull {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
+  .sectionImageConstrained .figureBreakoutFull,
+  .sectionImageConstrained .figureProseWidth,
+  .sectionImageConstrained .sectionMedia .figure {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: none;
+  }
+
+  .caseStudyVideo {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+
   .quote {
     padding: var(--space-6);
     font-size: 18px;

@@ -133,6 +133,20 @@
     padding: var(--space-10) 0 var(--space-12);
   }
 
+  .wrap :global(.page-shell) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .title {
+    line-height: 130%;
+  }
+
+  .metaRow {
+    gap: 4px var(--space-6);
+    margin-top: calc(var(--space-4) + 16px);
+  }
+
   .nav {
     margin-bottom: var(--space-8);
   }
