@@ -558,7 +558,7 @@ export function HomeLanding({
 
                             <p>
                               The projects Carl works on typically involve strategy, research,
-                              problem-solving, and testing, and often lead to digital products. They
+                              problem-solving, and testing to deliver meaningful digital solutions. They
                               combine business thinking with product craft and interface design to
                               shape clear, useful experiences for the people using them.
                             </p>
@@ -588,8 +588,8 @@ export function HomeLanding({
                             </p>
 
                             <p>
-                              If you&apos;re working on something interesting, feel free to get in
-                              touch and say hello.
+                              Thanks for taking the time to read. If you&apos;re working on something
+                              interesting, feel free to get in touch and say hello.
                             </p>
 
                             <div className={styles.panelLinks}>
@@ -840,7 +840,7 @@ export function HomeLanding({
 
                             <p>
                               The projects Carl works on typically involve strategy, research,
-                              problem-solving, and testing, and often lead to digital products. They
+                              problem-solving, and testing to deliver meaningful digital solutions. They
                               combine business thinking with product craft and interface design to
                               shape clear, useful experiences for the people using them.
                             </p>
@@ -870,8 +870,8 @@ export function HomeLanding({
                             </p>
 
                             <p>
-                              If you&apos;re working on something interesting, feel free to get in
-                              touch and say hello.
+                              Thanks for taking the time to read. If you&apos;re working on something
+                              interesting, feel free to get in touch and say hello.
                             </p>
 
                             <div className={styles.panelLinks}>
