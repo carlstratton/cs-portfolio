@@ -529,7 +529,7 @@ export function HomeLanding({
                               working alongside small teams building new products and businesses,
                               collaborating with friends, colleagues, founders, and engineers who share
                               a curiosity for new ideas and care about building thoughtful,
-                              well-considered products into the world.
+                              well-considered products.
                             </p>
 
                             <h3 className={styles.panelSubheading}>Background</h3>
@@ -811,7 +811,7 @@ export function HomeLanding({
                               working alongside small teams building new products and businesses,
                               collaborating with friends, colleagues, founders, and engineers who share
                               a curiosity for new ideas and care about building thoughtful,
-                              well-considered products into the world.
+                              well-considered products.
                             </p>
 
                             <h3 className={styles.panelSubheading}>Background</h3>
