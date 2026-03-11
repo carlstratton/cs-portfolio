@@ -537,13 +537,11 @@ export function HomeLanding({
                             <p>
                               A hip-hop kid turned design graduate, with a love for technology. Carl
                               was exposed to the London start-up scene in 2010, and has been designing
-                              interfaces and experience ever since. He has helped lead design for
-                              Farfetch, Seedrs and advised organisations like Workspace, Vodafone and
-                              the NHS to deliver impactful digital strategies.
+                              interfaces and digital experience ever since. He led design at numerous start-ups including Farfetch and Seedrs, and has advised organisations including Workspace, Vodafone, and the NHS on digital strategy and product experience.
                             </p>
 
                             <p>
-                              As a start-up founder, Carl founded Emblzn (2013) and Shoesie (2018),
+                              As a founder-builder, Carl founded Emblzn (2013) and Shoesie (2018),
                               both of which went through accelerator programmes including{" "}
                               <a
                                 href="https://www.ignite.io/"
