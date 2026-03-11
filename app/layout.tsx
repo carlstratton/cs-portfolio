@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Ubuntu_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import { PageTransition } from "@/components/PageTransition";
 import { ThemeProvider } from "@/lib/theme";
@@ -109,6 +110,7 @@ export default function RootLayout({
         />
         <ThemeProvider>
           <PageTransition>{children}</PageTransition>
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>

@@ -525,27 +525,26 @@ export function HomeLanding({
                             </p>
 
                             <p>
-                              As a start-up founder, business director, and design professional,
-                              Carl has worked alongside some incredible teams to build innovative,
-                              award-winning businesses. Along the way, he has collaborated with
-                              friends, colleagues, and extraordinary people, all united by a shared
-                              passion for new ideas, spirit of exploration and delivering world class
-                              products and experiences.
+                              As a start-up founder and designer, Carl has spent much of his career
+                              working alongside small teams building new products and businesses,
+                              collaborating with friends, colleagues, founders, and engineers who share
+                              a curiosity for new ideas and care about building thoughtful,
+                              well-considered products into the world.
                             </p>
 
                             <h3 className={styles.panelSubheading}>Background</h3>
 
                             <p>
-                              Carl is a UX product designer and start-up founder with over a decade
-                              of design experience. He has helped lead experience design for visionary
-                              start-ups like Farfetch, Seedrs and Mendeley; collaborated with brands
-                              like Vodafone, ESPN, and Mind Candy; and advised organisations like
-                              Workspace and the NHS to deliver impactful digital strategies.
+                              A hip-hop kid turned design graduate, with a love for technology. Carl
+                              was exposed to the London start-up scene in 2010, and has been designing
+                              interfaces and experience ever since. He has helped lead design for
+                              Farfetch, Seedrs and advised organisations like Workspace, Vodafone and
+                              the NHS to deliver impactful digital strategies.
                             </p>
 
                             <p>
-                              As a start-up founder, Carl successfully brought the businesses he
-                              founded, Emblzn (2013) and Shoesie (2018), through accelerator programmes including{" "}
+                              As a start-up founder, Carl founded Emblzn (2013) and Shoesie (2018),
+                              both of which went through accelerator programmes including{" "}
                               <a
                                 href="https://www.ignite.io/"
                                 target="_blank"
@@ -553,55 +552,46 @@ export function HomeLanding({
                               >
                                 Ignite
                               </a>
-                              ,
-                              with Emblzn winning UK Innovate&apos;s digital innovation contest for
-                              mass customisation.
-                            </p>
-
-                            <p>
-                              He has led and coached teams, and building innovative products has
-                              been a defining part of his journey, driven by a passion for exploring
-                              new ideas and collaboration.
+                              . Emblzn later won UK Innovate&apos;s Digital Innovation Award for mass
+                              customisation.
                             </p>
 
                             <h3 className={styles.panelSubheading}>What Carl does</h3>
 
                             <p>
-                              Projects Carl works on involve a large degree of strategic thinking,
-                              problem-solving, research, and testing; and usually result in some form
-                              of digital output. They combine business with design logic, requiring
-                              sensitivity for user-centred design and a passion for improving and
-                              delivering succinct digital experiences.
+                              The projects Carl works on typically involve strategy, research,
+                              problem-solving, and testing, and often lead to digital products. They
+                              combine business thinking with product craft and interface design to
+                              shape clear, useful experiences for the people using them.
                             </p>
 
                             <h3 className={styles.panelSubheading}>Applied AI Product Design</h3>
 
                             <p>
                               Over the past few years, Carl has increasingly integrated AI into his
-                              product workflow, using agentic tools to design, prototype, and validate
-                              product experiences. This ranges from micro-interactions to fully
-                              functioning end-to-end flows, including production-ready web and native
-                              applications.
+                              product workflow, using agentic tools to design, prototype, and
+                              validate ideas.
                             </p>
 
                             <p>
-                              Beyond tooling, he ships. Carl has built and released multiple
-                              production iOS products. Most recently working with a small group of friends, he launched <a
-                              href="https://apps.apple.com/us/app/totl-top-of-the-league/id6754661450"
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              TOTL
-                            </a>
-                            ,
-                              top of the league - a social football predictions platform across Web and Expo React Native.
-                              It includes core platform features such as user accounts, game mechanics,
-                              competitive rankings, social groups, notification triggers, and
-                              third-party data integrations.
+                              He has built and released multiple production iOS products, most
+                              recently working with a small group of friends to launch{" "}
+                              <a
+                                href="https://apps.apple.com/us/app/totl-top-of-the-league/id6754661450"
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                TOTL
+                              </a>
+                              , Top of the League — a social football predictions platform built across
+                              web and React Native, including user accounts, game mechanics,
+                              leaderboards, social groups, notifications, and third-party data
+                              integrations.
                             </p>
 
                             <p>
-                              He does not separate design from delivery. He builds what he designs.
+                              If you&apos;re working on something interesting, feel free to get in
+                              touch and say hello.
                             </p>
 
                             <div className={styles.panelLinks}>
@@ -817,75 +807,73 @@ export function HomeLanding({
                             </p>
 
                             <p>
-                              As a start-up founder, business director, and design professional,
-                              Carl has worked alongside some incredible teams to build innovative,
-                              award-winning businesses. Along the way, he has collaborated with
-                              friends, colleagues, and extraordinary people, all united by a shared
-                              passion for new ideas, spirit of exploration and delivering world class
-                              products and experiences.
+                              As a start-up founder and designer, Carl has spent much of his career
+                              working alongside small teams building new products and businesses,
+                              collaborating with friends, colleagues, founders, and engineers who share
+                              a curiosity for new ideas and care about building thoughtful,
+                              well-considered products into the world.
                             </p>
 
                             <h3 className={styles.panelSubheading}>Background</h3>
 
                             <p>
-                              Carl is a UX product designer and start-up founder with over a decade
-                              of design experience. He has helped lead experience design for visionary
-                              start-ups like Farfetch, Seedrs and Mendeley; collaborated with brands
-                              like Vodafone, ESPN, and Mind Candy; and advised organisations like
-                              Workspace and the NHS to deliver impactful digital strategies.
+                              A hip-hop kid turned design graduate, with a love for technology. Carl
+                              was exposed to the London start-up scene in 2010, and has been designing
+                              interfaces and experience ever since. He has helped lead design for
+                              Farfetch, Seedrs and advised organisations like Workspace, Vodafone and
+                              the NHS to deliver impactful digital strategies.
                             </p>
 
                             <p>
-                              As a start-up founder, Carl successfully brought the businesses he
-                              founded, Emblzn (2013) and Shoesie (2018), through accelerator programmes, including{" "}
+                              As a start-up founder, Carl founded Emblzn (2013) and Shoesie (2018),
+                              both of which went through accelerator programmes including{" "}
                               <a
                                 href="https://www.ignite.io/"
                                 target="_blank"
                                 rel="noreferrer"
                               >
-                                IGNITE
+                                Ignite
                               </a>
-                              , with Emblzn winning UK Innovate&apos;s digital innovation contest for
-                              mass customisation.
-                            </p>
-
-                            <p>
-                              He has led and coached teams, and building innovative products has
-                              been a defining part of his journey, driven by a passion for exploring
-                              new ideas and collaboration.
+                              . Emblzn later won UK Innovate&apos;s Digital Innovation Award for mass
+                              customisation.
                             </p>
 
                             <h3 className={styles.panelSubheading}>What Carl does</h3>
 
                             <p>
-                              Projects Carl works on involve a large degree of strategic thinking,
-                              problem-solving, research, and testing; and usually result in some form
-                              of digital output. They combine business with design logic, requiring
-                              sensitivity for user-centred design and a passion for improving and
-                              delivering succinct digital experiences.
+                              The projects Carl works on typically involve strategy, research,
+                              problem-solving, and testing, and often lead to digital products. They
+                              combine business thinking with product craft and interface design to
+                              shape clear, useful experiences for the people using them.
                             </p>
 
                             <h3 className={styles.panelSubheading}>Applied AI Product Design</h3>
 
                             <p>
                               Over the past few years, Carl has increasingly integrated AI into his
-                              product workflow — using agentic tools to design, prototype, and validate
-                              product experiences. This ranges from micro-interactions to fully
-                              functioning end-to-end flows, including production-ready web and native
-                              applications.
+                              product workflow, using agentic tools to design, prototype, and
+                              validate ideas.
                             </p>
 
                             <p>
-                              Beyond tooling, he ships. Carl has built and released multiple
-                              production iOS products. Most recently, he launched TOTL, Top of the League,
-                              a social football predictions platform across Web and Expo React Native.
-                              It includes core platform features such as user accounts, game mechanics,
-                              competitive rankings, social groups, notification triggers, and
-                              third-party data integrations.
+                              He has built and released multiple production iOS products, most
+                              recently working with a small group of friends to launch{" "}
+                              <a
+                                href="https://apps.apple.com/us/app/totl-top-of-the-league/id6754661450"
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                TOTL
+                              </a>
+                              , Top of the League — a social football predictions platform built across
+                              web and React Native, including user accounts, game mechanics,
+                              leaderboards, social groups, notifications, and third-party data
+                              integrations.
                             </p>
 
                             <p>
-                              He does not separate design from delivery. He builds what he designs.
+                              If you&apos;re working on something interesting, feel free to get in
+                              touch and say hello.
                             </p>
 
                             <div className={styles.panelLinks}>
