@@ -96,7 +96,7 @@ function renderBodyEnd(bodyEnd: string[], lastAsHeader?: boolean) {
   if (!bodyEnd.length) return null;
   const last = bodyEnd[bodyEnd.length - 1];
   const isLeadIn = last.endsWith(":");
-  const proseParas = isLeadIn && bodyEnd.length > 1 ? bodyEnd.slice(0, -1) : bodyEnd;
+  const proseParas = isLeadIn ? bodyEnd.slice(0, -1) : bodyEnd;
   if (lastAsHeader && bodyEnd.length > 1) {
     const proseOnly = bodyEnd.slice(0, -1);
     return (
