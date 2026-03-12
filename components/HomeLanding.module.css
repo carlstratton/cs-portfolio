@@ -352,11 +352,6 @@
   transform: translateY(-2px);
 }
 
-.tile:hover .cardImageWrap :global(img),
-.tile:hover .cardImage {
-  filter: grayscale(0%);
-}
-
 .cardImageWrap {
   position: relative;
   aspect-ratio: 4 / 3;
@@ -382,8 +377,8 @@
   height: 100% !important;
   object-fit: cover;
   object-position: center;
-  filter: grayscale(100%);
-  transition: filter 0.3s ease;
+  /* filter: grayscale(100%);
+  transition: filter 0.3s ease; */
   display: block;
   vertical-align: bottom;
   border-radius: 16px 16px 0 0;
@@ -539,10 +534,10 @@
     transition: none;
   }
 
-  .tile:hover {
+  /* .tile:hover {
     transform: none;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
-  }
+  } */
 
   .shimmer {
     animation: none;

@@ -16,6 +16,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  column-gap: 18px;
   justify-content: center;
 }
 
@@ -206,7 +207,7 @@
     0 0 0 1px color-mix(in srgb, var(--accent-strong) 3%, transparent);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  transition: var(--theme-transition);
+  transition: color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
   animation: chip-in 1100ms ease forwards,
     chip-border-shift 16000ms linear infinite;
   animation-delay: var(--chip-delay, 0ms),
@@ -222,14 +223,19 @@
   background-color: color-mix(in srgb, var(--surface) 86%, transparent);
   z-index: -1;
   pointer-events: none;
-  transition: var(--theme-transition);
+  transition: var(--theme-transition), background-color 180ms ease;
 }
 
 .suggestion:hover {
   color: var(--text);
+  transform: translateY(-2px);
   box-shadow: 0 12px 26px
       color-mix(in srgb, var(--accent-strong) 8%, transparent),
     0 0 0 1px color-mix(in srgb, var(--accent-strong) 4%, transparent);
+}
+
+.suggestion:hover::before {
+  background-color: color-mix(in srgb, var(--surface) 92%, transparent);
 }
 
 .suggestion:disabled {
@@ -275,10 +281,13 @@
   opacity: 1;
   transform: none;
   color: var(--accent-strong);
+  transition: background-color 180ms ease, border-color 180ms ease;
 }
 
 .assistant[data-docked="true"] .suggestion:hover {
   box-shadow: none;
+  background-color: color-mix(in srgb, var(--accent-strong) 6%, var(--surface));
+  border-color: color-mix(in srgb, var(--accent-strong) 20%, var(--border));
 }
 
 @keyframes chip-in {
@@ -302,6 +311,10 @@
   .suggestion {
     animation: none;
     opacity: 1;
+    transform: none;
+  }
+
+  .suggestion:hover {
     transform: none;
   }
 }

@@ -6,14 +6,8 @@ const STORAGE_KEY = "carl-theme";
 
 export function Header() {
   const handleBrandClick = () => {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    const next = stored === "light" ? "dark" : "light";
-    window.localStorage.setItem(STORAGE_KEY, next);
-    if (next === "dark") {
-      document.documentElement.setAttribute("data-theme", "dark");
-    } else {
-      document.documentElement.removeAttribute("data-theme");
-    }
+    window.localStorage.setItem(STORAGE_KEY, "light");
+    document.documentElement.removeAttribute("data-theme");
   };
 
   return (
