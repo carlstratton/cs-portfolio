@@ -409,9 +409,9 @@ export function HomeLanding({
           <div className={heroStyles.heroGrid}>
             <div className={heroStyles.heroLeft}>
               <h1>
-                A decade in product &amp; design,{" "}
+                Design for what’s next.{" "}
                 <span className={heroStyles.heroHeadlineSecondary}>
-                leading ambitious teams to make better product bets.
+                Leader, founder, and builder of digital products.
                 </span>
               </h1>
 
