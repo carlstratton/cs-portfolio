@@ -1,26 +1,32 @@
 "use client";
 
-import Link from "next/link";
 import styles from "./Header.module.css";
-import { useTheme } from "@/lib/theme";
+
+const STORAGE_KEY = "carl-theme";
 
 export function Header() {
-  const { toggle } = useTheme();
+  const handleBrandClick = () => {
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    const next = stored === "light" ? "dark" : "light";
+    window.localStorage.setItem(STORAGE_KEY, next);
+    if (next === "dark") {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  };
 
   return (
     <header className={styles.header}>
       <div className="page-shell" data-header-shell="true">
         <div className={styles.inner} data-header-inner="true">
-          <Link
+          <a
             href="/"
             className={styles.brand}
-            onClick={(e) => {
-              e.preventDefault();
-              toggle();
-            }}
+            onClick={handleBrandClick}
           >
             Carl Stratton
-          </Link>
+          </a>
           <span className={styles.tagline}>Product, Design, Applied AI</span>
         </div>
       </div>

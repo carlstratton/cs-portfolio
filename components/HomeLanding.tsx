@@ -527,7 +527,7 @@ export function HomeLanding({
                             <p>
                               As a start-up founder and designer, Carl has spent much of his career
                               working alongside small teams building new products and businesses,
-                              collaborating with friends, colleagues, founders, and engineers who share
+                              whilst collaborating with friends, colleagues, founders, and engineers who share
                               a curiosity for new ideas and care about building thoughtful,
                               well-considered products.
                             </p>
@@ -535,7 +535,7 @@ export function HomeLanding({
                             <h3 className={styles.panelSubheading}>Background</h3>
 
                             <p>
-                              A hip-hop kid turned design graduate, with a love for technology. Carl
+                              A hip-hop kid with a love for technology, turned design graduate. Carl
                               was exposed to the London start-up scene in 2010, and has been designing
                               interfaces and digital experience ever since. He led design at numerous start-ups including Farfetch and Seedrs, and has advised organisations including Workspace, Vodafone, and the NHS on digital strategy and product experience.
                             </p>
@@ -558,7 +558,7 @@ export function HomeLanding({
 
                             <p>
                               The projects Carl works on typically involve strategy, research,
-                              problem-solving, and testing to deliver meaningful digital solutions. They
+                              problem-solving, and testing, to deliver meaningful digital solutions. They
                               combine business thinking with product craft and interface design to
                               shape clear, useful experiences for the people using them.
                             </p>
@@ -807,7 +807,7 @@ export function HomeLanding({
                             <p>
                               As a start-up founder and designer, Carl has spent much of his career
                               working alongside small teams building new products and businesses,
-                              collaborating with friends, colleagues, founders, and engineers who share
+                              whilst collaborating with friends, colleagues, founders, and engineers who share
                               a curiosity for new ideas and care about building thoughtful,
                               well-considered products.
                             </p>
@@ -815,10 +815,10 @@ export function HomeLanding({
                             <h3 className={styles.panelSubheading}>Background</h3>
 
                             <p>
-                              A hip-hop kid turned design graduate, with a love for technology. Carl
+                              A hip-hop kid with a love for technology, turned design graduate. Carl
                               was exposed to the London start-up scene in 2010, and has been designing
-                              interfaces and experience ever since. He has helped lead design for
-                              Farfetch, Seedrs and advised organisations like Workspace, Vodafone and
+                              interfaces and experience ever since. He has led design for
+                              Farfetch, Seedrs and Simply Business, and advised organisations like Workspace, Vodafone and
                               the NHS to deliver impactful digital strategies.
                             </p>
 
@@ -840,7 +840,7 @@ export function HomeLanding({
 
                             <p>
                               The projects Carl works on typically involve strategy, research,
-                              problem-solving, and testing to deliver meaningful digital solutions. They
+                              problem-solving, and testing, to deliver meaningful digital solutions. They
                               combine business thinking with product craft and interface design to
                               shape clear, useful experiences for the people using them.
                             </p>
@@ -861,9 +861,9 @@ export function HomeLanding({
                                 target="_blank"
                                 rel="noreferrer"
                               >
-                                TOTL
+                                TotL
                               </a>
-                              , Top of the League — a social football predictions platform built across
+                              , Top of the League — a social football predictions app built across
                               web and React Native, including user accounts, game mechanics,
                               leaderboards, social groups, notifications, and third-party data
                               integrations.
