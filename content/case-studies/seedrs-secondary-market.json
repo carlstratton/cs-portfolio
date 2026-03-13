@@ -33,11 +33,9 @@
       "title": "Design Challenge",
       "body": [
         "James is reviewing his investments at home. One of the startups in his portfolio has grown significantly, and he's considering selling a small portion of his shares.",
-        "Across the city, Alex is commuting to work. He's been following the same company for months and would happily buy in if shares became available.",
+        "Across the city, Alex is commuting to work. He's been following the same company for months and would happily buy in if shares became available, but will have to look into it later.",
         "The Secondary Market connects investors like James and Alex, allowing shares in private companies to be traded directly between individuals.",
-        "The Republic Secondary Market (formerly Seedrs) operates one of the largest marketplaces for trading shares in private companies, with hundreds of startups and growth businesses available to retail investors.",
-        "Despite being a flagship product and a major revenue driver for the business, the experience was previously limited to web.",
-        "Over time the product had also seen little design investment. Discovering opportunities relied on navigating a dense table of companies with minimal filtering, making it difficult for investors to explore the market, identify available shares, or understand where activity was happening."
+        "But the experience only existed on web, and discovering opportunities was limited, making it difficult for investors to explore the market or identify where activity was happening."
       ],
       "leadIn": "These limitations can be characterised by:",
       "media": [

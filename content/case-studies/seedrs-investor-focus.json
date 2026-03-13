@@ -37,12 +37,10 @@
       "id": "context",
       "title": "Design Challenge",
       "body": [
-        "Marcus is a retail investor who checks his crowdfunding app a few times a week. Sitting at his kitchen table after work, he scrolls through dozens of live campaigns, with new ones launching regularly.",
-        "He wants to make thoughtful decisions, and not miss the next big opportunity.",
-        "Over time, the volume starts to blur. Some campaigns catch his eye, but he's not ready to commit. Others feel familiar, but he can't remember whether he's already reviewed them, or why he moved on.",
-        "A few days later he opens the app again, unsure what's new and what he's already assessed. Gradually, the experience becomes mentally taxing.",
-        "The problem wasn't a lack of information.",
-        "It was the absence of continuity, an experience that helped investors stay oriented, filter noise, and build confidence as they returned to the app over time."
+        "Marcus is a retail investor who checks his crowdfunding app a few times a week. Sitting at his kitchen table after work, he scrolls through dozens of live campaigns.",
+        "He wants to make thoughtful decisions and not miss the next big opportunity.",
+        "A few days later he opens the app again, unsure what's new and what he's already assessed. The experience starts to feel mentally taxing.",
+        "The problem wasn't a lack of information. It was the absence of continuity, helping investors track, filter, and revisit opportunities over time."
       ],
       "leadIn": "The ideal browsing experience should help investors:",
       "identifiedItems": [
