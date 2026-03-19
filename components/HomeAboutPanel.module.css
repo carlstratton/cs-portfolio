@@ -1,0 +1,99 @@
+.panel {
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.92);
+  border-radius: 32px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.imageWrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.content {
+  padding: 36px 40px 40px;
+  display: grid;
+  gap: 20px;
+}
+
+.intro,
+.content p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.74);
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+.intro {
+  color: rgba(0, 0, 0, 0.92);
+}
+
+.section {
+  display: grid;
+  gap: 16px;
+  padding-top: 12px;
+}
+
+.heading {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.96);
+}
+
+.content a {
+  color: rgba(0, 0, 0, 0.92);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 12px;
+}
+
+.links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .panel {
+    border-radius: 24px;
+  }
+
+  .content {
+    padding: 24px 20px 28px;
+    gap: 18px;
+  }
+
+  .intro,
+  .content p {
+    font-size: 18px;
+  }
+
+  .links {
+    flex-direction: column;
+  }
+
+  .links a {
+    width: 100%;
+  }
+}

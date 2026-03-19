@@ -107,6 +107,21 @@
   max-width: 74ch;
 }
 
+.summaryBlock {
+  display: grid;
+  gap: var(--space-8);
+  max-width: 78ch;
+}
+
+.summaryLead {
+  margin: 0;
+  max-width: 761px;
+  font-size: 21px;
+  line-height: 160%;
+  letter-spacing: 0;
+  color: rgba(0, 0, 0, 0.76);
+}
+
 /* Inline figures in prose should match sectionMedia image width (full column) */
 .sectionBodyTwoColumn .sectionContent .proseBlock:has(.figure) {
   max-width: none;

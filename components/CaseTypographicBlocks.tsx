@@ -8,7 +8,9 @@ import type {
   CaseMedia,
   CaseSection,
   CaseStudy,
+  CaseStudySummarySection,
   InlineMedia,
+  SummarySectionId,
 } from "@/types/caseStudy";
 import {
   CaseStudyGalleryImage,
@@ -37,6 +39,423 @@ function getFirstMediaOfType(
 }
 
 const IMAGE_CONSTRAINED_SECTIONS = ["validating-experiments", "iteration-prototyping", "results"] as const;
+
+type CaseStudyViewMode = "full" | "summary";
+type SummarySection = CaseStudySummarySection;
+
+type TextCandidate = {
+  text: string;
+  order: number;
+  numericCount: number;
+};
+
+const SUMMARY_SECTION_TITLES: Record<SummarySectionId, string> = {
+  opportunity: "The Opportunity",
+  solution: "The Solution",
+  impact: "The Impact",
+};
+
+const SUMMARY_MATCHERS: Record<SummarySectionId, string[]> = {
+  opportunity: [
+    "context",
+    "design challenge",
+    "challenge",
+    "problem",
+    "key findings",
+    "approach identified",
+  ],
+  solution: [
+    "approach",
+    "research",
+    "action taken",
+    "action",
+    "solution",
+    "further action taken",
+    "further actions taken",
+    "further action taken exploration",
+    "defining goals",
+    "building and learning",
+    "designing workflow",
+    "validating experiments",
+    "iteration and prototyping",
+    "iteration prototyping",
+    "discovery",
+    "design validation",
+    "delivery",
+  ],
+  impact: ["impact", "results", "benefits"],
+};
+
+const SUMMARY_KEYWORDS: Record<SummarySectionId, string[]> = {
+  opportunity: [
+    "problem",
+    "challenge",
+    "friction",
+    "limited",
+    "unclear",
+    "gap",
+    "overwhelmed",
+    "retention",
+    "confidence",
+    "difficult",
+  ],
+  solution: [
+    "built",
+    "created",
+    "designed",
+    "introduced",
+    "launched",
+    "workflow",
+    "prototype",
+    "validated",
+    "mobile",
+    "platform",
+    "integrated",
+  ],
+  impact: [
+    "increased",
+    "reduced",
+    "transformed",
+    "improved",
+    "launched",
+    "downloads",
+    "rating",
+    "confidence",
+    "support",
+    "investment",
+    "seed",
+  ],
+};
+
+function normalizeKey(value?: string) {
+  return (value ?? "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function countWords(text: string) {
+  return text.trim().split(/\s+/).filter(Boolean).length;
+}
+
+function countNumericTokens(text: string) {
+  return (
+    text.match(/(?:[$£€]\s?\d[\d,.\+]*|\d[\d,.\+]*\s?(?:%|k|K|m|M|x|×|\+)?)/g) ?? []
+  ).length;
+}
+
+function sanitizeText(text: string) {
+  return text.replace(/\s+/g, " ").trim();
+}
+
+function isHeadingLike(text: string) {
+  const cleaned = sanitizeText(text);
+  if (!cleaned) return true;
+  if (cleaned.endsWith(":")) return true;
+  return countWords(cleaned) <= 5 && !/[.!?]$/.test(cleaned);
+}
+
+function fitsWordLimit(text: string, maxWords: number) {
+  return countWords(text) <= maxWords;
+}
+
+function ensureSentence(text: string) {
+  const cleaned = sanitizeText(text).replace(/[,:;]$/, "");
+  if (!cleaned) return cleaned;
+  return /[.!?]$/.test(cleaned) ? cleaned : `${cleaned}.`;
+}
+
+function splitIntoSentenceFragments(text: string) {
+  const normalized = sanitizeText(text);
+  if (!normalized) return [];
+
+  const sentences = normalized
+    .split(/(?<=[.!?])\s+/)
+    .flatMap((sentence) => sentence.split(/\s[—-]\s/))
+    .flatMap((sentence) => sentence.split(/;\s+/))
+    .map((sentence) => sanitizeText(sentence))
+    .filter(Boolean);
+
+  return sentences.length ? sentences : [normalized];
+}
+
+function dedupeTexts(texts: string[]) {
+  const seen = new Set<string>();
+  return texts.filter((text) => {
+    const key = normalizeKey(text);
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+function pickShortestText(texts: string[]) {
+  const deduped = dedupeTexts(texts.map((text) => sanitizeText(text)).filter(Boolean));
+  return deduped.sort((a, b) => countWords(a) - countWords(b))[0] ?? "";
+}
+
+function getFallbackSentenceOptions(texts: string[]) {
+  return dedupeTexts(
+    texts
+      .flatMap((text) => splitIntoSentenceFragments(text))
+      .map((text) => ensureSentence(text))
+      .filter(Boolean),
+  );
+}
+
+function sectionMatches(section: CaseSection, patterns: string[]) {
+  const id = normalizeKey(section.id);
+  const title = normalizeKey(section.title);
+  return patterns.some((pattern) => id.includes(pattern) || title.includes(pattern));
+}
+
+function getSectionsForSummary(study: CaseStudy, id: SummarySectionId) {
+  const matches = study.sections.filter((section) => sectionMatches(section, SUMMARY_MATCHERS[id]));
+
+  if (matches.length > 0) {
+    if (id === "opportunity") {
+      const primary = matches.filter((section) =>
+        sectionMatches(section, ["context", "design challenge", "challenge", "problem"]),
+      );
+      return primary.length > 0 ? primary : matches;
+    }
+    return matches;
+  }
+
+  if (id === "opportunity") return study.sections.slice(0, 1);
+  if (id === "impact") return study.sections.slice(-1);
+  return study.sections.slice(1, Math.max(2, study.sections.length - 1));
+}
+
+function getSummaryParagraphs(section: CaseSection) {
+  const body = getProseParagraphs(section);
+  const bodyEnd = (section.bodyEnd ?? []).filter((paragraph) => !isHeadingLike(paragraph));
+  return dedupeTexts([...body, ...bodyEnd]).filter((paragraph) => !isHeadingLike(paragraph));
+}
+
+function getTextCandidatesFromSections(sections: CaseSection[]) {
+  const candidates: TextCandidate[] = [];
+  let order = 0;
+
+  for (const section of sections) {
+    for (const paragraph of getSummaryParagraphs(section)) {
+      for (const fragment of splitIntoSentenceFragments(paragraph)) {
+        const text = sanitizeText(fragment);
+        if (!text || isHeadingLike(text)) continue;
+        candidates.push({ text, order, numericCount: countNumericTokens(text) });
+        order += 1;
+      }
+    }
+
+    for (const item of section.identifiedItems ?? []) {
+      const text = ensureSentence(item);
+      candidates.push({ text, order, numericCount: countNumericTokens(text) });
+      order += 1;
+    }
+  }
+
+  return candidates.filter(
+    (candidate, index, list) =>
+      list.findIndex((entry) => normalizeKey(entry.text) === normalizeKey(candidate.text)) === index,
+  );
+}
+
+function scoreCandidate(candidate: TextCandidate, id: SummarySectionId, forLead = false) {
+  const lower = candidate.text.toLowerCase();
+  const keywordHits = SUMMARY_KEYWORDS[id].reduce(
+    (count, keyword) => count + (lower.includes(keyword) ? 1 : 0),
+    0,
+  );
+  const wordTargetBonus = forLead
+    ? Math.max(0, 18 - Math.abs(15 - countWords(candidate.text)))
+    : Math.max(0, 28 - Math.abs(18 - countWords(candidate.text)));
+
+  return candidate.numericCount * (forLead ? 6 : 8) + keywordHits * 4 + wordTargetBonus;
+}
+
+function pickLead(candidates: TextCandidate[], id: SummarySectionId, fallback: string) {
+  const ranked = [...candidates].sort(
+    (a, b) => scoreCandidate(b, id, true) - scoreCandidate(a, id, true) || a.order - b.order,
+  );
+  const limit = id === "impact" ? 16 : 18;
+  const candidateTexts = ranked.map((candidate) => ensureSentence(candidate.text));
+  const source =
+    candidateTexts.find((text) => fitsWordLimit(text, limit)) ??
+    getFallbackSentenceOptions([fallback]).find((text) => fitsWordLimit(text, limit)) ??
+    pickShortestText([...candidateTexts, ...getFallbackSentenceOptions([fallback])]);
+  return ensureSentence(source);
+}
+
+function pickParagraph(
+  candidates: TextCandidate[],
+  id: SummarySectionId,
+  opts: {
+    minWords: number;
+    maxWords: number;
+    maxSentences: number;
+    exclude?: string[];
+    fallback?: string[];
+  },
+) {
+  const excluded = new Set((opts.exclude ?? []).map((item) => normalizeKey(item)));
+  const filtered = candidates.filter((candidate) => !excluded.has(normalizeKey(candidate.text)));
+
+  const ranked = [...filtered].sort(
+    (a, b) => scoreCandidate(b, id) - scoreCandidate(a, id) || a.order - b.order,
+  );
+
+  const chosen: TextCandidate[] = [];
+  let words = 0;
+
+  for (const candidate of ranked) {
+    const sentence = ensureSentence(candidate.text);
+    const candidateWords = countWords(sentence);
+    if (chosen.length === 0 && candidateWords > opts.maxWords) continue;
+    if (chosen.length > 0 && words + candidateWords > opts.maxWords) continue;
+    chosen.push(candidate);
+    words += candidateWords;
+    if (words >= opts.minWords || chosen.length >= opts.maxSentences) break;
+  }
+
+  if (words < opts.minWords) {
+    for (const fallback of getFallbackSentenceOptions(opts.fallback ?? [])) {
+      const text = sanitizeText(fallback);
+      if (!text || excluded.has(normalizeKey(text))) continue;
+      const fallbackWords = countWords(text);
+      if (chosen.length === 0 && fallbackWords > opts.maxWords) continue;
+      if (chosen.length > 0 && words + fallbackWords > opts.maxWords) continue;
+      chosen.push({
+        text: ensureSentence(text),
+        order: Number.MAX_SAFE_INTEGER - chosen.length,
+        numericCount: countNumericTokens(text),
+      });
+      words += fallbackWords;
+      if (words >= opts.minWords) break;
+    }
+  }
+
+  if (chosen.length === 0 && opts.fallback?.length) {
+    const fallbackOptions = getFallbackSentenceOptions([
+      ...ranked.map((candidate) => candidate.text),
+      ...opts.fallback,
+    ]);
+    return (
+      fallbackOptions.find((text) => fitsWordLimit(text, opts.maxWords)) ??
+      ensureSentence(pickShortestText(fallbackOptions))
+    );
+  }
+
+  const paragraph = chosen
+    .sort((a, b) => a.order - b.order)
+    .map((candidate) => ensureSentence(candidate.text))
+    .join(" ");
+
+  return ensureSentence(paragraph);
+}
+
+function pickBullets(
+  sections: CaseSection[],
+  study: CaseStudy,
+  fallbackCandidates: TextCandidate[],
+) {
+  const preferredSectionItems = sections.flatMap((section) =>
+    section.bulletStyle === "questions" ? [] : (section.identifiedItems ?? []),
+  );
+  const questionSectionItems = sections.flatMap((section) =>
+    section.bulletStyle === "questions" ? (section.identifiedItems ?? []) : [],
+  );
+
+  const rawItems = dedupeTexts([
+    ...preferredSectionItems,
+    ...study.outcomes,
+    ...questionSectionItems,
+    ...fallbackCandidates.map((candidate) => candidate.text),
+  ]);
+
+  const cleanedItems = rawItems
+    .filter(Boolean)
+    .map((item) => sanitizeText(item.replace(/[.!?]$/, "")))
+    .filter((item) => countWords(item) >= 3);
+
+  const withinLimit = cleanedItems.filter((item) => fitsWordLimit(item, 12));
+  return (withinLimit.length > 0 ? withinLimit : cleanedItems).slice(0, 4);
+}
+
+function deriveOpportunitySummary(study: CaseStudy): SummarySection {
+  const sections = getSectionsForSummary(study, "opportunity");
+  const candidates = getTextCandidatesFromSections(sections);
+  const lead = pickLead(candidates, "opportunity", study.summary);
+  const paragraph = pickParagraph(candidates, "opportunity", {
+    minWords: 60,
+    maxWords: 100,
+    maxSentences: 3,
+    exclude: [lead],
+    fallback: [study.summary, ...study.outcomes],
+  });
+
+  return {
+    id: "opportunity",
+    title: SUMMARY_SECTION_TITLES.opportunity,
+    lead,
+    paragraphs: [paragraph],
+  };
+}
+
+function deriveSolutionSummary(study: CaseStudy): SummarySection {
+  const sections = getSectionsForSummary(study, "solution");
+  const candidates = getTextCandidatesFromSections(sections);
+  const lead = pickLead(candidates, "solution", study.summary);
+  const paragraph = pickParagraph(candidates, "solution", {
+    minWords: 25,
+    maxWords: 40,
+    maxSentences: 2,
+    exclude: [lead],
+    fallback: [study.summary],
+  });
+
+  return {
+    id: "solution",
+    title: SUMMARY_SECTION_TITLES.solution,
+    lead,
+    paragraphs: [paragraph],
+    bullets: pickBullets(sections, study, candidates),
+  };
+}
+
+function deriveImpactSummary(study: CaseStudy): SummarySection {
+  const sections = getSectionsForSummary(study, "impact");
+  const candidates = getTextCandidatesFromSections(sections);
+  const outcomeCandidates = study.outcomes.map((outcome, index) => ({
+    text: ensureSentence(outcome),
+    order: Number.MAX_SAFE_INTEGER - (study.outcomes.length - index),
+    numericCount: countNumericTokens(outcome),
+  }));
+  const allCandidates = [...candidates, ...outcomeCandidates];
+  const lead = pickLead(allCandidates, "impact", study.outcomes[0] ?? study.summary);
+  const paragraph = pickParagraph(allCandidates, "impact", {
+    minWords: 60,
+    maxWords: 90,
+    maxSentences: 3,
+    exclude: [lead],
+    fallback: study.outcomes,
+  });
+
+  return {
+    id: "impact",
+    title: SUMMARY_SECTION_TITLES.impact,
+    lead,
+    paragraphs: [paragraph],
+  };
+}
+
+function deriveSummarySections(study: CaseStudy): SummarySection[] {
+  if (study.summarySections?.length) {
+    return study.summarySections;
+  }
+
+  return [
+    deriveOpportunitySummary(study),
+    deriveSolutionSummary(study),
+    deriveImpactSummary(study),
+  ];
+}
 
 export function CaseTypoSection(props: {
   title: string;
@@ -232,6 +651,35 @@ export function CaseTypoQuote(props: {
         </figcaption>
       )}
     </figure>
+  );
+}
+
+function CaseTypographicSummaryStory({ study }: { study: CaseStudy }) {
+  const sections = deriveSummarySections(study);
+
+  return (
+    <div className={styles.story}>
+      {sections.map((section) => {
+        const paragraphs =
+          section.paragraphs.length > 0
+            ? [`${section.lead} ${section.paragraphs[0]}`, ...section.paragraphs.slice(1)]
+            : [section.lead];
+
+        return (
+          <CaseTypoSection key={section.id} title={section.title}>
+            <div className={styles.summaryBlock}>
+              <CaseTypoProse paragraphs={paragraphs} />
+              {section.bullets?.length ? (
+                <CaseTypoBullets
+                  items={section.bullets}
+                  variant={section.id === "solution" ? "identified" : "outcome"}
+                />
+              ) : null}
+            </div>
+          </CaseTypoSection>
+        );
+      })}
+    </div>
   );
 }
 
@@ -671,11 +1119,21 @@ function renderSectionContent(
   return proseWithInline(section.body, section.inlineMedia);
 }
 
-export function CaseTypographicStory({ study }: { study: CaseStudy }) {
+export function CaseTypographicStory({
+  study,
+  mode = "full",
+}: {
+  study: CaseStudy;
+  mode?: CaseStudyViewMode;
+}) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const allImages = extractAllCaseStudyImages(study);
 
   const quote = getFirstMediaOfType(study, "quote");
+
+  if (mode === "summary") {
+    return <CaseTypographicSummaryStory study={study} />;
+  }
 
   const useTwoColumn = study.sections.some((s) => (s.media?.length ?? 0) > 0);
   const sectionImageStarts = study.sections.reduce(

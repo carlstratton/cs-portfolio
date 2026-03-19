@@ -23,6 +23,38 @@
   "badge": "/case-studies/badges/republic.png",
   "cardImage": "/case-studies/thumbnail-platform.png",
   "readTime": 3,
+  "summarySections": [
+    {
+      "id": "opportunity",
+      "title": "The Opportunity",
+      "lead": "Investment platforms surface data but fail to communicate meaning, leaving users uncertain.",
+      "paragraphs": [
+        "Investors are often presented with large amounts of financial data without sufficient context to interpret it. Metrics, performance indicators, and portfolio views exist, but lack coherence and narrative, making it difficult for users to understand what is happening or what actions to take. As platforms scale and complexity increases, this gap between data and understanding becomes a key barrier to engagement and trust."
+      ]
+    },
+    {
+      "id": "solution",
+      "title": "The Solution",
+      "lead": "A clarity-first approach to investment data, turning information into understanding.",
+      "paragraphs": [
+        "The platform experience was redesigned to prioritise interpretation over presentation, helping users make sense of their investments through clearer structure and guidance."
+      ],
+      "bullets": [
+        "Data Simplification: Reduced noise and prioritised meaningful signals",
+        "Visual Hierarchy: Designed layouts to guide attention and understanding",
+        "Contextual Framing: Explained performance and changes in plain language",
+        "Portfolio Coherence: Connected fragmented views into a unified experience"
+      ]
+    },
+    {
+      "id": "impact",
+      "title": "The Impact",
+      "lead": "From passive data consumption to active understanding and confident decision-making.",
+      "paragraphs": [
+        "The improved clarity enabled users to better understand their investments, increasing confidence and engagement with the platform. By bridging the gap between raw data and meaningful insight, the experience became more accessible to a broader range of investors. This shift strengthened trust and positioned the product as a tool for decision-making, not just information display."
+      ]
+    }
+  ],
   "sections": [
     {
       "id": "context",

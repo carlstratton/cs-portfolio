@@ -8,6 +8,9 @@ export function Header() {
   const handleBrandClick = () => {
     window.localStorage.setItem(STORAGE_KEY, "light");
     document.documentElement.removeAttribute("data-theme");
+    if (window.location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   return (

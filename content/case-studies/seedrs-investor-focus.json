@@ -32,6 +32,38 @@
   "badge": "/case-studies/badges/seedrs.png",
   "cardImage": "/case-studies/thumbnail-seedrs.png",
   "readTime": 3,
+  "summarySections": [
+    {
+      "id": "opportunity",
+      "title": "The Opportunity",
+      "lead": "Retail investors face complex decisions while investment platforms optimise for listings, not clarity.",
+      "paragraphs": [
+        "Equity crowdfunding platforms present large volumes of opportunities, but often prioritise deal visibility over investor comprehension. Retail investors must navigate dense information, inconsistent signals, and unclear risk profiles, making it difficult to build confidence in decision-making. As participation in private markets grows and more users enter without institutional experience, the lack of clarity becomes a critical barrier to conversion, trust, and long-term engagement."
+      ]
+    },
+    {
+      "id": "solution",
+      "title": "The Solution",
+      "lead": "A redesigned investor experience focused on clarity, confidence, and decision-making.",
+      "paragraphs": [
+        "At Seedrs, we reframed the product around the investor’s perspective, prioritising understanding over exposure. The experience was redesigned to simplify complexity and guide users through key decisions."
+      ],
+      "bullets": [
+        "Information Hierarchy: Structured deal content for rapid comprehension",
+        "Decision Support: Highlighted key signals, risks, and investment context",
+        "Progressive Disclosure: Balanced depth with clarity across the journey",
+        "Mobile Optimisation: Delivered a coherent experience across devices"
+      ]
+    },
+    {
+      "id": "impact",
+      "title": "The Impact",
+      "lead": "From overwhelming deal listings to confident, informed investment decisions.",
+      "paragraphs": [
+        "The redesigned experience improved how investors understood opportunities, reducing cognitive load and increasing trust in the platform. By focusing on clarity and decision-making rather than surface-level engagement, the product better aligned with user intent. This shift positioned the platform to support more meaningful participation in private markets, strengthening both conversion and long-term investor confidence."
+      ]
+    }
+  ],
   "sections": [
     {
       "id": "context",
