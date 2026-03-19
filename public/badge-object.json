@@ -1,0 +1,151 @@
+{
+	"metadata": {
+		"version": 4.7,
+		"type": "Object",
+		"generator": "Object3D.toJSON"
+	},
+	"geometries": [
+		{
+			"uuid": "174734d6-eee6-4606-a6ce-5cfc07301efa",
+			"type": "ExtrudeGeometry",
+			"shapes": [
+				"fe755cd4-2b57-46df-9ffe-cb3af030e3d4"],
+			"options": {
+				"curveSegments": 12,
+				"steps": 1,
+				"depth": 33.06,
+				"bevelEnabled": false,
+				"bevelThickness": 0.2,
+				"bevelSize": 0.1,
+				"bevelOffset": 0,
+				"bevelSegments": 3
+			}
+		}],
+	"materials": [
+		{
+			"uuid": "a478b200-6cf5-4270-80d1-f9ed8561e5be",
+			"type": "MeshBasicMaterial",
+			"color": 14277081,
+			"envMapRotation": [0,0,0,
+				"XYZ"],
+			"reflectivity": 1,
+			"refractionRatio": 0.98,
+			"blendColor": 0,
+			"depthWrite": false
+		}],
+	"shapes": [
+		{
+			"arcLengthDivisions": 200,
+			"type": "Shape",
+			"autoClose": false,
+			"curves": [
+				{
+					"metadata": {
+						"version": 4.7,
+						"type": "Curve",
+						"generator": "Curve.toJSON"
+					},
+					"arcLengthDivisions": 200,
+					"type": "CubicBezierCurve",
+					"v0": [0,76],
+					"v1": [0,34.0264],
+					"v2": [34.0264,0],
+					"v3": [76,0]
+				},
+				{
+					"metadata": {
+						"version": 4.7,
+						"type": "Curve",
+						"generator": "Curve.toJSON"
+					},
+					"arcLengthDivisions": 200,
+					"type": "LineCurve",
+					"v1": [76,0],
+					"v2": [436,0]
+				},
+				{
+					"metadata": {
+						"version": 4.7,
+						"type": "Curve",
+						"generator": "Curve.toJSON"
+					},
+					"arcLengthDivisions": 200,
+					"type": "CubicBezierCurve",
+					"v0": [436,0],
+					"v1": [477.974,0],
+					"v2": [512,34.0264],
+					"v3": [512,76]
+				},
+				{
+					"metadata": {
+						"version": 4.7,
+						"type": "Curve",
+						"generator": "Curve.toJSON"
+					},
+					"arcLengthDivisions": 200,
+					"type": "LineCurve",
+					"v1": [512,76],
+					"v2": [512,436]
+				},
+				{
+					"metadata": {
+						"version": 4.7,
+						"type": "Curve",
+						"generator": "Curve.toJSON"
+					},
+					"arcLengthDivisions": 200,
+					"type": "CubicBezierCurve",
+					"v0": [512,436],
+					"v1": [512,477.974],
+					"v2": [477.974,512],
+					"v3": [436,512]
+				},
+				{
+					"metadata": {
+						"version": 4.7,
+						"type": "Curve",
+						"generator": "Curve.toJSON"
+					},
+					"arcLengthDivisions": 200,
+					"type": "LineCurve",
+					"v1": [436,512],
+					"v2": [76,512]
+				},
+				{
+					"metadata": {
+						"version": 4.7,
+						"type": "Curve",
+						"generator": "Curve.toJSON"
+					},
+					"arcLengthDivisions": 200,
+					"type": "CubicBezierCurve",
+					"v0": [76,512],
+					"v1": [34.0264,512],
+					"v2": [0,477.974],
+					"v3": [0,436]
+				},
+				{
+					"metadata": {
+						"version": 4.7,
+						"type": "Curve",
+						"generator": "Curve.toJSON"
+					},
+					"arcLengthDivisions": 200,
+					"type": "LineCurve",
+					"v1": [0,436],
+					"v2": [0,76]
+				}],
+			"currentPoint": [0,0],
+			"uuid": "fe755cd4-2b57-46df-9ffe-cb3af030e3d4",
+			"holes": []
+		}],
+	"object": {
+		"uuid": "8e558ff4-5c0f-4e5d-a94e-886c960420da",
+		"type": "Mesh",
+		"layers": 1,
+		"matrix": [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1],
+		"up": [0,1,0],
+		"geometry": "174734d6-eee6-4606-a6ce-5cfc07301efa",
+		"material": "a478b200-6cf5-4270-80d1-f9ed8561e5be"
+	}
+}

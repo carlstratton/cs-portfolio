@@ -63,6 +63,16 @@ export interface CaseSection {
   bodyEnd?: string[];
 }
 
+export type SummarySectionId = "opportunity" | "solution" | "impact";
+
+export interface CaseStudySummarySection {
+  id: SummarySectionId;
+  title: string;
+  lead: string;
+  paragraphs: string[];
+  bullets?: string[];
+}
+
 export interface CaseStudyMeta {
   slug: string;
   title: string;
@@ -89,5 +99,6 @@ export interface CaseStudyMeta {
 }
 
 export interface CaseStudy extends CaseStudyMeta {
+  summarySections?: CaseStudySummarySection[];
   sections: CaseSection[];
 }

@@ -27,8 +27,8 @@
   width: 100%;
   max-width: 800px;
   font-size: clamp(40px, 8vw, 64px);
-  line-height: 108%;
-  font-weight: 300;
+  line-height: 110%;
+  font-weight: 200;
   padding-right: 0;
   text-wrap: balance;
 }
@@ -159,10 +159,6 @@
   .heroLeft {
     justify-items: center;
     text-align: center;
-  }
-
-  .heroLeft h1 {
-    line-height: 103%;
   }
 
   .actions {

@@ -4,14 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { AIProjectsSection } from "@/components/AIProjectsSection";
 import type { CaseStudy } from "@/types/caseStudy";
 import { Assistant, type AssistantIntent } from "@/components/Assistant";
 import assistantStyles from "@/components/Assistant.module.css";
-import { preloadThinkingDots, ThinkingDots } from "@/components/ThinkingDots";
+import { getAIProjects } from "@/lib/ai-projects";
 import heroStyles from "../app/page.module.css";
 import styles from "./HomeLanding.module.css";
 
-const THINK_MS = 4000;
 const HERO_EXIT_MS = 420;
 const EMAIL = "cgstratton+website@gmail.com";
 const MAILTO = `mailto:${EMAIL}`;
@@ -48,7 +48,16 @@ function unlockSmoothScroll() {
   }
 }
 
-function scrollToElementConstantSpeed(
+/** Cubic ease-out: quicker start, softer landing (t ∈ [0, 1]). */
+function easeOutCubic(t: number) {
+  return 1 - (1 - t) ** 3;
+}
+
+/**
+ * Scroll so `el` lines up with the top of the viewport.
+ * Duration scales with distance (`pxPerSecond` + min/max caps); motion is ease-out, not linear.
+ */
+function scrollToElementEaseOut(
   el: HTMLElement,
   opts?: { pxPerSecond?: number; minMs?: number; maxMs?: number }
 ) {
@@ -74,8 +83,8 @@ function scrollToElementConstantSpeed(
   const start = performance.now();
   const step = (now: number) => {
     const t = Math.min(1, (now - start) / durationMs);
-    // Linear timing for a consistent-feeling scroll speed.
-    window.scrollTo(0, startY + delta * t);
+    const eased = easeOutCubic(t);
+    window.scrollTo(0, startY + delta * eased);
     if (t < 1) requestAnimationFrame(step);
     else unlockSmoothScroll();
   };
@@ -92,7 +101,6 @@ type Turn = {
   id: string;
   intent: AssistantIntent;
   label: string;
-  status: "thinking" | "done";
 };
 
 const ALLOWED_INTENTS: AssistantIntent[] = ["projects", "about", "contact"];
@@ -113,6 +121,7 @@ export function HomeLanding({
 }) {
   const searchParams = useSearchParams();
   const items = useMemo(() => studies.slice(0, 5), [studies]);
+  const aiProjects = useMemo(() => getAIProjects(), []);
   const [turns, setTurns] = useState<Turn[]>([]);
   const [showProjects, setShowProjects] = useState(false);
   const [chipsDocked, setChipsDocked] = useState(false);
@@ -127,7 +136,6 @@ export function HomeLanding({
   const chipsWrapRef = useRef<HTMLDivElement | null>(null);
   const suppressFlowHydrationRef = useRef(false);
   const turnIdRef = useRef(0);
-  const turnTimersRef = useRef<Record<string, number>>({});
   const turnsRef = useRef<Turn[]>([]);
   const newTurnTimerRef = useRef<number | null>(null);
   const firstIntroTimerRef = useRef<number | null>(null);
@@ -135,10 +143,6 @@ export function HomeLanding({
   const revealedTurnTimerRef = useRef<number | null>(null);
   const workRevealTimerRef = useRef<number | null>(null);
   const showProjectsRef = useRef(showProjects);
-
-  useEffect(() => {
-    preloadThinkingDots();
-  }, []);
 
   useLayoutEffect(() => {
     return () => {
@@ -200,8 +204,7 @@ export function HomeLanding({
       url.searchParams.delete("intent");
       if (nextFlow.length) url.searchParams.set("flow", nextFlow.join(","));
       else url.searchParams.delete("flow");
-      // Important: don't set `#work` until the work section is actually revealed,
-      // otherwise the browser may jump/flash while the loader is running.
+      // Important: don't set `#work` until the work section is actually revealed.
       window.history.replaceState({}, "", url);
     } catch {
       // ignore
@@ -213,13 +216,6 @@ export function HomeLanding({
     return `turn-${turnIdRef.current}`;
   };
 
-  const clearTurnTimer = (id: string) => {
-    const t = turnTimersRef.current[id];
-    if (!t) return;
-    window.clearTimeout(t);
-    delete turnTimersRef.current[id];
-  };
-
   // Next's recommended pattern is to react to querystring changes via `useSearchParams`.
   // When embedded in case study, use initialFlowOverride instead of URL.
   /* eslint-disable react-hooks/set-state-in-effect */
@@ -229,14 +225,10 @@ export function HomeLanding({
         ? parseFlowString(initialFlowOverride)
         : parseFlowFromUrl;
     if (suppressFlowHydrationRef.current) {
-      // We wrote `flow=` ourselves to persist browser-back state; don't let that
-      // skip the thinking/loader sequences for click-triggered intents.
+      // We wrote `flow=` ourselves to persist browser-back state; ignore one re-hydration tick.
       suppressFlowHydrationRef.current = false;
       return;
     }
-
-    // Clear any pending timers from previous client-side interactions.
-    Object.keys(turnTimersRef.current).forEach(clearTurnTimer);
 
     if (!nextFlow.length) {
       setTurns([]);
@@ -256,7 +248,6 @@ export function HomeLanding({
       id: `hydrated-${idx}`,
       intent,
       label: LABELS[intent],
-      status: "done",
     }));
     setTurns(hydratedTurns);
     turnsRef.current = hydratedTurns;
@@ -272,12 +263,6 @@ export function HomeLanding({
   }, [parseFlowFromUrl, embeddedInCaseStudy, initialFlowOverride, studies]);
   /* eslint-enable react-hooks/set-state-in-effect */
 
-  useLayoutEffect(() => {
-    return () => {
-      Object.keys(turnTimersRef.current).forEach(clearTurnTimer);
-    };
-  }, []);
-
   const handleSelect = (data: {
     intent: AssistantIntent;
     label: string;
@@ -290,7 +275,7 @@ export function HomeLanding({
     if (currentCount >= 1) return;
 
     const id = nextTurnId();
-    const newTurn: Turn = { id, intent: data.intent, label: data.label, status: "thinking" };
+    const newTurn: Turn = { id, intent: data.intent, label: data.label };
     const isFirstInteraction = turnsRef.current.length === 0;
 
     if (isFirstInteraction) {
@@ -315,34 +300,17 @@ export function HomeLanding({
     setTurns(nextTurns);
     writeFlowToUrl(nextTurns.map((t) => t.intent), true);
     markNewTurn(id);
+    markRevealedTurn(id);
 
     // Dock the assistant after the first selection.
     setChipsDocked(true);
     if (!isFirstInteraction) setDockVisible(true);
 
-    // Scroll to the newly appended turn so the thinking state is visible.
-    requestAnimationFrame(() => {
-      const anchor = document.getElementById(id);
-      if (!anchor) return;
-      if (prefersReducedMotion()) {
-        anchor.scrollIntoView({ behavior: "auto", block: "start" });
-        return;
-      }
-      scrollToElementConstantSpeed(anchor, { pxPerSecond: 900, minMs: 650, maxMs: 1500 });
-    });
-
-    // Clear any previous timer for this id (defensive; ids should be unique).
-    clearTurnTimer(id);
-
-    turnTimersRef.current[id] = window.setTimeout(() => {
-      setTurns((prev) => prev.map((t) => (t.id === id ? { ...t, status: "done" } : t)));
-      markRevealedTurn(id);
-
+    const scrollAfterPaint = () => {
       if (data.intent === "projects") {
         const wasVisible = showProjectsRef.current;
         setShowProjects(true);
         if (!wasVisible) markWorkRevealed();
-        // After reveal, scroll to #work using constant-speed scroll.
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
             try {
@@ -358,11 +326,26 @@ export function HomeLanding({
               work.scrollIntoView({ behavior: "auto", block: "start" });
               return;
             }
-            scrollToElementConstantSpeed(work, { pxPerSecond: 900, minMs: 650, maxMs: 1500 });
+            scrollToElementEaseOut(work, { pxPerSecond: 900, minMs: 650, maxMs: 1500 });
           });
         });
+        return;
       }
-    }, THINK_MS);
+
+      requestAnimationFrame(() => {
+        const anchor = document.getElementById(id);
+        if (!anchor) return;
+        if (prefersReducedMotion()) {
+          anchor.scrollIntoView({ behavior: "auto", block: "start" });
+          return;
+        }
+        scrollToElementEaseOut(anchor, { pxPerSecond: 900, minMs: 650, maxMs: 1500 });
+      });
+    };
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(scrollAfterPaint);
+    });
   };
 
   type TurnWithMeta = Turn & { occurrence: number };
@@ -451,7 +434,7 @@ export function HomeLanding({
                 data-new={turn.id === newTurnId}
                 data-first-intro={turn.id === firstIntroTurnId}
                 data-revealed={turn.id === revealedTurnId}
-                data-empty={turn.intent === "projects" && turn.status === "done" && turn.occurrence === 0}
+                data-empty={turn.intent === "projects" && turn.occurrence === 0}
               >
                 <div className={styles.turnHeader}>
                   <div
@@ -463,11 +446,7 @@ export function HomeLanding({
                 </div>
 
                 <div className={styles.turnBody}>
-                  {turn.status === "thinking" ? (
-                    <div className={styles.turnThinking} aria-label="Thinking…">
-                      <ThinkingDots className={styles.thinkingDot} width={50} height={18} />
-                    </div>
-                  ) : turn.intent === "projects" ? (
+                  {turn.intent === "projects" ? (
                     turn.occurrence === 1 ? (
                       <div className={styles.turnContent}>
                         <h2 className={styles.turnTitle}>Work</h2>
@@ -535,8 +514,8 @@ export function HomeLanding({
                             <h3 className={styles.panelSubheading}>Background</h3>
 
                             <p>
-                              A hip-hop kid turned design graduate, with a love for technology. Carl
-                              was exposed to the London start-up scene in 2010, and has been designing
+                              
+                            Carl was exposed to the London start-up scene in 2010, and has been designing
                               interfaces and digital experience ever since. He led design at numerous start-ups including Farfetch and Seedrs, and has advised organisations including Workspace, Vodafone, and the NHS on digital strategy and product experience.
                             </p>
 
@@ -661,63 +640,74 @@ export function HomeLanding({
 
             {showProjects && (
               <div className={styles.workWrap} data-revealed={workJustRevealed}>
-                <h2 className={styles.turnTitle} id="work">
-                  Selected projects
-                </h2>
-                <div className={styles.grid}>
-                  {items.map((study) => (
-                    <Link
-                      key={study.slug}
-                      href={`/work/${study.slug}`}
-                      className={styles.tile}
-                      aria-label={study.title}
-                    >
-                      <div className={styles.cardImageWrap} aria-hidden="true">
-                        <Image
-                          src={study.cardImage ?? study.hero}
-                          alt={study.title}
-                          fill
-                          sizes="(max-width: 720px) 86vw, (max-width: 1100px) 44vw, 566px"
-                          priority={false}
-                          quality={100}
-                          unoptimized={
-                            (study.cardImage ?? study.hero).includes(
-                              "thumbnail-secondary-market"
-                            )
-                          }
-                          className={styles.cardImage}
-                        />
-                        {study.badge && (
-                          <div className={styles.badgeWrap} aria-hidden="true">
+                <div className={styles.workStack}>
+                  <div>
+                    <h2 className={styles.turnTitle} id="work">
+                      Selected projects
+                    </h2>
+                    <div className={styles.grid}>
+                      {items.map((study) => (
+                        <Link
+                          key={study.slug}
+                          href={`/work/${study.slug}`}
+                          className={styles.tile}
+                          aria-label={study.title}
+                        >
+                          <div className={styles.cardImageWrap} aria-hidden="true">
                             <Image
-                              src={study.badge}
-                              alt=""
-                              width={56}
-                              height={56}
+                              src={study.cardImage ?? study.hero}
+                              alt={study.title}
+                              fill
+                              sizes="(max-width: 720px) 86vw, (max-width: 1100px) 44vw, 566px"
+                              priority={false}
                               quality={100}
-                              className={styles.badge}
+                              unoptimized={
+                                (study.cardImage ?? study.hero).includes(
+                                  "thumbnail-secondary-market"
+                                )
+                              }
+                              className={styles.cardImage}
                             />
+                            {study.badge && (
+                              <div className={styles.badgeWrap} aria-hidden="true">
+                                <Image
+                                  src={study.badge}
+                                  alt=""
+                                  width={56}
+                                  height={56}
+                                  quality={100}
+                                  className={styles.badge}
+                                />
+                              </div>
+                            )}
                           </div>
-                        )}
-                      </div>
-                      <div className={styles.cardMeta}>
-                        <div className={styles.cardEyebrow}>
-                          {((study.client ?? study.company ?? "").replace(/\.(com|co\.uk)$/i, "")).toUpperCase()} · {study.readTime ?? 5} MINUTE READ
-                        </div>
-                        <h3 className={styles.cardTitle}>{study.title}</h3>
-                        <p className={styles.cardSummary}>{study.summary}</p>
-                        {study.typeBadges && study.typeBadges.length > 0 && (
-                          <div className={styles.typeBadges}>
-                            {study.typeBadges.map((badge) => (
-                              <span key={badge} className={styles.typeBadge}>
-                                {badge}
-                              </span>
-                            ))}
+                          <div className={styles.cardMeta}>
+                            <div className={styles.cardEyebrow}>
+                              {((study.client ?? study.company ?? "").replace(/\.(com|co\.uk)$/i, "")).toUpperCase()} · {study.readTime ?? 5} MINUTE READ
+                            </div>
+                            <h3 className={styles.cardTitle}>{study.title}</h3>
+                            <p className={styles.cardSummary}>{study.summary}</p>
+                            {study.typeBadges && study.typeBadges.length > 0 && (
+                              <div className={styles.typeBadges}>
+                                {study.typeBadges.map((badge) => (
+                                  <span key={badge} className={styles.typeBadge}>
+                                    {badge}
+                                  </span>
+                                ))}
+                              </div>
+                            )}
                           </div>
-                        )}
-                      </div>
-                    </Link>
-                  ))}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  {aiProjects.length > 0 && (
+                    <div>
+                      <h2 className={styles.turnTitle}>AI projects</h2>
+                      <AIProjectsSection projects={aiProjects} />
+                    </div>
+                  )}
                 </div>
               </div>
             )}
@@ -731,7 +721,7 @@ export function HomeLanding({
                 data-new={turn.id === newTurnId}
                 data-first-intro={turn.id === firstIntroTurnId}
                 data-revealed={turn.id === revealedTurnId}
-                data-empty={turn.intent === "projects" && turn.status === "done" && turn.occurrence === 0}
+                data-empty={turn.intent === "projects" && turn.occurrence === 0}
               >
                 <div className={styles.turnHeader}>
                   <div
@@ -743,11 +733,7 @@ export function HomeLanding({
                 </div>
 
                 <div className={styles.turnBody}>
-                  {turn.status === "thinking" ? (
-                    <div className={styles.turnThinking} aria-label="Thinking…">
-                      <ThinkingDots className={styles.thinkingDot} width={50} height={18} />
-                    </div>
-                  ) : turn.intent === "projects" ? (
+                  {turn.intent === "projects" ? (
                     turn.occurrence === 1 ? (
                       <div className={styles.turnContent}>
                         <h2 className={styles.turnTitle}>Work</h2>
@@ -815,8 +801,8 @@ export function HomeLanding({
                             <h3 className={styles.panelSubheading}>Background</h3>
 
                             <p>
-                              A hip-hop kid turned design graduate, with a love for technology. Carl
-                              was exposed to the London start-up scene in 2010, and has been designing
+                              
+                            Carl was exposed to the London start-up scene in 2010, and has been designing
                               interfaces and experience ever since. He has helped lead design for
                               Farfetch, Seedrs and advised organisations like Workspace, Vodafone and
                               the NHS to deliver impactful digital strategies.

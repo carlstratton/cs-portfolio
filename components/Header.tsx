@@ -2,11 +2,8 @@
 
 import Link from "next/link";
 import styles from "./Header.module.css";
-import { useTheme } from "@/lib/theme";
 
 export function Header() {
-  const { toggle } = useTheme();
-
   return (
     <header className={styles.header}>
       <div className="page-shell" data-header-shell="true">
@@ -16,7 +13,7 @@ export function Header() {
             className={styles.brand}
             onClick={(e) => {
               e.preventDefault();
-              toggle();
+              window.scrollTo({ top: 0, behavior: "smooth" });
             }}
           >
             Carl Stratton

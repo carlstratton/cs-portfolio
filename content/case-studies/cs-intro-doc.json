@@ -2,7 +2,7 @@
   "slug": "wondr-medical-zero-to-one",
   "title": "How listening to medical professionals helped unlock £12M in funding",
   "company": "Wondr Medical",
-  "summary": "This case study documents how deep user insights helped my team pivot a struggling medical video platform into a compliant companion app for clinicians, leading to a £12M seed round.",
+  "summary": "Documenting how user insights helped our discovery team pivot a struggling medical video platform into a compliant companion app for clinicians, leading to a £12M seed round.",
   "role": ["Founding/Lead UX Designer"],
   "timeframe": "2024",
   "sector": "Healthcare",
@@ -18,16 +18,47 @@
   "badge": "/case-studies/badges/wondr-medical.png",
   "cardImage": "/case-studies/thumbnail-wondr-medical.png",
   "readTime": 5,
+  "summarySections": [
+    {
+      "id": "opportunity",
+      "title": "The Opportunity",
+      "lead": "Clinical knowledge is fragmented across tools while critical research decisions depend on speed and trust.",
+      "paragraphs": [
+        "Medical professionals operate in a high-stakes environment where discovering, validating, and sharing research is slow and inconsistent. Clinicians rely on scattered sources, informal networks, and outdated workflows, creating friction in how knowledge is surfaced and applied. With thousands of papers published weekly and increasing pressure for evidence-based decision-making, the gap between research and real-world practice continues to widen, representing a significant opportunity to rethink how clinicians discover and engage with medical knowledge."
+      ]
+    },
+    {
+      "id": "solution",
+      "title": "The Solution",
+      "lead": "A research platform designed around how clinicians actually discover, evaluate, and share knowledge.",
+      "paragraphs": [
+        "At Wondr, we redefined the experience from first principles, grounding the product in deep generative research with clinicians. The platform centred around real-world workflows, enabling faster discovery and more meaningful engagement with research."
+      ],
+      "bullets": [
+        "User-Centred Discovery: Built from 80+ clinician interviews and behavioural insight",
+        "Contextual Relevance: Surfaces research aligned to clinical intent and specialty",
+        "Collaborative Signals: Enables discussion and validation across trusted peers",
+        "Workflow Integration: Designed to fit naturally into existing clinical routines"
+      ]
+    },
+    {
+      "id": "impact",
+      "title": "The Impact",
+      "lead": "From fragmented research discovery to a cohesive, clinician-first knowledge experience.",
+      "paragraphs": [
+        "The work established a clear product direction rooted in real user needs, shifting the platform from assumption-led to evidence-driven design. By aligning the experience with how clinicians actually think and work, the product became more credible, usable, and strategically valuable. This foundation supported internal alignment and helped position the company for future growth, demonstrating the role of design as a driver of product strategy rather than a layer applied at the end."
+      ]
+    }
+  ],
   "sections": [
     {
       "id": "context",
       "title": "Design challenge",
       "body": [
-        "Dr. Anna Lindström is a cardiologist between patients. Her phone buzzes constantly, colleagues sharing techniques, debates unfolding in group chats, new research landing in her inbox.",
-        "Knowledge is everywhere, but scattered across tools never designed for clinical collaboration.",
-        "Wondr Medical tried to solve this with a library of expert videos explaining new cardiology technologies. The content was strong, but the product never fit into doctors' daily workflows. Most physicians watched something specific, then left.",
-        "When I joined Wondr, 30-day retention was under 2%, revealing a clear gap between what we were building and what doctors actually needed.",
-        "As a result"
+        "Dr. Anna Lindström is a cardiologist between patients. Her phone buzzes constantly — colleagues sharing techniques, debates unfolding in group chats, new research landing in her inbox.",
+        "Knowledge is everywhere, but it is often fragmented, spread across tools and platforms, and seldom designed for clinical collaboration.",
+        "Wondr Medical tried to solve this with a library of expert videos explaining new procedures and technologies. The content was strong, but the product never fit into doctors' daily workflows. Most physicians watched something specific, then left.",
+        "When I joined Wondr, 30-day retention was under 2%, revealing a clear gap between what we were building and what doctors needed."
       ],
       "identifiedItems": [
         "Features were being built without evidence or context.",

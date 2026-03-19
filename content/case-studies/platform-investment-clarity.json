@@ -1,8 +1,8 @@
 {
   "slug": "platform-investment-clarity",
-  "title": "Giving retail investors more confidence after they invest",
+  "title": "Helping investors feel reassured the moment after they invest",
   "company": "republic.com",
-  "summary": "This case study illustrates how I led the redesign of the post-investment experience, translating user research into a clearer, more coherent journey that reduced support demand and rebuilt investor confidence.",
+  "summary": "I led the redesign of the post-investment experience, translating user research into a clearer, more coherent journey that reduced support demand and rebuilt investor confidence.",
   "role": [
     "Staff product designer"
   ],
@@ -23,18 +23,48 @@
   "badge": "/case-studies/badges/republic.png",
   "cardImage": "/case-studies/thumbnail-platform.png",
   "readTime": 3,
+  "summarySections": [
+    {
+      "id": "opportunity",
+      "title": "The Opportunity",
+      "lead": "Investment platforms surface data but fail to communicate meaning, leaving users uncertain.",
+      "paragraphs": [
+        "Investors are often presented with large amounts of financial data without sufficient context to interpret it. Metrics, performance indicators, and portfolio views exist, but lack coherence and narrative, making it difficult for users to understand what is happening or what actions to take. As platforms scale and complexity increases, this gap between data and understanding becomes a key barrier to engagement and trust."
+      ]
+    },
+    {
+      "id": "solution",
+      "title": "The Solution",
+      "lead": "A clarity-first approach to investment data, turning information into understanding.",
+      "paragraphs": [
+        "The platform experience was redesigned to prioritise interpretation over presentation, helping users make sense of their investments through clearer structure and guidance."
+      ],
+      "bullets": [
+        "Data Simplification: Reduced noise and prioritised meaningful signals",
+        "Visual Hierarchy: Designed layouts to guide attention and understanding",
+        "Contextual Framing: Explained performance and changes in plain language",
+        "Portfolio Coherence: Connected fragmented views into a unified experience"
+      ]
+    },
+    {
+      "id": "impact",
+      "title": "The Impact",
+      "lead": "From passive data consumption to active understanding and confident decision-making.",
+      "paragraphs": [
+        "The improved clarity enabled users to better understand their investments, increasing confidence and engagement with the platform. By bridging the gap between raw data and meaningful insight, the experience became more accessible to a broader range of investors. This shift strengthened trust and positioned the product as a tool for decision-making, not just information display."
+      ]
+    }
+  ],
   "sections": [
     {
       "id": "context",
       "title": "Design challenge",
       "body": [
-        "David has just invested in a company he believes in. Checkout completed, payment confirmed.",
-        "Curious to see it in his portfolio, he opens the app again.",
-        "But the investment isn't there.",
-        "For a moment it feels like the shares, the equity, the money he just committed, have simply vanished.",
-        "Unsure whether the transaction actually went through, many investors turned to customer support expecting their new investment to appear immediately in their portfolio.",
-        "The reality was more nuanced. Campaigns remain open for further investment, and shares only move into the portfolio once the round closes and due diligence is complete.",
-        "Unfortunately, the product didn't communicate this clearly. Terms like \"Open investments\", ambiguous empty states, and vague progress indicators left investors disoriented at the exact moment reassurance was most needed."
+        "David has just invested in a company he believes in using his investment app. Checkout completed, payment confirmed.",
+        "Curious to see it in his portfolio, he opens the app again but his investment isn't there, like the shares and the money he just committed, have simply vanished.",
+        "In this scenario many investors turned to customer support, expecting their new investment to appear immediately in their portfolio.",
+        "But the reality was more nuanced - campaigns remain open for further investment, and shares only move into the portfolio once the round closes and due diligence is complete.",
+        "Unfortunately, the product didn't communicate this clearly, leaving investors disoriented at the exact moment reassurance was most needed."
       ],
       "media": [
         {

@@ -3,7 +3,7 @@
   "title": "Releasing the Secondary Market as a mobile-native product",
   "client": "Republic",
   "company": "Republic",
-  "summary": "This case study explores how I led the end-to-end design of the first fully native Secondary Market experience, translating a legacy web interface into a mobile-first product while improving core trading workflows.",
+  "summary": "Illustrating how I led the end-to-end design of the first fully native Secondary Market experience, translating a legacy web interface into a mobile-first product while improving core trading workflows.",
   "role": [
     "Staff product designer"
   ],
@@ -27,17 +27,47 @@
   "badge": "/case-studies/badges/republic.png",
   "cardImage": "/case-studies/thumbnail-secondary-market.png",
   "readTime": 2,
+  "summarySections": [
+    {
+      "id": "opportunity",
+      "title": "The Opportunity",
+      "lead": "Private market investing lacks liquidity while investors expect flexibility and control.",
+      "paragraphs": [
+        "Traditional private investments are inherently illiquid, locking investors into long holding periods with limited optionality. As retail participation increases, expectations shift toward more flexible financial experiences similar to public markets. Without a clear and accessible way to buy and sell shares, platforms struggle to maintain engagement and unlock additional value from existing investors, leaving a significant gap in the user experience and business model."
+      ]
+    },
+    {
+      "id": "solution",
+      "title": "The Solution",
+      "lead": "A mobile-first secondary market enabling intuitive private share trading.",
+      "paragraphs": [
+        "At Seedrs, we designed and delivered the end-to-end Secondary Market experience on mobile, bringing liquidity into the core product experience and making trading accessible to everyday investors."
+      ],
+      "bullets": [
+        "End-to-End Journey: Designed discovery, buy flow, and checkout experience",
+        "Market Transparency: Clear pricing, availability, and transaction context",
+        "Mobile-First UX: Simplified complex trading interactions for smaller screens",
+        "System Integration: Connected seamlessly with portfolio and deal data"
+      ]
+    },
+    {
+      "id": "impact",
+      "title": "The Impact",
+      "lead": "From static portfolios to dynamic, tradable investment experiences.",
+      "paragraphs": [
+        "The Secondary Market transformed how investors engaged with their portfolios, introducing liquidity as a core value proposition. By enabling buying and selling within the platform, it increased activity and created new pathways for engagement beyond initial investment. This shifted the product from a one-time transaction model to a more continuous and interactive experience, strengthening both retention and platform value."
+      ]
+    }
+  ],
   "sections": [
     {
       "id": "context",
       "title": "Design Challenge",
       "body": [
         "James is reviewing his investments at home. One of the startups in his portfolio has grown significantly, and he's considering selling a small portion of his shares.",
-        "Across the city, Alex is commuting to work. He's been following the same company for months and would happily buy in if shares became available.",
+        "Across the city, Alex is commuting to work. He's been following the same company for months and would happily buy in if shares became available, but will have to look into it later.",
         "The Secondary Market connects investors like James and Alex, allowing shares in private companies to be traded directly between individuals.",
-        "The Republic Secondary Market (formerly Seedrs) operates one of the largest marketplaces for trading shares in private companies, with hundreds of startups and growth businesses available to retail investors.",
-        "Despite being a flagship product and a major revenue driver for the business, the experience was previously limited to web.",
-        "Over time the product had also seen little design investment. Discovering opportunities relied on navigating a dense table of companies with minimal filtering, making it difficult for investors to explore the market, identify available shares, or understand where activity was happening."
+        "But the experience only existed on web, and discovering opportunities was limited, making it difficult for investors to explore the market or identify where activity was happening."
       ],
       "leadIn": "These limitations can be characterised by:",
       "media": [

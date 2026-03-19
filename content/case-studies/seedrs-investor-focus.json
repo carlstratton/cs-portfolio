@@ -3,7 +3,7 @@
   "title": "Helping retail investors navigate decision fatigue on mobile",
   "client": "Seedrs",
   "company": "Seedrs",
-  "summary": "This case study explores how I reframed in-app campaign discovery from unstructured feed browsing into an active, evaluation experience, helping investors prioritise and engage with an emphasis on retention.",
+  "summary": "Exploring how I reframed in-app campaign discovery from unstructured feed browsing into an active, evaluation experience, helping investors prioritise and engage with an emphasis on retention.",
   "role": [
     "Staff product designer"
   ],
@@ -32,17 +32,47 @@
   "badge": "/case-studies/badges/seedrs.png",
   "cardImage": "/case-studies/thumbnail-seedrs.png",
   "readTime": 3,
+  "summarySections": [
+    {
+      "id": "opportunity",
+      "title": "The Opportunity",
+      "lead": "Retail investors face complex decisions while investment platforms optimise for listings, not clarity.",
+      "paragraphs": [
+        "Equity crowdfunding platforms present large volumes of opportunities, but often prioritise deal visibility over investor comprehension. Retail investors must navigate dense information, inconsistent signals, and unclear risk profiles, making it difficult to build confidence in decision-making. As participation in private markets grows and more users enter without institutional experience, the lack of clarity becomes a critical barrier to conversion, trust, and long-term engagement."
+      ]
+    },
+    {
+      "id": "solution",
+      "title": "The Solution",
+      "lead": "A redesigned investor experience focused on clarity, confidence, and decision-making.",
+      "paragraphs": [
+        "At Seedrs, we reframed the product around the investor’s perspective, prioritising understanding over exposure. The experience was redesigned to simplify complexity and guide users through key decisions."
+      ],
+      "bullets": [
+        "Information Hierarchy: Structured deal content for rapid comprehension",
+        "Decision Support: Highlighted key signals, risks, and investment context",
+        "Progressive Disclosure: Balanced depth with clarity across the journey",
+        "Mobile Optimisation: Delivered a coherent experience across devices"
+      ]
+    },
+    {
+      "id": "impact",
+      "title": "The Impact",
+      "lead": "From overwhelming deal listings to confident, informed investment decisions.",
+      "paragraphs": [
+        "The redesigned experience improved how investors understood opportunities, reducing cognitive load and increasing trust in the platform. By focusing on clarity and decision-making rather than surface-level engagement, the product better aligned with user intent. This shift positioned the platform to support more meaningful participation in private markets, strengthening both conversion and long-term investor confidence."
+      ]
+    }
+  ],
   "sections": [
     {
       "id": "context",
       "title": "Design Challenge",
       "body": [
-        "Marcus is a retail investor who checks his crowdfunding app a few times a week. Sitting at his kitchen table after work, he scrolls through dozens of live campaigns, with new ones launching regularly.",
-        "He wants to make thoughtful decisions, and not miss the next big opportunity.",
-        "Over time, the volume starts to blur. Some campaigns catch his eye, but he's not ready to commit. Others feel familiar, but he can't remember whether he's already reviewed them, or why he moved on.",
-        "A few days later he opens the app again, unsure what's new and what he's already assessed. Gradually, the experience becomes mentally taxing.",
-        "The problem wasn't a lack of information.",
-        "It was the absence of continuity, an experience that helped investors stay oriented, filter noise, and build confidence as they returned to the app over time."
+        "Marcus is a retail investor who checks his crowdfunding app a few times a week. Sitting at his kitchen table after work, he scrolls through dozens of live campaigns.",
+        "He wants to make thoughtful decisions and not miss the next big opportunity.",
+        "A few days later he opens the app again, unsure what's new and what he's already assessed. The experience starts to feel mentally taxing.",
+        "The problem wasn't a lack of information. It was the absence of continuity, helping investors track, filter, and revisit opportunities over time."
       ],
       "leadIn": "The ideal browsing experience should help investors:",
       "identifiedItems": [

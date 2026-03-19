@@ -1,0 +1,18 @@
+[
+  {
+    "id": "totl",
+    "title": "TotL — Top of the League",
+    "description": "A social football predictions game. Make your weekly picks, compete with friends in mini-leagues, and climb leaderboards.",
+    "badge": "/case-studies/ai-project-badge-totl-front.png",
+    "badgeBodyColor": "#1c8376",
+    "href": "https://apps.apple.com/us/app/totl-top-of-the-league/id6754661450"
+  },
+  {
+    "id": "habits-for-good",
+    "title": "Habits for Good",
+    "description": "A simple habit tracker with no sign-in, no ads, and no fuss. Build streaks, set reminders, and stay consistent with the habits that matter.",
+    "badge": "/case-studies/ai-project-badge-habits-front.png",
+    "badgeBodyColor": "#363636",
+    "href": "https://apps.apple.com/us/app/habits-for-good/id6742659476"
+  }
+]
