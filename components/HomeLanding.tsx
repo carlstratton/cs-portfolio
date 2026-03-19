@@ -514,8 +514,8 @@ export function HomeLanding({
                             <h3 className={styles.panelSubheading}>Background</h3>
 
                             <p>
-                              A hip-hop kid with a love for technology, turned design graduate, Carl
-                              was exposed to the London start-up scene in 2010 and has been designing
+                              Carl was exposed to the London start-up scene in 2010 and has been
+                              designing
                               interfaces and digital experiences ever since. He has led design at
                               start-ups including Farfetch, Seedrs, and Simply Business, and advised
                               organisations including Workspace, Vodafone, and the NHS on digital
@@ -804,8 +804,8 @@ export function HomeLanding({
                             <h3 className={styles.panelSubheading}>Background</h3>
 
                             <p>
-                              A hip-hop kid with a love for technology, turned design graduate, Carl
-                              was exposed to the London start-up scene in 2010 and has been designing
+                              Carl was exposed to the London start-up scene in 2010 and has been
+                              designing
                               interfaces and digital experiences ever since. He has led design at
                               start-ups including Farfetch, Seedrs, and Simply Business, and advised
                               organisations including Workspace, Vodafone, and the NHS on digital

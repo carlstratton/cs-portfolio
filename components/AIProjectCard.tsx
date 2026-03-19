@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import type { AIProject } from "@/types/aiProject";
 import { Badge3D } from "./Badge3D";
 import styles from "./AIProjectCard.module.css";
@@ -13,6 +14,10 @@ function ExternalIcon() {
 }
 
 export function AIProjectCard({ project }: { project: AIProject }) {
+  const cardStyle = {
+    "--card-hover-border": project.badgeBodyColor,
+  } as CSSProperties;
+
   const content = (
     <>
       <div className={styles.badgeWrap} aria-hidden="true">
@@ -44,6 +49,7 @@ export function AIProjectCard({ project }: { project: AIProject }) {
         target="_blank"
         rel="noopener noreferrer"
         className={styles.card}
+        style={cardStyle}
         aria-label={project.title}
       >
         {content}
@@ -51,5 +57,9 @@ export function AIProjectCard({ project }: { project: AIProject }) {
     );
   }
 
-  return <div className={styles.card}>{content}</div>;
+  return (
+    <div className={styles.card} style={cardStyle}>
+      {content}
+    </div>
+  );
 }

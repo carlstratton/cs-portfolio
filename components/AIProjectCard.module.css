@@ -1,4 +1,5 @@
 .card {
+  --card-hover-border: var(--border);
   display: flex;
   gap: 11px;
   align-items: center;
@@ -24,12 +25,12 @@
   background:
     linear-gradient(
       120deg,
-      rgba(99, 232, 214, 0.18) 0%,
-      rgba(120, 125, 255, 0.1) 22%,
+      color-mix(in srgb, var(--card-hover-border) 18%, transparent) 0%,
+      color-mix(in srgb, var(--card-hover-border) 10%, white) 22%,
       rgba(255, 255, 255, 0.55) 38%,
-      rgba(99, 232, 214, 0.75) 50%,
-      rgba(120, 125, 255, 0.14) 68%,
-      rgba(99, 232, 214, 0.18) 100%
+      color-mix(in srgb, var(--card-hover-border) 75%, transparent) 50%,
+      color-mix(in srgb, var(--card-hover-border) 14%, white) 68%,
+      color-mix(in srgb, var(--card-hover-border) 18%, transparent) 100%
     );
   background-size: 220% 220%;
   animation: ai-card-border-flare 5s linear infinite;
@@ -64,11 +65,12 @@
 }
 
 .card:hover {
+  border-color: var(--card-hover-border);
   box-shadow:
     0 10px 30px rgba(0, 0, 0, 0.08),
     0 2px 8px rgba(0, 0, 0, 0.04),
-    0 0 0 1px rgba(99, 232, 214, 0.08),
-    0 0 34px rgba(99, 232, 214, 0.08);
+    0 0 0 1px color-mix(in srgb, var(--card-hover-border) 24%, transparent),
+    0 0 34px color-mix(in srgb, var(--card-hover-border) 14%, transparent);
   transform: translateY(-2px);
 }
 
